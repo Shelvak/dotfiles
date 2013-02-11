@@ -9,12 +9,10 @@ h3. Install zsh
 
 h3. Link all
 
-@
-ln -s .dotfiles/vim .vim
-ln -s .dotfiles/oh-my-zsh .oh-my-zsh
-ln -s .dotfiles/zshrc .zshrc
-ln -s .dotfiles/vimrc .vimrc
-ln -s .dotfiles/gitconfig .gitconfig
-cd .dotfiles/oh-my-zsh/custom
-ln -s ../../zsh-plugins plugins
-@
+@ln -s .dotfiles/vim .vim@
+@ln -s .dotfiles/oh-my-zsh .oh-my-zsh@
+@ln -s .dotfiles/zshrc .zshrc@
+@ln -s .dotfiles/vimrc .vimrc@
+@ln -s .dotfiles/gitconfig .gitconfig@
+@cd .dotfiles/oh-my-zsh/custom@
+@ln -s ../../zsh-plugins plugins@
