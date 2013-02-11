@@ -1,14 +1,15 @@
-== My DotFiles
+h1. My DotFiles
 
-= Install zsh
-```bash
-sudo apt-get install zsh
-curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
-chsh -s /bin/zsh
-```
+h3. Install zsh
 
-= Link all
-```bash
+@sudo apt-get install zsh@
+@curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh@
+@chsh -s /bin/zsh@
+
+
+h3. Link all
+
+@
 ln -s .dotfiles/vim .vim
 ln -s .dotfiles/oh-my-zsh .oh-my-zsh
 ln -s .dotfiles/zshrc .zshrc
@@ -16,3 +17,4 @@ ln -s .dotfiles/vimrc .vimrc
 ln -s .dotfiles/gitconfig .gitconfig
 cd .dotfiles/oh-my-zsh/custom
 ln -s ../../zsh-plugins plugins
+@
