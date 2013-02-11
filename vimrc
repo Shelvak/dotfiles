@@ -23,6 +23,9 @@ set expandtab
 set history=2000
 set scrolljump=5
 set scrolloff=3
+set cursorline
+set colorcolumn=80
+set pastetoggle=<C-p>
 
 scriptencoding utf-8
 
@@ -35,9 +38,8 @@ if has("autocmd")
 endif
 
 " Short Cuts
-set pastetoggle=<C-p>
 nmap <C-n> :set number! number?<CR>
 
-" Set 80 characters line ^^
-set colorcolumn=80
-highlight ColorColumn ctermbg=blue
+" Set colors
+hi ColorColumn ctermbg=blue
+hi CursorLine term=bold cterm=bold ctermbg=none
