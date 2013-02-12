@@ -1,0 +1,33 @@
+[submodule "vim/bundle/vim-autoclose"]
+  path = vim/bundle/vim-autoclose
+  url = https://github.com/Townk/vim-autoclose.git
+[submodule "vim/bundle/snipmate-snippets"]
+  path = vim/bundle/snipmate-snippets
+  url = https://github.com/honza/snipmate-snippets.git
+[submodule "vim/bundle/tlib_vim"]
+  path = vim/bundle/tlib_vim
+  url = https://github.com/tomtom/tlib_vim.git
+[submodule "vim/bundle/vim-addon-mw-utils"]
+  path = vim/bundle/vim-addon-mw-utils
+  url = https://github.com/MarcWeber/vim-addon-mw-utils.git
+[submodule "vim/bundle/vim-coffee-script"]
+  path = vim/bundle/vim-coffee-script
+  url = https://github.com/kchmck/vim-coffee-script.git
+[submodule "vim/bundle/vim-endwise"]
+  path = vim/bundle/vim-endwise
+  url = https://github.com/tpope/vim-endwise.git
+[submodule "vim/bundle/vim-fugitive"]
+  path = vim/bundle/vim-fugitive
+  url = https://github.com/tpope/vim-fugitive.git
+[submodule "vim/bundle/vim-rails"]
+  path = vim/bundle/vim-rails
+  url = https://github.com/tpope/vim-rails.git
+[submodule "vim/bundle/vim-snipmate"]
+  path = vim/bundle/vim-snipmate
+  url = https://github.com/garbas/vim-snipmate.git
+[submodule "vim/bundle/vim-yaml"]
+  path = vim/bundle/vim-yaml
+  url = https://github.com/avakhov/vim-yaml.git
+[submodule "vim/bundle/ackvim"]
+  path = vim/bundle/ackvim
+  url = https://github.com/mileszs/ackvim.git
