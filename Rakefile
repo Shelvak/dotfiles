@@ -10,12 +10,12 @@ task :install do
   puts %x{chsh -s `which zsh`}
   
   puts 'Linking...'
-  puts %x{ln -s .dotfiles/vim .vim}
-  puts %x{ln -s .dotfiles/oh-my-zsh .oh-my-zsh}
-  puts %x{ln -s .dotfiles/zshrc .zshrc}
-  puts %x{ln -s .dotfiles/vimrc .vimrc}
-  puts %x{ln -s .dotfiles/gitconfig .gitconfig}
-  puts %x{cd .dotfiles/oh-my-zsh/custom}
+  puts %x{ln -s vim ~/.vim}
+  puts %x{ln -s oh-my-zsh ~/.oh-my-zsh}
+  puts %x{ln -s zshrc ~/.zshrc}
+  puts %x{ln -s vimrc ~/.vimrc}
+  puts %x{ln -s gitconfig ~/.gitconfig}
+  puts %x{cd oh-my-zsh/custom}
   puts %x{ln -s ../../zsh-plugins plugins}
   puts 'Ready ^^'
 end
