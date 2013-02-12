@@ -1,6 +1,9 @@
 [submodule "vim/bundle/vim-autoclose"]
   path = vim/bundle/vim-autoclose
   url = https://github.com/Townk/vim-autoclose.git
+[submodule "oh-my-zsh"]
+  path = oh-my-zsh
+  url = https://github.com/robbyrussell/oh-my-zsh.git
 [submodule "vim/bundle/snipmate-snippets"]
   path = vim/bundle/snipmate-snippets
   url = https://github.com/honza/snipmate-snippets.git
@@ -28,6 +31,6 @@
 [submodule "vim/bundle/vim-yaml"]
   path = vim/bundle/vim-yaml
   url = https://github.com/avakhov/vim-yaml.git
-[submodule "vim/bundle/ackvim"]
-  path = vim/bundle/ackvim
-  url = https://github.com/mileszs/ackvim.git
+[submodule "vim/bundle/ack.vim"]
+  path = vim/bundle/ack.vim
+  url = https://github.com/mileszs/ack.vim.git
