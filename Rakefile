@@ -15,6 +15,7 @@ task :install do
   puts %x{ln -s zshrc ~/.zshrc}
   puts %x{ln -s vimrc ~/.vimrc}
   puts %x{ln -s gitconfig ~/.gitconfig}
+  puts %x{ln -s rbenv ~/.rbenv}
   puts %x{cd oh-my-zsh/custom}
   puts %x{ln -s ../../zsh-plugins plugins}
   puts 'Ready ^^'

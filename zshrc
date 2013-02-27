@@ -17,7 +17,7 @@ alias ..3='cd ../../..'
 alias a-g-i="sudo apt-get install"
 
 # Plugins 
-plugins=(git cd_rails)
+plugins=(git cd_rails rails3)
 
 source $ZSH/oh-my-zsh.sh
 

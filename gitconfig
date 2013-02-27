@@ -10,5 +10,6 @@
 [alias]
   ca = commit -a
   s = status
+  co = checkout
 [core]
 	editor = vim
