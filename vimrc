@@ -28,6 +28,12 @@ scriptencoding utf-8
 
 let mapleader=','
 
+" Persistent undo
+if exists('+undofile') && exists('+undodir')
+  set undofile
+  set undodir=~/.vim/undodir
+end
+
 if has("syntax")
   syntax on
 endif
@@ -51,8 +57,14 @@ nmap <C-n> :set number! number?<CR>
 hi ColorColumn ctermbg=blue
 hi CursorLine term=bold cterm=bold ctermbg=none
 
+" Solarized configs
+let g:solarized_termcolors=256
+
+colorscheme solarized
+set background=dark
+set t_Co=256
+
 " Surround.vim
-" =============
 let g:surround_113 = "#{\r}"   " v
 let g:surround_45 = "<% \r %>"    " -
 let g:surround_61 = "<%= \r %>"   " =
@@ -82,3 +94,7 @@ nnoremap <Leader>u :Runittest
 nnoremap <Leader>f :Rfunctionaltest 
 nnoremap <Leader>i :Rintegrationtest 
 nnoremap <Leader>r :Rake
+
+" Resize and restore windows
+nnoremap <C-_> <C-W>_
+nnoremap <C-=> <C-W>=
