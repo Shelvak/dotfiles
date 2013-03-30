@@ -58,7 +58,7 @@ hi ColorColumn ctermbg=blue
 hi CursorLine term=bold cterm=bold ctermbg=none
 
 " Solarized configs
-let g:solarized_termcolors=256
+"let g:solarized_termcolors=256
 
 colorscheme solarized
 set background=dark
