@@ -64,3 +64,21 @@ map <leader># ysiw#
 " Invisibles characters setup
 set listchars=tab:▸\ ,eol:¬
 nmap <Leader>l :set list!<CR>
+
+" Maps
+nnoremap <Leader><Leader> :nohlsearch<CR>
+
+" Smart way to move between windows
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-h> <C-W>h
+nnoremap <C-l> <C-W>l
+
+" Leader shortcuts for Vim Rails commands
+nnoremap <Leader>m :Rmodel 
+nnoremap <Leader>c :Rcontroller 
+nnoremap <Leader>v :Rview 
+nnoremap <Leader>u :Runittest 
+nnoremap <Leader>f :Rfunctionaltest 
+nnoremap <Leader>i :Rintegrationtest 
+nnoremap <Leader>r :Rake

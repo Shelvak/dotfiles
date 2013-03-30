@@ -23,8 +23,17 @@ end
 
 desc 'Update all the _updatable_ things =)'
 task :update do
-  puts 'Updating vim plugins'
-  puts %x{~/.vim/update_plugins.sh}
-  puts 'Updating Oh-My-ZSH'
-  puts %x{cd ~/.oh-my-zsh/; git pull}
+  puts %x{git pull}
+  puts %x{git submodule update}
+  puts %x{git submodule foreach "git pull origin master"}
+
+  git_repos = ['.rbenv', '.rbenv/plugins/ruby-build', '.oh-my-zsh', '.vim']
+
+  git_repos.each do |repo|
+    if File.directory?(File.join(ENV['HOME'], repo, '.git'))
+      puts %x{cd $HOME/#{repo}; git pull; cd -} 
+    end
+  end
+
+  puts %x{curl -Sso ~/.dotfiles/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim}
 end

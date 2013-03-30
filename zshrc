@@ -2,7 +2,7 @@
 ZSH="$HOME/.oh-my-zsh"
 
 # Theme
-ZSH_THEME='miloshadzic'
+ZSH_THEME='cloud'
 
 # Aliases
 alias zc="vim ~/.zshrc"
@@ -15,6 +15,7 @@ alias ..='cd ..'
 alias ..2='cd ../..'
 alias ..3='cd ../../..'
 alias a-g-i="sudo apt-get install"
+alias dotfiles_update="cd ~/.dotfiles; rake update; cd -"
 
 # Plugins 
 plugins=(git cd_rails rails3 bundle)
