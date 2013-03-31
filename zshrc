@@ -18,7 +18,7 @@ alias a-g-i="sudo apt-get install"
 alias dotfiles_update="cd ~/.dotfiles; rake update; cd -"
 
 # Plugins 
-plugins=(git cd_rails rails3 bundle)
+plugins=(git cd_rails rails3 bundler)
 
 source $ZSH/oh-my-zsh.sh
 
