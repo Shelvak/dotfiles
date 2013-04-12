@@ -9,20 +9,27 @@ task :install do
   puts 'Doing zsh the default'
   puts %x{chsh -s `which zsh`}
   
-  puts 'Linking...'
-  puts %x{ln -s vim ~/.vim}
-  puts %x{ln -s oh-my-zsh ~/.oh-my-zsh}
-  puts %x{ln -s zshrc ~/.zshrc}
-  puts %x{ln -s vimrc ~/.vimrc}
-  puts %x{ln -s gitconfig ~/.gitconfig}
-  puts %x{ln -s rbenv ~/.rbenv}
-  puts %x{cd oh-my-zsh/custom}
-  puts %x{ln -s ../../zsh-plugins plugins}
+  puts 'Linking folders...'
+
+  ['vim', 'oh-my-zsh', 'rbenv'].each do |folder|
+    puts %x{ln -s "$PWD/#{folder}" "$HOME/.#{folder}"}
+  end
+
+  puts 'Copying zsh plugins...'
+  puts %x{cd oh-my-zsh/custom; ln -s ../../zsh-plugins plugins}
+
+  puts 'Linking files...'
+
+  ['zshrc', 'vimrc', 'gitconfig', 'railsrc'].each do |file|
+    puts %x{ln -s "$PWD/#{file}" "$HOME/.#{file}"}
+  end
+
   puts 'Ready ^^'
 end
 
 desc 'Update all the _updatable_ things =)'
 task :update do
+  puts 'Updating...'
   puts %x{git pull}
   puts %x{git submodule update}
   puts %x{git submodule foreach "git pull origin master"}
@@ -36,4 +43,6 @@ task :update do
   end
 
   puts %x{curl -Sso ~/.dotfiles/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim}
+
+  puts 'Done ^^'
 end
