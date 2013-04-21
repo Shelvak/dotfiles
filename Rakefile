@@ -20,7 +20,7 @@ task :install do
 
   puts 'Linking files...'
 
-  ['zshrc', 'vimrc', 'gitconfig', 'railsrc'].each do |file|
+  ['zshrc', 'vimrc', 'gitconfig', 'railsrc', 'gemrc'].each do |file|
     puts %x{ln -s "$PWD/#{file}" "$HOME/.#{file}"}
   end
 
