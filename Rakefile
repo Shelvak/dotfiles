@@ -32,7 +32,7 @@ task :update do
   puts 'Updating...'
   puts %x{git pull}
   puts %x{git submodule update}
-  puts %x{git submodule foreach "git pull origin master"}
+  puts %x{git submodule foreach "git pull"}
 
   git_repos = ['.rbenv', '.rbenv/plugins/ruby-build', '.oh-my-zsh', '.vim']
 
@@ -42,7 +42,7 @@ task :update do
     end
   end
 
-  puts %x{curl -Sso ~/.dotfiles/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim}
+  puts %x{curl -Sso ~/.dotfiles/vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim}
 
   puts 'Done ^^'
 end

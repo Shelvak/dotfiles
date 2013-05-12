@@ -23,6 +23,7 @@ plugins=(git cd_rails rails3 bundler)
 source $ZSH/oh-my-zsh.sh
 
 # Customizes
+DISABLE_CORRECTION="true"
 
 # RBenv init
 export PATH="$HOME/.rbenv/bin:$PATH"

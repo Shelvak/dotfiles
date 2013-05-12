@@ -1,12 +1,15 @@
+[submodule "oh-my-zsh"]
+	path = oh-my-zsh
+	url = https://github.com/robbyrussell/oh-my-zsh.git
+[submodule "rbenv"]
+	path = rbenv
+  url = https://github.com/sstephenson/rbenv.git
 [submodule "vim/bundle/vim-autoclose"]
   path = vim/bundle/vim-autoclose
   url = https://github.com/Townk/vim-autoclose.git
-[submodule "oh-my-zsh"]
-  path = oh-my-zsh
-  url = https://github.com/robbyrussell/oh-my-zsh.git
-[submodule "vim/bundle/snipmate-snippets"]
-  path = vim/bundle/snipmate-snippets
-  url = https://github.com/honza/snipmate-snippets.git
+[submodule "vim/bundle/vim-snippets"]
+  path = vim/bundle/vim-snippets
+  url = https://github.com/honza/vim-snippets.git
 [submodule "vim/bundle/tlib_vim"]
   path = vim/bundle/tlib_vim
   url = https://github.com/tomtom/tlib_vim.git
@@ -43,9 +46,6 @@
 [submodule "vim/bundle/vim-colors-solarized"]
   path = vim/bundle/vim-colors-solarized
   url = https://github.com/altercation/vim-colors-solarized.git
-[submodule "rbenv"]
-  path = rbenv
-  url = https://github.com/sstephenson/rbenv.git
-[submodule ".vim/bundle/vim-abolish"]
-  path = .vim/bundle/vim-abolish
+[submodule "vim/bundle/vim-abolish"]
+  path = vim/bundle/vim-abolish
   url = https://github.com/tpope/vim-abolish.git
