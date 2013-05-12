@@ -1,0 +1,25 @@
+# Packages #
+############
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# Editor temporal files #
+#########################
+*.swp
+*~
+
+# Rails private files #
+#######################
+config/app_config.yml
