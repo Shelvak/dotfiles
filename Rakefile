@@ -48,7 +48,5 @@ task :update do
     end
   end
 
-  puts %x{curl -Sso ~/.dotfiles/vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim}
-
   puts 'Done ^^'
 end

@@ -1,8 +1,9 @@
-# Path to your oh-my-zsh configuration.
+# ZSH constants
 ZSH="$HOME/.oh-my-zsh"
-
-# Theme
 ZSH_THEME='cloud'
+DISABLE_CORRECTION="true"
+DISABLE_AUTO_UPDATE="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Aliases
 alias zc="vim ~/.zshrc"
@@ -16,14 +17,12 @@ alias ..2='cd ../..'
 alias ..3='cd ../../..'
 alias a-g-i="sudo apt-get install"
 alias dotfiles_update="cd ~/.dotfiles; rake update; cd -"
+alias v='vim'
 
 # Plugins 
 plugins=(git cd_rails rails3 bundler)
 
 source $ZSH/oh-my-zsh.sh
-
-# Customizes
-DISABLE_CORRECTION="true"
 
 # RBenv init
 export PATH="$HOME/.rbenv/bin:$PATH"
