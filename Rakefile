@@ -32,9 +32,9 @@ task :update do
   puts 'Updating...'
   puts %x{git pull}
   puts %x{git submodule update}
-  puts %x{git submodule foreach "git pull"}
+  puts %x{git submodule foreach "git pull origin master"}
 
-  git_repos = ['.rbenv', '.rbenv/plugins/ruby-build', '.oh-my-zsh', '.vim']
+  git_repos = ['.rbenv', '.rbenv/plugins/ruby-build', '.oh-my-zsh']
 
   git_repos.each do |repo|
     if File.directory?(File.join(ENV['HOME'], repo, '.git'))
