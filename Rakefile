@@ -21,7 +21,8 @@ task :install do
   puts 'Linking files...'
 
   for_link_files = [
-    'zshrc', 'vimrc', 'gitconfig', 'gitignore_global', 'railsrc', 'gemrc'
+    'zshrc', 'vimrc', 'gitconfig', 'gitignore_global', 'railsrc', 'gemrc',
+    'screenrc'
   ]
 
   for_link_files.each do |file|
