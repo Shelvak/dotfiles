@@ -38,6 +38,7 @@ task :update do
 
   git_repos.each do |repo|
     if File.directory?(File.join(ENV['HOME'], repo, '.git'))
+      puts "Updating #{repo}"
       puts %x{cd $HOME/#{repo}; git pull; cd -} 
     end
   end
