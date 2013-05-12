@@ -2,8 +2,10 @@
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
 "Pathogen for vim pluggins
-execute pathogen#infect()
-execute pathogen#helptags()
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+
+call pathogen#infect()
+call pathogen#helptags()
 
 " Config
 set nocompatible
@@ -98,3 +100,7 @@ nnoremap <Leader>r :Rake
 " Resize and restore windows
 nnoremap <C-_> <C-W>_
 nnoremap <C-=> <C-W>=
+
+" Leader shortcuts for Vim Fugitive
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gc :Gcommit<CR>
