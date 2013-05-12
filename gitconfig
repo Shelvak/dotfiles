@@ -11,5 +11,11 @@
   ca = commit -a
   s = status
   co = checkout
+  l = log --oneline --graph --decorate
 [core]
 	editor = vim
+  excludesfile = ~/.gitignore_global
+[diff]
+  tool = vimdiff
+[format]
+  pretty = %C(yellow)%h%Creset %s %C(red)(%an, %cr)%Creset
