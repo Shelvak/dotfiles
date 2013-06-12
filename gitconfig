@@ -7,6 +7,10 @@
 	branch = auto
 	interactive = auto
 	ui = auto
+[color "status"]
+  added = green
+  changed = yellow
+  untracked = red
 [alias]
   ca = commit -a
   s = status

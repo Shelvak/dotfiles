@@ -104,3 +104,7 @@ nnoremap <C-=> <C-W>=
 " Leader shortcuts for Vim Fugitive
 nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gc :Gcommit<CR>
+
+" Navigate through quickfix
+map <F3> :cprev<CR>
+map <F4> :cnext<CR>
