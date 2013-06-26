@@ -39,14 +39,14 @@ task :update do
   puts %x{git submodule update}
   puts %x{git submodule foreach "git pull origin master"}
 
-  git_repos = ['.rbenv', '.rbenv/plugins/ruby-build', '.oh-my-zsh']
+  #git_repos = ['.rbenv', '.rbenv/plugins/ruby-build', '.oh-my-zsh']
 
-  git_repos.each do |repo|
-    if File.directory?(File.join(ENV['HOME'], repo, '.git'))
-      puts "Updating #{repo}"
-      puts %x{cd $HOME/#{repo}; git pull; cd -} 
-    end
-  end
+  #git_repos.each do |repo|
+  #  if File.directory?(File.join(ENV['HOME'], repo, '.git'))
+  #    puts "Updating #{repo}"
+  #    puts %x{cd $HOME/#{repo}; git pull; cd -} 
+  #  end
+  #end
 
   puts 'Done ^^'
 end
