@@ -7,6 +7,9 @@
 [submodule "rbenv/plugins/ruby-build"]
 	path = rbenv/plugins/ruby-build
   url = https://github.com/sstephenson/ruby-build.git
+[submodule "rbenv/plugins/rbenv-gem-rehash"]
+	path = rbenv/plugins/rbenv-gem-rehash
+  url = https://github.com/sstephenson/rbenv-gem-rehash.git
 [submodule "vim/bundle/vim-autoclose"]
   path = vim/bundle/vim-autoclose
   url = https://github.com/Townk/vim-autoclose.git
@@ -55,3 +58,6 @@
 [submodule "vim/bundle/vim-pathogen"]
 	path = vim/bundle/vim-pathogen
 	url = https://github.com/tpope/vim-pathogen.git
+[submodule "rbenv-gem-rehash"]
+	path = rbenv-gem-rehash
+	url = /home/rotsen/.rbenv/plugins/rbenv-gem-rehash
