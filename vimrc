@@ -47,8 +47,6 @@ if has("autocmd")
   autocmd FileType ruby let b:surround_35 = "#{\r}"
 endif
 
-" Short Cuts
-nmap <C-n> :set number! number?<CR>
 
 " Set colors
 hi ColorColumn ctermbg=blue
@@ -61,11 +59,13 @@ colorscheme grb256
 set background=dark
 set t_Co=256
 
+" Short Cuts
 " Surround.vim
 let g:surround_113 = "#{\r}"   " v
 let g:surround_45 = "<% \r %>"    " -
 let g:surround_61 = "<%= \r %>"   " =
 
+map <Leader>n :set number!<CR>
 map <Leader>y <Plug>Yssurround=<cr>
 map <Leader>i <Plug>Yssurround-<cr>
 map <leader># ysiw#
