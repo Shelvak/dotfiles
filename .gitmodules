@@ -58,15 +58,6 @@
 [submodule "vim/bundle/vim-pathogen"]
 	path = vim/bundle/vim-pathogen
 	url = https://github.com/tpope/vim-pathogen.git
-[submodule "rbenv-gem-rehash"]
-	path = rbenv-gem-rehash
-	url = /home/rotsen/.rbenv/plugins/rbenv-gem-rehash
 [submodule "vim/bundle/vim-gitgutter"]
   path = vim/bundle/vim-gitgutter
   url = https://github.com/airblade/vim-gitgutter.git
-[submodule "vim-githgutter"]
-	path = vim-githgutter
-	url = /home/rotsen/.vim/bundle/vim-githgutter
-[submodule "vim-gitgutter"]
-	path = vim-gitgutter
-	url = /home/rotsen/.vim/bundle/vim-gitgutter
