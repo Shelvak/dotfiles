@@ -31,10 +31,8 @@ scriptencoding utf-8
 let mapleader=','
 
 " Persistent undo
-if exists('+undofile') && exists('+undodir')
-  set undofile
-  set undodir=~/.vim/undodir
-end
+set undofile
+set undodir=~/.vim/undodir
 
 if has("syntax")
   syntax on
@@ -59,13 +57,17 @@ colorscheme grb256
 set background=dark
 set t_Co=256
 
-" Short Cuts
 " Surround.vim
 let g:surround_113 = "#{\r}"   " v
 let g:surround_45 = "<% \r %>"    " -
 let g:surround_61 = "<%= \r %>"   " =
 
-map <Leader>n :set number!<CR>
+" GitGutter
+let g:gitgutter_enabled = 0
+hi SignColumn ctermbg=none
+
+" Short Cuts
+map <Leader>n :set number!<CR>:GitGutterToggle<CR>
 map <Leader>y <Plug>Yssurround=<cr>
 map <Leader>i <Plug>Yssurround-<cr>
 map <leader># ysiw#
