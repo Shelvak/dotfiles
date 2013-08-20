@@ -1,5 +1,5 @@
 " Ack
-let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+let g:ackprg="ack -H --nocolor --nogroup --column"
 
 "Pathogen for vim pluggins
 runtime bundle/vim-pathogen/autoload/pathogen.vim

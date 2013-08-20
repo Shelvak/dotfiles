@@ -15,12 +15,15 @@ alias rcp="rails c production"
 alias ..='cd ..'
 alias ..2='cd ../..'
 alias ..3='cd ../../..'
-alias a-g-i="sudo apt-get install"
+alias pac="sudo pacman"
+alias install="sudo pacman -S"
 alias dotfiles_update="cd ~/.dotfiles; rake update; cd -"
 alias v='vim'
+alias sv="sudo vim"
+alias ctl="sudo systemctl"
 
 # Plugins 
-plugins=(git cd_rails rails3 bundler)
+plugins=(git cd_rails bundler)
 
 source $ZSH/oh-my-zsh.sh
 

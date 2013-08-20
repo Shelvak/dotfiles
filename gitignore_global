@@ -24,3 +24,7 @@
 #######################
 config/app_config.yml
 coverage/
+
+# Ruby version
+##############
+.ruby-version
