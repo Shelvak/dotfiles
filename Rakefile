@@ -1,5 +1,7 @@
 require 'rake'
 
+dotfiles_dir = '/home/rotsen/.dotfiles'
+
 desc "install the dot files into user's home directory"
 task :install do
   puts 'Install all submodules (oh-my-zsh && vim-plugins)'
@@ -16,7 +18,7 @@ task :install do
   end
 
   puts 'Copying zsh plugins...'
-  puts %x{cd oh-my-zsh/custom; ln -s ../../zsh-plugins plugins}
+  puts %x{ln -s #{dotfiles_dir}/zsh-plugins/* #{dotfiles_dir}/oh-my-zsh/custom/plugins/ }
 
   puts 'Linking files...'
 
@@ -38,6 +40,9 @@ task :update do
   puts %x{git pull}
   puts %x{git submodule update}
   puts %x{git submodule foreach "git pull origin master"}
+
+  puts 'Copying zsh plugins...'
+  puts %x{ln -s #{dotfiles_dir}/zsh-plugins/* #{dotfiles_dir}/oh-my-zsh/custom/plugins/ }
 
   puts 'Done ^^'
 end

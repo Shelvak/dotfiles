@@ -71,6 +71,7 @@ map <Leader>n :set number!<CR>:GitGutterToggle<CR>
 map <Leader>y <Plug>Yssurround=<cr>
 map <Leader>i <Plug>Yssurround-<cr>
 map <leader># ysiw#
+map <C-n> :set relativenumber! <CR>
 
 " Invisibles characters setup
 set listchars=tab:▸\ ,eol:¬

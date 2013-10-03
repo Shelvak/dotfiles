@@ -1,0 +1,21 @@
+#!/bin/zsh
+
+HOME=/home/rotsen
+BackupDir=/run/media/rotsen/Backups/Backup-RotseN
+
+DirInHome=(Documentos Escritorio sql .ssh)
+
+cd $HOME
+echo `pwd`
+
+for dir in "${DirInHome[@]}"; do
+  echo $dir
+  tar -c $dir | bzip2 > $BackupDir/$dir.tar.bz2
+done
+
+
+echo "Sincronizando musisca"
+rsync -av /home/rotsen/Música /run/media/rotsen/Backups/Backup-RotseN
+echo "Sincronizando a dropbox"
+rsync -av /run/media/rotsen/Backups/Backup-RotseN/*.tar.bz2 Dropbox/Backups
+rsync -av Dropbox /run/media/rotsen/Backups/Backup-RotseN/Dropbox

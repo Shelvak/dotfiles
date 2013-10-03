@@ -8,10 +8,7 @@ COMPLETION_WAITING_DOTS="true"
 # Aliases
 alias zc="vim ~/.zshrc"
 alias vc="vim ~/.vimrc"
-alias pg-pgsql="sudo su postgres;psql"
-alias rs="rails s"
-alias rc="rails c"
-alias rcp="rails c production"
+alias rsync-personal="~/.dotfiles/rsync-personal"
 alias ..='cd ..'
 alias ..2='cd ../..'
 alias ..3='cd ../../..'
@@ -21,9 +18,12 @@ alias dotfiles_update="cd ~/.dotfiles; rake update; cd -"
 alias v='vim'
 alias sv="sudo vim"
 alias ctl="sudo systemctl"
+alias pq="sudo psql -U postgres"
+alias rcp="rails c production"
+alias rgm='rails g migration'
 
 # Plugins 
-plugins=(git cd_rails bundler)
+plugins=(git cd_rails bundler rails4)
 
 source $ZSH/oh-my-zsh.sh
 
