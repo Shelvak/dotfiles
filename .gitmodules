@@ -60,4 +60,4 @@
   url = https://github.com/airblade/vim-gitgutter.git
 [submodule "vim/bundle/vim-rake"]
 	path = vim/bundle/vim-rake
-	url = https://github.com/tpope/vim-rake
+	url = https://github.com/tpope/vim-rake.git
