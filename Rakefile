@@ -17,6 +17,10 @@ task :install do
     puts %x{ln -s "$PWD/#{folder}" "$HOME/.#{folder}"}
   end
 
+  puts 'Copying ruby-build plugin'
+  puts %x{mkdir #{dorfiles_dir}/rbenv/plugins}
+  puts %x{ln -s #{dotfiles_dir}/ruby-build #{dotfiles_dir}/rbenv/plugins/ruby-build}
+
   puts 'Copying zsh plugins...'
   puts %x{ln -s #{dotfiles_dir}/zsh-plugins/* #{dotfiles_dir}/oh-my-zsh/custom/plugins/ }
 
