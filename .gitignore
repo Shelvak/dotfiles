@@ -2,3 +2,4 @@ vim/.netrwhist
 vim/undodir/*
 !vim/undodir/.gitkeep
 
+oh-my-zsh/custom/plugins/cd_rails
