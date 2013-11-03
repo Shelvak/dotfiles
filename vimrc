@@ -7,6 +7,9 @@ runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
 call pathogen#helptags()
 
+" VimInfo
+set viminfo='100,\"5,:50,%,n~/.viminfo'
+
 " Config
 set nocompatible
 set showcmd
@@ -45,6 +48,18 @@ if has("autocmd")
   autocmd FileType ruby let b:surround_35 = "#{\r}"
 endif
 
+" Restore cursor to last positon 
+function! ResCur()
+  if line("'\"") <= line("$")
+    normal! g`"
+    return 1
+  endif
+endfunction
+
+augroup resCur
+  autocmd!
+  autocmd BufWinEnter * call ResCur()
+augroup END
 
 " Set colors
 hi ColorColumn ctermbg=blue

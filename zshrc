@@ -15,6 +15,7 @@ alias ..3='cd ../../..'
 alias pac="sudo pacman"
 alias install="sudo pacman -S"
 alias dotfiles_update="cd ~/.dotfiles; rake update; cd -"
+alias clear_rails_apps="~/.dotfiles/clear_rails_apps"
 alias v='vim'
 alias sv="sudo vim"
 alias ctl="sudo systemctl"
@@ -22,11 +23,11 @@ alias pq="sudo psql -U postgres"
 alias rcp="rails c production"
 alias rgm='rails g migration'
 
+# RBenv init
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
 # Plugins 
 plugins=(git cd_rails bundler rails4)
 
 source $ZSH/oh-my-zsh.sh
-
-# RBenv init
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"

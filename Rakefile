@@ -45,8 +45,5 @@ task :update do
   puts %x{git submodule update}
   puts %x{git submodule foreach "git pull origin master"}
 
-  puts 'Copying zsh plugins...'
-  puts %x{ln -s #{dotfiles_dir}/zsh-plugins/* #{dotfiles_dir}/oh-my-zsh/custom/plugins/ }
-
   puts 'Done ^^'
 end

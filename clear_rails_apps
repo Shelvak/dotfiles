@@ -1,0 +1,22 @@
+#!/bin/zsh
+
+HOME=/home/rotsen
+ORIGIN=`pwd`
+
+for dir in $HOME/rails/*; do
+  if [ -d $dir ]; then
+    cd $dir
+
+    if [ -f "Rakefile" ]; then
+      echo "Cleaning $dir"
+      rake tmp:clear;
+      rake log:clear;
+      rake db:schema:cache:clear;
+      rake assets:clobber;
+    fi
+  fi
+
+  cd $HOME
+done
+
+cd $ORIGIN

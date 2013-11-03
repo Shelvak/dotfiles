@@ -1,9 +1,13 @@
 #!/bin/zsh
 
-HOME=/home/rotsen
-BackupDir=/run/media/rotsen/Backups/Backup-RotseN
 
-DirInHome=(Documentos Escritorio sql .ssh)
+HOME=/home/rotsen
+BackupDir=$HOME/Dropbox/Backups
+
+DirInHome=(Documentos Escritorio sql .ssh rails)
+
+echo "Cleaning up RailsProjects"
+~/.dotfiles/clear_rails_apps
 
 cd $HOME
 echo `pwd`
@@ -14,8 +18,9 @@ for dir in "${DirInHome[@]}"; do
 done
 
 
-echo "Sincronizando musisca"
-rsync -av /home/rotsen/Música /run/media/rotsen/Backups/Backup-RotseN
-echo "Sincronizando a dropbox"
-rsync -av /run/media/rotsen/Backups/Backup-RotseN/*.tar.bz2 Dropbox/Backups
+echo "Sincronizando música"
+rsync -av Música /run/media/rotsen/Backups/Backup-RotseN
+echo "Sincronizando imágenes"
+rsync -av Imágenes Dropbox/Backups
+echo "Sincronizando desde Dropbox"
 rsync -av Dropbox /run/media/rotsen/Backups/Backup-RotseN/Dropbox
