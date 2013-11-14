@@ -61,3 +61,6 @@
 [submodule "ruby-build"]
 	path = ruby-build
 	url = https://github.com/sstephenson/ruby-build
+[submodule "vim/bundle/StripWhiteSpaces"]
+	path = vim/bundle/StripWhiteSpaces
+	url = git@github.com:gagoar/StripWhiteSpaces.git

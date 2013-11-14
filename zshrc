@@ -22,6 +22,8 @@ alias ctl="sudo systemctl"
 alias pq="sudo psql -U postgres"
 alias rcp="rails c production"
 alias rgm='rails g migration'
+alias update_system="pac -Syyuu && yaourt -Syua"
+alias clear_arch="pac -Rsn $(pacman -Qdtq)"
 
 # RBenv init
 export PATH="$HOME/.rbenv/bin:$PATH"
