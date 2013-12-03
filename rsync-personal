@@ -23,4 +23,4 @@ rsync -av Música /run/media/rotsen/Backups/Backup-RotseN
 echo "Sincronizando imágenes"
 rsync -av Imágenes Dropbox/Backups
 echo "Sincronizando desde Dropbox"
-rsync -av Dropbox /run/media/rotsen/Backups/Backup-RotseN/Dropbox
+rsync -av Dropbox /run/media/rotsen/Backups/Backup-RotseN

@@ -25,11 +25,7 @@ alias rgm='rails g migration'
 alias update_system="pac -Syyuu && yaourt -Syua"
 alias clear_arch="pac -Rsn $(pacman -Qdtq)"
 
-# RBenv init
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
-# Plugins 
-plugins=(git cd_rails bundler rails4)
+# Plugins
+plugins=(rbenv git cd_rails bundler rails4)
 
 source $ZSH/oh-my-zsh.sh
