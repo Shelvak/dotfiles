@@ -4,8 +4,8 @@ let g:ackprg="ack -H --nocolor --nogroup --column"
 "Pathogen for vim pluggins
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 
-call pathogen#infect()
-call pathogen#helptags()
+execute pathogen#infect()
+execute pathogen#helptags()
 
 " VimInfo
 set viminfo='100,\"5,:50,%,n~/.viminfo'
@@ -18,8 +18,8 @@ set smartcase
 set incsearch
 set mouse=v
 set hlsearch
-set tabstop=2 
-set shiftwidth=2 
+set tabstop=2
+set shiftwidth=2
 set expandtab
 set history=2000
 set scrolljump=5
@@ -29,7 +29,15 @@ set colorcolumn=80
 set pastetoggle=<C-p>
 set linebreak
 
+" Mac sucks (Mac Fixes)
+if has('mac') || has('macunix')
+  set backspace=2
+  set mouse=nicr
+endif
+
 scriptencoding utf-8
+set encoding=utf-8
+setglobal fileencoding=utf-8
 
 let mapleader=','
 
@@ -46,9 +54,10 @@ if has("autocmd")
 
   " Ruby surround
   autocmd FileType ruby let b:surround_35 = "#{\r}"
+  autocmd! BufRead,BufNewFile Gemfile setfiletype ruby
 endif
 
-" Restore cursor to last positon 
+" Restore cursor to last positon
 function! ResCur()
   if line("'\"") <= line("$")
     normal! g`"
@@ -102,12 +111,12 @@ nnoremap <C-h> <C-W>h
 nnoremap <C-l> <C-W>l
 
 " Leader shortcuts for Vim Rails commands
-nnoremap <Leader>m :Rmodel 
-nnoremap <Leader>c :Rcontroller 
-nnoremap <Leader>v :Rview 
-nnoremap <Leader>u :Runittest 
-nnoremap <Leader>f :Rfunctionaltest 
-nnoremap <Leader>i :Rintegrationtest 
+nnoremap <Leader>m :Rmodel
+nnoremap <Leader>c :Rcontroller
+nnoremap <Leader>v :Rview
+nnoremap <Leader>u :Runittest
+nnoremap <Leader>f :Rfunctionaltest
+nnoremap <Leader>i :Rintegrationtest
 nnoremap <Leader>r :Rake
 
 " Resize and restore windows

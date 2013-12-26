@@ -1,6 +1,6 @@
 require 'rake'
 
-dotfiles_dir = '/home/rotsen/.dotfiles'
+dotfiles_dir = [Dir.home, '.dotfiles'].join('/')
 
 desc "install the dot files into user's home directory"
 task :install do
@@ -10,16 +10,22 @@ task :install do
 
   puts 'Doing zsh the default'
   puts %x{chsh -s `which zsh`}
-  
+
   puts 'Linking folders...'
 
   ['vim', 'oh-my-zsh', 'rbenv'].each do |folder|
-    puts %x{ln -s "$PWD/#{folder}" "$HOME/.#{folder}"}
+    puts "Link #{folder}? (y|n)"
+    if gets.strip.downcase == 'y'
+      puts %x{ln -s "$PWD/#{folder}" "$HOME/.#{folder}"}
+    end
   end
 
-  puts 'Copying ruby-build plugin'
-  puts %x{mkdir #{dorfiles_dir}/rbenv/plugins}
-  puts %x{ln -s #{dotfiles_dir}/ruby-build #{dotfiles_dir}/rbenv/plugins/ruby-build}
+  puts "Create ruby-build folder? (y|n)"
+  if gets.strip.downcase == 'y'
+    puts 'Copying ruby-build plugin'
+    puts %x{mkdir #{dotfiles_dir}/rbenv/plugins}
+    puts %x{ln -s #{dotfiles_dir}/ruby-build #{dotfiles_dir}/rbenv/plugins/ruby-build}
+  end
 
   puts 'Copying zsh plugins...'
   puts %x{ln -s #{dotfiles_dir}/zsh-plugins/* #{dotfiles_dir}/oh-my-zsh/custom/plugins/ }
@@ -28,7 +34,7 @@ task :install do
 
   for_link_files = [
     'zshrc', 'vimrc', 'gitconfig', 'gitignore_global', 'railsrc', 'gemrc',
-    'screenrc'
+    'screenrc', 'irbrc'
   ]
 
   for_link_files.each do |file|
