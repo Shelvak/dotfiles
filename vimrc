@@ -24,6 +24,7 @@ set hlsearch
 set tabstop=2
 set shiftwidth=2
 set expandtab
+set smarttab
 set history=2000
 set scrolljump=5
 set scrolloff=3
@@ -31,6 +32,8 @@ set cursorline
 set colorcolumn=80
 set pastetoggle=<C-p>
 set linebreak
+set magic
+
 
 " Mac sucks (Mac Fixes)
 set backspace=2
