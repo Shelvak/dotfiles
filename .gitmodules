@@ -64,3 +64,6 @@
 [submodule "vim/bundle/StripWhiteSpaces"]
 	path = vim/bundle/StripWhiteSpaces
 	url = git@github.com:gagoar/StripWhiteSpaces.git
+[submodule "vim/bundle/ag.vim"]
+	path = vim/bundle/ag.vim
+	url = https://github.com/rking/ag.vim

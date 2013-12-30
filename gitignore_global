@@ -28,4 +28,8 @@ coverage/
 # Ruby version
 ##############
 .ruby-version
+
+# Customs
+#########
 up-server
+dump.rdb
