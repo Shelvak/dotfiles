@@ -26,6 +26,7 @@ if test "$(uname)" = "Darwin"; then
   export RBENV_ROOT=/usr/local/var/rbenv
   export PATH=/usr/local/bin:/Users/shelvak/.rbenv/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin
   alias rtest="be rake test:all"
+  alias brc="be rails c"
 else
   alias pac="sudo pacman"
   alias install="sudo pacman -S"

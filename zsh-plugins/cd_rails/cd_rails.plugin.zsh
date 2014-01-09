@@ -5,5 +5,5 @@ else
 fi
 
 cr() { cd ~/$dir/$1; }
-_cr() { _files -W ~/rails -/; }
+_cr() { _files -W ~/$dir -/; }
 compdef _cr cr

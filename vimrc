@@ -130,3 +130,4 @@ nnoremap <Leader>gc :Gcommit<CR>
 " Navigate through quickfix
 map <F3> :cprev<CR>
 map <F4> :cnext<CR>
+
