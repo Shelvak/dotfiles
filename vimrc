@@ -30,10 +30,8 @@ set pastetoggle=<C-p>
 set linebreak
 
 " Mac sucks (Mac Fixes)
-if has('mac') || has('macunix')
-  set backspace=2
-  set mouse=nicr
-endif
+set backspace=2
+set mouse=nicr
 
 scriptencoding utf-8
 set encoding=utf-8
