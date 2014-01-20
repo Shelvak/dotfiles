@@ -6,6 +6,8 @@ DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 
 
+export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/git/bin
+
 # Aliases
 alias zc="vim ~/.zshrc"
 alias vc="vim ~/.vimrc"
@@ -23,8 +25,6 @@ alias rcp="rails c production"
 alias rgm='rails g migration'
 
 if test "$(uname)" = "Darwin"; then
-  export RBENV_ROOT=/usr/local/var/rbenv
-  export PATH=/usr/local/bin:/Users/shelvak/.rbenv/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin
   alias rtest="be rake test:all"
   alias brc="be rails c"
 else
@@ -40,5 +40,5 @@ plugins=(rbenv git cd_rails bundler rails)
 export LC_ALL=es_ES.UTF-8
 export LANG=es_ES.UTF-8
 source $ZSH/oh-my-zsh.sh
-
-eval "$(rbenv init -)"
+source /usr/local/share/chruby/chruby.sh
+chruby ruby-2.0

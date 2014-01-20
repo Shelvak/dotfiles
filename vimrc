@@ -45,9 +45,7 @@ let mapleader=','
 set undofile
 set undodir=~/.vim/undodir
 
-if has("syntax")
-  syntax on
-endif
+syntax on
 
 if has("autocmd")
   filetype plugin indent on
@@ -73,16 +71,20 @@ augroup END
 " Set colors
 hi ColorColumn ctermbg=blue
 hi CursorLine term=bold cterm=bold ctermbg=none
+hi Visual term=reverse cterm=reverse guibg=Grey
 
 " Solarized configs
-let g:solarized_termcolors=256
 
+  " Mac sucks (Mac Fixes)
+"if !has('mac') && !has('macunix')
+"  let g:solarized_termcolors=256
+"  set t_Co=256
+"  set background=dark
+"endif
 colorscheme grb256
-set background=dark
-set t_Co=256
 
 " Surround.vim
-let g:surround_113 = "#{\r}"   " v
+let g:surround_113 = "#{\r}"      " v
 let g:surround_45 = "<% \r %>"    " -
 let g:surround_61 = "<%= \r %>"   " =
 
@@ -130,4 +132,5 @@ nnoremap <Leader>gc :Gcommit<CR>
 " Navigate through quickfix
 map <F3> :cprev<CR>
 map <F4> :cnext<CR>
+
 

@@ -28,7 +28,7 @@ task :install do
   end
 
   puts 'Copying zsh plugins...'
-  zsh_plugins = "#{dotfiles_fir}/oh-my-zsh/custom/plugins"
+  zsh_plugins = "#{dotfiles_dir}/oh-my-zsh/custom/plugins"
   puts %x{mkdir -p #{zsh_plugins} }
   puts %x{ln -s #{dotfiles_dir}/zsh-plugins/* #{zsh_plugins}/ }
 
