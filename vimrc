@@ -69,17 +69,16 @@ augroup END
 " Set colors
 hi ColorColumn ctermbg=blue
 hi CursorLine term=bold cterm=bold ctermbg=none
-hi Visual term=reverse cterm=reverse guibg=Grey
 
 " Solarized configs
 
-  " Mac sucks (Mac Fixes)
+" Mac sucks (Mac Fixes)
 "if !has('mac') && !has('macunix')
-"  let g:solarized_termcolors=256
-"  set t_Co=256
-"  set background=dark
+let g:solarized_termcolors=256
+set t_Co=256
+"set background=dark
 "endif
-colorscheme grb256
+colorscheme solarized
 
 " Surround.vim
 let g:surround_113 = "#{\r}"      " v

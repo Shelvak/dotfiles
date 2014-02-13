@@ -1,12 +1,12 @@
 # ZSH constants
 ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME='cloud'
+ZSH_THEME='Shelvak'
 DISABLE_CORRECTION="true"
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 
 
-export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/git/bin
+#export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/git/bin
 
 # Aliases
 alias zc="vim ~/.zshrc"
@@ -35,9 +35,9 @@ else
 fi
 
 # Plugins
-plugins=(rbenv git cd_rails bundler rails)
+plugins=(git cd_rails bundler rails)
 
-export LC_ALL=es_ES.UTF-8
+# export LC_ALL=es_ES.UTF-8
 export LANG=es_ES.UTF-8
 source $ZSH/oh-my-zsh.sh
 source /usr/local/share/chruby/chruby.sh
