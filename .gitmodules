@@ -73,3 +73,9 @@
 [submodule "vim/bundle/vim-yaml-flattener"]
 	path = vim/bundle/vim-yaml-flattener
 	url = https://github.com/henrik/vim-yaml-flattener
+[submodule "vim/bundle/gist-vim"]
+	path = vim/bundle/gist-vim
+	url = https://github.com/mattn/gist-vim
+[submodule "vim/bundle/webapi-vim"]
+	path = vim/bundle/webapi-vim
+	url = https://github.com/mattn/webapi-vim

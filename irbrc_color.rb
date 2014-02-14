@@ -28,7 +28,7 @@ if env = defined?(Rails) ? Rails.env[0..3] : nil
 end
 
 colored_branch = COLORS[:CYAN] + branch + COLORS[:RESET]
-prompt = "#{colored_dir}(#{colored_branch})#{env} %03n:%i→"
+prompt = "#{colored_dir}(#{colored_branch})#{env} %03n:%i→ "
 
 IRB.conf[:PROMPT][:CUSTOM] = {
   PROMPT_I:     prompt,

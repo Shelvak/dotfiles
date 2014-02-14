@@ -1,6 +1,9 @@
 " Ack
 let g:ackprg="ack -H --nocolor --nogroup --column"
 
+" Running SO...
+let uname = system("uname")
+
 "Pathogen for vim pluggins
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 
@@ -71,14 +74,15 @@ hi ColorColumn ctermbg=blue
 hi CursorLine term=bold cterm=bold ctermbg=none
 
 " Solarized configs
-
-" Mac sucks (Mac Fixes)
-"if !has('mac') && !has('macunix')
 let g:solarized_termcolors=256
 set t_Co=256
-"set background=dark
-"endif
-colorscheme solarized
+
+if uname == "Darwin\n"
+  colorscheme solarized
+else
+  set background=dark
+  colorscheme grb256
+endif
 
 " Surround.vim
 let g:surround_113 = "#{\r}"      " v
@@ -88,6 +92,15 @@ let g:surround_61 = "<%= \r %>"   " =
 " GitGutter
 let g:gitgutter_enabled = 0
 hi SignColumn ctermbg=none
+
+" Gist-vim
+let g:gist_detect_filetype = 1
+
+if uname == "Darwin\n"
+  let g:gist_clip_command = 'pbcopy'
+else
+  let g:gist_clip_command = 'xclip -selection clipboard'
+endif
 
 " Short Cuts
 map <Leader>n :set number!<CR>:GitGutterToggle<CR>
