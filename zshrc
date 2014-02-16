@@ -5,9 +5,6 @@ DISABLE_CORRECTION="true"
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 
-
-#export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/git/bin
-
 # Aliases
 alias zc="vim ~/.zshrc"
 alias vc="vim ~/.vimrc"
@@ -37,8 +34,10 @@ fi
 # Plugins
 plugins=(git cd_rails bundler rails)
 
-# export LC_ALL=es_ES.UTF-8
-export LANG=es_ES.UTF-8
 source $ZSH/oh-my-zsh.sh
-source /usr/local/share/chruby/chruby.sh
-chruby ruby-2.0
+
+if test "$(uname)" = "Darwin"; then
+  export LANG=es_ES.UTF-8
+  source /usr/local/share/chruby/chruby.sh
+  chruby ruby-2.0
+fi

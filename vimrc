@@ -1,6 +1,3 @@
-" Ack
-let g:ackprg="ack -H --nocolor --nogroup --column"
-
 " Running SO...
 let uname = system("uname")
 
@@ -33,12 +30,10 @@ set colorcolumn=80
 set pastetoggle=<C-p>
 set linebreak
 set magic
-
-
-" Mac sucks (Mac Fixes)
 set backspace=2
 set mouse=nicr
 
+" Encoding
 scriptencoding utf-8
 set encoding=utf-8
 setglobal fileencoding=utf-8
@@ -46,8 +41,8 @@ setglobal fileencoding=utf-8
 let mapleader=','
 
 " Persistent undo
-set undofile
 set undodir=~/.vim/undodir
+set undofile
 
 syntax on
 
@@ -57,6 +52,7 @@ if has("autocmd")
   " Ruby surround
   autocmd FileType ruby let b:surround_35 = "#{\r}"
   autocmd! BufRead,BufNewFile Gemfile setfiletype ruby
+  autocmd! BufRead,BufNewFile .cap setfiletype ruby
 endif
 
 " Restore cursor to last positon
@@ -76,16 +72,17 @@ augroup END
 hi ColorColumn ctermbg=blue
 hi CursorLine term=bold cterm=bold ctermbg=none
 
-" Solarized configs
+" Solarized + Colorscheme configs
 let g:solarized_termcolors=256
-set t_Co=256
 
 if uname == "Darwin\n"
   colorscheme solarized
 else
-  set background=dark
   colorscheme grb256
 endif
+
+set background=dark
+set t_Co=256
 
 " Surround.vim
 let g:surround_113 = "#{\r}"      " v
@@ -132,11 +129,6 @@ nnoremap <Leader>v :Rview
 nnoremap <Leader>u :Runittest
 nnoremap <Leader>f :Rfunctionaltest
 nnoremap <Leader>i :Rintegrationtest
-nnoremap <Leader>r :Rake
-
-" Resize and restore windows
-nnoremap <C-_> <C-W>_
-nnoremap <C-=> <C-W>=
 
 " Leader shortcuts for Vim Fugitive
 nnoremap <Leader>gs :Gstatus<CR>
@@ -145,5 +137,3 @@ nnoremap <Leader>gc :Gcommit<CR>
 " Navigate through quickfix
 map <F3> :cprev<CR>
 map <F4> :cnext<CR>
-
-
