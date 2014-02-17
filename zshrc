@@ -24,6 +24,7 @@ alias rgm='rails g migration'
 if test "$(uname)" = "Darwin"; then
   alias rtest="be rake test:all"
   alias brc="be rails c"
+  alias v="/usr/local/opt/vim/bin/vim"
 else
   alias pac="sudo pacman"
   alias install="sudo pacman -S"

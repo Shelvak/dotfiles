@@ -32,6 +32,8 @@ set linebreak
 set magic
 set backspace=2
 set mouse=nicr
+set ai
+set si
 
 " Encoding
 scriptencoding utf-8
@@ -73,14 +75,9 @@ hi ColorColumn ctermbg=blue
 hi CursorLine term=bold cterm=bold ctermbg=none
 
 " Solarized + Colorscheme configs
+" In Iterm put TangoDark theme + term-new simulation
 let g:solarized_termcolors=256
-
-if uname == "Darwin\n"
-  colorscheme solarized
-else
-  colorscheme grb256
-endif
-
+colorscheme grb256
 set background=dark
 set t_Co=256
 
