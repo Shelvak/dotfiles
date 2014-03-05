@@ -33,7 +33,7 @@ else
 fi
 
 # Plugins
-plugins=(git cd_rails bundler rails)
+plugins=(git cd_rails bundler rails rbenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -42,3 +42,5 @@ if test "$(uname)" = "Darwin"; then
   source /usr/local/share/chruby/chruby.sh
   chruby ruby-2.0
 fi
+
+export G_SLICE="always-malloc"

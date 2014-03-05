@@ -31,6 +31,7 @@ task :install do
   zsh_plugins = "#{dotfiles_dir}/oh-my-zsh/custom/plugins"
   puts %x{mkdir -p #{zsh_plugins} }
   puts %x{ln -s #{dotfiles_dir}/zsh-plugins/* #{zsh_plugins}/ }
+  puts %x{ln -s #{dotfiles_dir}/zsh-custom/Shelvak.zsh-theme #{dotfiles_dir}/oh-my-zsh/themes/ }
 
   puts 'Linking files...'
 
