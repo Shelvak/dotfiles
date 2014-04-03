@@ -14,16 +14,19 @@
 [alias]
   ca = commit -a
   s = status
-  co = checkout
-  l = log --oneline --graph --decorate
+  l = log --graph --date=relative
+  ls = log --branches --graph --stat --date=relative --all
 [core]
 	editor = vim
   excludesfile = ~/.gitignore_global
 [diff]
   tool = vimdiff
 [format]
-  pretty = %C(yellow)%h%Creset %s %C(red)(%an, %cr)%Creset
+  pretty = %C(yellow)%h%C(green)%d%Creset %s %C(red)(%an, %cr)%Creset
 [push]
 	default = matching
 [github]
 	user = Shelvak
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f

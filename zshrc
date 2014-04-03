@@ -1,9 +1,14 @@
 # ZSH constants
 ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME='Shelvak'
 DISABLE_CORRECTION="true"
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
+
+if test "$(uname)" = "Darwin"; then
+  ZSH_THEME='Shelvak-mac'
+else
+  ZSH_THEME='Shelvak'
+fi
 
 # Aliases
 alias zc="vim ~/.zshrc"
@@ -24,7 +29,6 @@ alias rgm='rails g migration'
 if test "$(uname)" = "Darwin"; then
   alias rtest="be rake test:all"
   alias brc="be rails c"
-  alias v="/usr/local/opt/vim/bin/vim"
 else
   alias pac="sudo pacman"
   alias install="sudo pacman -S"
@@ -38,7 +42,10 @@ plugins=(git cd_rails bundler rails)
 source $ZSH/oh-my-zsh.sh
 
 if test "$(uname)" = "Darwin"; then
-  export LANG=es_ES.UTF-8
+  alias gpr="git pull --rebase eventioz master"
+  export LANG="es_ES.UTF-8"
+  export LC_ALL="C"
+  export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
   source /usr/local/share/chruby/chruby.sh
   chruby ruby-2.0
 fi

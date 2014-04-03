@@ -26,19 +26,25 @@ set history=2000
 set scrolljump=5
 set scrolloff=3
 set cursorline
-set colorcolumn=80
 set pastetoggle=<C-p>
 set linebreak
 set magic
 set backspace=2
-set mouse=nicr
-set ai
-set si
 
-" Encoding
-scriptencoding utf-8
+if uname == "Darwin\n"
+  set mouse=nicr
+  set ai
+  set si
+else
+  set colorcolumn=80
+
+  " Encoding
+  scriptencoding utf-8
+  setglobal fileencoding=utf-8
+endif
+
 set encoding=utf-8
-setglobal fileencoding=utf-8
+
 
 let mapleader=','
 
