@@ -37,3 +37,7 @@ dump.rdb
 # Gems configs #
 ################
 config/i18n-tasks.yml
+
+# Mac #
+#######
+.DS_Store

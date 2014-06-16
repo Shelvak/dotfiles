@@ -29,6 +29,7 @@ alias rgm='rails g migration'
 if test "$(uname)" = "Darwin"; then
   alias rtest="be rake test:all"
   alias brc="be rails c"
+  alias t="ruby -I test"
 else
   alias pac="sudo pacman"
   alias install="sudo pacman -S"
@@ -43,9 +44,9 @@ source $ZSH/oh-my-zsh.sh
 
 if test "$(uname)" = "Darwin"; then
   alias gpr="git pull --rebase eventioz master"
-  export LANG="es_ES.UTF-8"
-  export LC_ALL="C"
+  export LANG="en_US.UTF-8"
+  export LC_ALL="en_US.UTF-8"
   export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
   source /usr/local/share/chruby/chruby.sh
-  chruby ruby-2.0
+  chruby 2.1.2
 fi

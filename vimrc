@@ -30,13 +30,13 @@ set pastetoggle=<C-p>
 set linebreak
 set magic
 set backspace=2
+"set colorcolumn=80
 
 if uname == "Darwin\n"
   set mouse=nicr
   set ai
   set si
 else
-  set colorcolumn=80
 
   " Encoding
   scriptencoding utf-8
@@ -77,7 +77,7 @@ augroup resCur
 augroup END
 
 " Set colors
-hi ColorColumn ctermbg=blue
+"hi ColorColumn ctermbg=blue
 hi CursorLine term=bold cterm=bold ctermbg=none
 
 " Solarized + Colorscheme configs
@@ -138,5 +138,5 @@ nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gc :Gcommit<CR>
 
 " Navigate through quickfix
-map <F3> :cprev<CR>
-map <F4> :cnext<CR>
+map <F2> :cprev<CR>
+map <F1> :cnext<CR>
