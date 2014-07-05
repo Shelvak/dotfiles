@@ -69,7 +69,7 @@
 	url = https://github.com/scrooloose/nerdtree
 [submodule "vim/bundle/vim-yaml-flattener"]
 	path = vim/bundle/vim-yaml-flattener
-	url = https://github.com/henrik/vim-yaml-flattener
+	url = https://github.com/Shelvak/vim-yaml-flattener
 [submodule "vim/bundle/gist-vim"]
 	path = vim/bundle/gist-vim
 	url = https://github.com/mattn/gist-vim
@@ -79,3 +79,6 @@
 [submodule "vim/bundle/mustache"]
 	path = vim/bundle/mustache
 	url = git://github.com/Slava/vim-spacebars.git
+[submodule "vim/bundle/SmartColumnColors"]
+	path = vim/bundle/SmartColumnColors
+	url = https://github.com/gagoar/SmartColumnColors

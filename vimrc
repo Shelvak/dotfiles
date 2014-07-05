@@ -26,19 +26,25 @@ set history=2000
 set scrolljump=5
 set scrolloff=3
 set cursorline
-set colorcolumn=80
 set pastetoggle=<C-p>
 set linebreak
 set magic
 set backspace=2
-set mouse=nicr
-set ai
-set si
+"set colorcolumn=80
 
-" Encoding
-scriptencoding utf-8
+if uname == "Darwin\n"
+  set mouse=nicr
+  set ai
+  set si
+else
+
+  " Encoding
+  scriptencoding utf-8
+  setglobal fileencoding=utf-8
+endif
+
 set encoding=utf-8
-setglobal fileencoding=utf-8
+
 
 let mapleader=','
 
@@ -71,8 +77,9 @@ augroup resCur
 augroup END
 
 " Set colors
-hi ColorColumn ctermbg=blue
+"hi ColorColumn ctermbg=blue
 hi CursorLine term=bold cterm=bold ctermbg=none
+hi Search ctermfg=black ctermbg=green
 
 " Solarized + Colorscheme configs
 " In Iterm put TangoDark theme + term-new simulation
@@ -132,5 +139,5 @@ nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gc :Gcommit<CR>
 
 " Navigate through quickfix
-map <F3> :cprev<CR>
-map <F4> :cnext<CR>
+map <F2> :cprev<CR>
+map <F1> :cnext<CR>
