@@ -78,4 +78,4 @@
 	url = https://github.com/mattn/webapi-vim
 [submodule "vim/bundle/mustache"]
 	path = vim/bundle/mustache
-	url = git://github.com/mustache/vim-mustache-handlebars.git
+	url = git://github.com/Slava/vim-spacebars.git
