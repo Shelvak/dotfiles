@@ -42,5 +42,3 @@ if test "$(uname)" = "Darwin"; then
   source /usr/local/share/chruby/chruby.sh
   chruby ruby-2.0
 fi
-
-export G_SLICE="always-malloc"

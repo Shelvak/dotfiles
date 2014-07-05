@@ -76,3 +76,6 @@
 [submodule "vim/bundle/webapi-vim"]
 	path = vim/bundle/webapi-vim
 	url = https://github.com/mattn/webapi-vim
+[submodule "vim/bundle/mustache"]
+	path = vim/bundle/mustache
+	url = git://github.com/mustache/vim-mustache-handlebars.git
