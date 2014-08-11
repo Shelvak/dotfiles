@@ -36,7 +36,7 @@ task :install do
 
   for_link_files = [
     'zshrc', 'vimrc', 'gitconfig', 'gitignore_global', 'railsrc', 'gemrc',
-    'screenrc', 'irbrc', 'irbrc_color.rb'
+    'screenrc', 'irbrc', 'irbrc_color.rb', 'agignore'
   ]
 
   for_link_files.each do |file|

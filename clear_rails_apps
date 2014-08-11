@@ -3,7 +3,7 @@
 HOME=/home/rotsen
 ORIGIN=`pwd`
 
-for dir in $HOME/rails/*; do
+for dir in $HOME/git/*; do
   if [ -d $dir ]; then
     cd $dir
 

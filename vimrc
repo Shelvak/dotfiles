@@ -60,7 +60,7 @@ if has("autocmd")
   " Ruby surround
   autocmd FileType ruby let b:surround_35 = "#{\r}"
   autocmd! BufRead,BufNewFile Gemfile setfiletype ruby
-  autocmd! BufRead,BufNewFile .cap setfiletype ruby
+  autocmd! BufRead,BufNewFile *.cap setfiletype ruby
 endif
 
 " Restore cursor to last positon
