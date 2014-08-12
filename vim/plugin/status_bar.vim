@@ -2,44 +2,39 @@ let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+      \             [ 'branch', 'readonly', 'filename', 'modified' ] ]
       \ },
       \ 'component_function': {
-      \   'fugitive': 'MyFugitive',
-      \   'readonly': 'MyReadonly',
-      \   'modified': 'MyModified'
+      \   'branch':   'BranchName',
+      \   'readonly': 'ReadonlyFile',
+      \   'modified': 'ModifiedFile'
       \ },
       \ 'separator': { 'left': '>', 'right': '>' },
       \ 'subseparator': { 'left': '>', 'right': '>' }
       \ }
 
-function! MyModified()
-  if &filetype == "help"
-    return ""
-  elseif &modified
+function! ModifiedFile()
+  if &modified
     return '☣'
-  elseif &modifiable
-    return ""
-  else
-    return ""
   endif
+
+  return ''
 endfunction
 
-function! MyReadonly()
-  if &filetype == "help"
-    return ""
-  elseif &readonly
-    return "☠"
-  else
-    return ""
+function! ReadonlyFile()
+  if &readonly
+    return '☠'
   endif
+
+  return ''
 endfunction
 
-function! MyFugitive()
+function! BranchName()
   if exists("*fugitive#head")
     let _ = fugitive#head()
     return strlen(_) ? '☞ '._ : ''
   endif
+
   return ''
 endfunction
 
