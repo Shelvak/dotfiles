@@ -30,14 +30,13 @@ set pastetoggle=<C-p>
 set linebreak
 set magic
 set backspace=2
-"set colorcolumn=80
+set laststatus=2
 
 if uname == "Darwin\n"
   set mouse=nicr
   set ai
   set si
 else
-
   " Encoding
   scriptencoding utf-8
   setglobal fileencoding=utf-8
