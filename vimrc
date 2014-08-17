@@ -30,14 +30,13 @@ set pastetoggle=<C-p>
 set linebreak
 set magic
 set backspace=2
-"set colorcolumn=80
+set laststatus=2
 
 if uname == "Darwin\n"
   set mouse=nicr
   set ai
   set si
 else
-
   " Encoding
   scriptencoding utf-8
   setglobal fileencoding=utf-8
@@ -60,7 +59,7 @@ if has("autocmd")
   " Ruby surround
   autocmd FileType ruby let b:surround_35 = "#{\r}"
   autocmd! BufRead,BufNewFile Gemfile setfiletype ruby
-  autocmd! BufRead,BufNewFile .cap setfiletype ruby
+  autocmd! BufRead,BufNewFile *.cap setfiletype ruby
 endif
 
 " Restore cursor to last positon

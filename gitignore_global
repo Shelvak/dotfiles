@@ -34,6 +34,10 @@ coverage/
 up-server
 dump.rdb
 
+# Vim tools
+###########
+.agignore
+
 # Gems configs #
 ################
 config/i18n-tasks.yml
