@@ -55,5 +55,9 @@ task :update do
   puts %x{git submodule update}
   puts %x{git submodule foreach "git pull origin master"}
 
+  ['rbenv/plugins/ruby-build', 'rbenv'].each do |plugin|
+    puts %x{cd #{plugin}; git pull origin master ; cd -}
+  end
+
   puts 'Done ^^'
 end
