@@ -20,10 +20,11 @@
 *.swp
 *~
 
-# Rails private files #
+# Rails files #
 #######################
 config/app_config.yml
 coverage/
+db/schema.rb
 
 # Ruby version
 ##############

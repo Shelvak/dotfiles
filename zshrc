@@ -25,6 +25,7 @@ alias ctl="sudo systemctl"
 alias pq="sudo psql -U postgres"
 alias rcp="rails c production"
 alias rgm='rails g migration'
+alias fuck='sudo $(fc -ln |tail -1)'
 
 if test "$(uname)" = "Darwin"; then
   alias rtest="mysql -u root -e 'DROP database eventioz_test;CREATE database eventioz_test;';
