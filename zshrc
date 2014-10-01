@@ -41,7 +41,7 @@ else
 fi
 
 # Plugins
-plugins=(git cd_rails bundler rails)
+plugins=(git cd_rails bundler rails rbenv)
 
 source $ZSH/oh-my-zsh.sh
 

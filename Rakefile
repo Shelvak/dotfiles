@@ -31,6 +31,7 @@ task :install do
   zsh_plugins = "#{dotfiles_dir}/oh-my-zsh/custom/plugins"
   puts %x{mkdir -p #{zsh_plugins} }
   puts %x{ln -s #{dotfiles_dir}/zsh-plugins/* #{zsh_plugins}/ }
+  puts %x{ln -s #{dotfiles_dir}/zsh-custom/Shelvak.zsh-theme #{dotfiles_dir}/oh-my-zsh/themes/ }
 
   puts 'Linking files...'
 
@@ -50,8 +51,13 @@ desc 'Update all the _updatable_ things =)'
 task :update do
   puts 'Updating...'
   puts %x{git pull}
+  puts %x{git submodule init}
   puts %x{git submodule update}
   puts %x{git submodule foreach "git pull origin master"}
+
+  ['rbenv/plugins/ruby-build', 'rbenv'].each do |plugin|
+    puts %x{cd #{plugin}; git pull origin master ; cd -}
+  end
 
   puts 'Done ^^'
 end
