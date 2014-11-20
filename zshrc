@@ -50,6 +50,8 @@ if test "$(uname)" = "Darwin"; then
   export LANG="en_US.UTF-8"
   export LC_ALL="en_US.UTF-8"
   export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
+  alias el_verano_es_azul="sudo kextunload -b com.apple.iokit.BroadcomBluetoothHostControllerUSBTransport;
+   sudo kextload -b com.apple.iokit.BroadcomBluetoothHostControllerUSBTransport"
   source /usr/local/share/chruby/chruby.sh
   chruby 2.1.2
 fi
