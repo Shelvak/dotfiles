@@ -30,7 +30,7 @@ alias fuck='sudo $(fc -ln |tail -1)'
 if test "$(uname)" = "Darwin"; then
   alias rtest="mysql -u root -e 'DROP database eventioz_test;CREATE database eventioz_test;';
                mysql -u root eventioz_test < db/structure.sql;
-               RAILS_ENV=test rake db:migrate; be rake test:all"
+               RAILS_ENV=test be rake db:migrate; be rake test:all"
   alias brc="be rails c"
   alias t="ruby -I test"
 else
