@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-HOME=/home/rotsen
+HOME=/Users/rotsen
 ORIGIN=`pwd`
 
 for dir in $HOME/git/*; do
@@ -9,10 +9,11 @@ for dir in $HOME/git/*; do
 
     if [ -f "Rakefile" ]; then
       echo "Cleaning $dir"
-      rake tmp:clear;
-      rake log:clear;
-      rake db:schema:cache:clear;
-      rake assets:clobber;
+      bundle install
+      bundle exec rake tmp:clear;
+      bundle exec rake log:clear;
+      bundle exec rake db:schema:cache:clear;
+      bundle exec rake assets:clobber;
     fi
   fi
 

@@ -3,7 +3,6 @@ let uname = system("uname")
 
 "Pathogen for vim pluggins
 runtime bundle/vim-pathogen/autoload/pathogen.vim
-
 execute pathogen#infect()
 execute pathogen#helptags()
 
@@ -31,6 +30,10 @@ set linebreak
 set magic
 set backspace=2
 set laststatus=2
+" Some magic... for delay
+set re=1
+set ttyfast
+set lazyredraw
 
 if uname == "Darwin\n"
   set mouse=nicr
@@ -44,8 +47,7 @@ endif
 
 set encoding=utf-8
 
-
-let mapleader=','
+let mapleader=","
 
 " Persistent undo
 set undodir=~/.vim/undodir
@@ -76,7 +78,7 @@ augroup resCur
 augroup END
 
 " Set colors
-"hi ColorColumn ctermbg=blue
+hi ColorColumn ctermbg=blue
 hi CursorLine term=bold cterm=bold ctermbg=none
 hi Search ctermfg=black ctermbg=green
 
