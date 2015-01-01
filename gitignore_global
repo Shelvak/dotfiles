@@ -23,8 +23,10 @@
 # Rails files #
 #######################
 config/app_config.yml
+config/schema.rb
 coverage/
 db/schema.rb
+uploads/
 
 # Ruby version
 ##############

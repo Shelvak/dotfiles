@@ -26,13 +26,13 @@ alias pq="sudo psql -U postgres"
 alias rcp="rails c production"
 alias rgm='rails g migration'
 alias fuck='sudo $(fc -ln |tail -1)'
+alias t="ruby -I test"
 
 if test "$(uname)" = "Darwin"; then
   alias rtest="mysql -u root -e 'DROP database eventioz_test;CREATE database eventioz_test;';
                mysql -u root eventioz_test < db/structure.sql;
                RAILS_ENV=test be rake db:migrate; be rake test:all"
   alias brc="be rails c"
-  alias t="ruby -I test"
 else
   alias pac="sudo pacman"
   alias install="sudo pacman -S"
@@ -54,4 +54,14 @@ if test "$(uname)" = "Darwin"; then
    sudo kextload -b com.apple.iokit.BroadcomBluetoothHostControllerUSBTransport"
   source /usr/local/share/chruby/chruby.sh
   chruby 2.1.2
+else
+  # RotseN Bins
+  export PATH="/home/rotsen/bins:$PATH"
 fi
+
+if [[ ! ${DISPLAY} && $XDG_VTNR -eq 1 ]] ; then
+  exec startx
+fi
+
+
+source /etc/profile.d/vte.sh

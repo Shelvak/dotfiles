@@ -1,6 +1,9 @@
 " Running SO...
 let uname = system("uname")
 
+" SmartColumns
+let g:smart_display_opts = {'guibg': 'Blue' }
+
 "Pathogen for vim pluggins
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
@@ -30,6 +33,7 @@ set linebreak
 set magic
 set backspace=2
 set laststatus=2
+" set colorcolumn=80
 " Some magic... for delay
 set re=1
 set ttyfast
@@ -78,7 +82,6 @@ augroup resCur
 augroup END
 
 " Set colors
-hi ColorColumn ctermbg=blue
 hi CursorLine term=bold cterm=bold ctermbg=none
 hi Search ctermfg=black ctermbg=green
 
