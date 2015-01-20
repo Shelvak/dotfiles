@@ -124,12 +124,6 @@ nmap <Leader>l :set list!<CR>
 " Maps
 nnoremap <Leader><Leader> :nohlsearch<CR>
 
-" Smart way to move between windows
-nnoremap <C-j> <C-W>j
-nnoremap <C-k> <C-W>k
-nnoremap <C-h> <C-W>h
-nnoremap <C-l> <C-W>l
-
 " Leader shortcuts for Vim Rails commands
 nnoremap <Leader>m :Rmodel
 nnoremap <Leader>c :Rcontroller
@@ -145,3 +139,5 @@ nnoremap <Leader>gc :Gcommit<CR>
 " Navigate through quickfix
 map <F2> :cprev<CR>
 map <F1> :cnext<CR>
+
+map <C-C> :%y+<CR>
