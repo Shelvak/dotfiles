@@ -33,35 +33,38 @@ if test "$(uname)" = "Darwin"; then
                mysql -u root eventioz_test < db/structure.sql;
                RAILS_ENV=test be rake db:migrate; be rake test:all"
   alias brc="be rails c"
+  alias a="echo 'rock'"
+  alias gpr="git pull --rebase origin master"
+  export LANG="en_US.UTF-8"
+  export LC_ALL="en_US.UTF-8"
+  export PATH="/usr/local/sbin:/usr/local/bin:/Users/rotsen/.arcanist/arcanist/bin:$PATH"
+  alias el_verano_es_azul="sudo kextunload -b com.apple.iokit.BroadcomBluetoothHostControllerUSBTransport;
+   sudo kextload -b com.apple.iokit.BroadcomBluetoothHostControllerUSBTransport"
+  source /usr/local/share/chruby/chruby.sh
+  chruby 2.1.2
+  alias vg="vagrant"
+  alias vgu="vagrant up"
+  alias vgs="vagrant ssh"
+  alias core="cd ~/eventbrite/core"
+  alias docker-dev="cd ~/eventbrite/docker-dev"
 else
   alias pac="sudo pacman"
   alias install="sudo pacman -S"
   alias update_system="pac -Syyuu && yaourt -Syua"
   alias clear_arch="pac -Rsn $(pacman -Qdtq)"
+  alias a="echo 'tu hna'"
+  # RotseN Bins
+  export PATH="/home/rotsen/bins:$PATH"
+  source /etc/profile.d/vte.sh
+
+  #if [[ ! ${DISPLAY} && ${XDG_VTNR} = 1 ]]; then
+  #  exec startx
+  #fi
 fi
 
 # Plugins
 plugins=(git cd_rails bundler rails rbenv)
 
 source $ZSH/oh-my-zsh.sh
+source /Users/rotsen/.arcanist/arcanist_helpers.sh
 
-if test "$(uname)" = "Darwin"; then
-  alias gpr="git pull --rebase eventioz master"
-  export LANG="en_US.UTF-8"
-  export LC_ALL="en_US.UTF-8"
-  export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
-  alias el_verano_es_azul="sudo kextunload -b com.apple.iokit.BroadcomBluetoothHostControllerUSBTransport;
-   sudo kextload -b com.apple.iokit.BroadcomBluetoothHostControllerUSBTransport"
-  source /usr/local/share/chruby/chruby.sh
-  chruby 2.1.2
-else
-  # RotseN Bins
-  export PATH="/home/rotsen/bins:$PATH"
-fi
-
-if [[ ! ${DISPLAY} && $XDG_VTNR -eq 1 ]] ; then
-  exec startx
-fi
-
-
-source /etc/profile.d/vte.sh

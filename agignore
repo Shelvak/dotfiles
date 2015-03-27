@@ -3,3 +3,5 @@
 *.swp
 *.swa
 *.xml
+*require_built*
+

@@ -50,6 +50,7 @@ else
 endif
 
 set encoding=utf-8
+set fileformats=unix,dos
 
 let mapleader=","
 
@@ -141,3 +142,12 @@ map <F2> :cprev<CR>
 map <F1> :cnext<CR>
 
 map <C-C> :%y+<CR>
+
+function! Dos2Unix()
+  :update
+  :e ++ff=dos
+  :setlocal ff=unix
+  :w
+endfunction
+
+map <C-m> call Dos2Unix()<CR>

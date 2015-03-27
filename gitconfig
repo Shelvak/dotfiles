@@ -19,7 +19,8 @@
 [core]
 	editor = vim
   excludesfile = ~/.gitignore_global
-	autocrlf = 
+  #autocrlf = yes
+  #whitespace = cr-at-eol
 [diff]
   tool = vimdiff
 [format]
@@ -30,4 +31,9 @@
 	user = Shelvak
 [filter "media"]
 	clean = git-media-clean %f
-	smudge = git-media-smudge %f
+  smudge = git-media-smudge %f
+[reviewboard]
+  url = http://reviews.evbhome.com/
+[branch]
+	autosetuprebase = always
+	autosetupmerge = always
