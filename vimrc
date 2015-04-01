@@ -50,7 +50,7 @@ else
 endif
 
 set encoding=utf-8
-set fileformats=unix,dos
+"set fileformats=unix,dos
 
 let mapleader=","
 
@@ -111,6 +111,11 @@ else
   let g:gist_clip_command = 'xclip -selection clipboard'
 endif
 
+" JSHint
+let jshint2_save = 1
+let jshint2_error = 0
+let jshint2_height = 5
+
 " Short Cuts
 map <Leader>n :set number!<CR>:GitGutterToggle<CR>
 map <Leader>y <Plug>Yssurround=<cr>
@@ -143,11 +148,12 @@ map <F1> :cnext<CR>
 
 map <C-C> :%y+<CR>
 
-function! Dos2Unix()
-  :update
-  :e ++ff=dos
-  :setlocal ff=unix
-  :w
+function Dos2Unix()
+  update
+  e ++ff=dos
+  setlocal ff=unix
+  w
 endfunction
 
-map <C-m> call Dos2Unix()<CR>
+map <C-m>:call Dos2Unix()<CR>
+
