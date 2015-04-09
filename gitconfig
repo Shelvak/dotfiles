@@ -19,8 +19,8 @@
 [core]
 	editor = vim
   excludesfile = ~/.gitignore_global
-  #autocrlf = yes
-  #whitespace = cr-at-eol
+	eol = lf
+  autocrlf = no
 [diff]
   tool = vimdiff
 [format]
