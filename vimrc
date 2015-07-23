@@ -157,3 +157,5 @@ endfunction
 
 map <C-m>:call Dos2Unix()<CR>
 
+set dictionary+=~/.evbdevtools/phabricator_users.txt
+set dictionary+=~/.evbdevtools/phabricator_groups.txt
