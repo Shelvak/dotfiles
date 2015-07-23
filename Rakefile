@@ -8,23 +8,17 @@ task :install do
   puts %x{git submodule init}
   puts %x{git submodule update}
 
+  puts "Installing zsh"
+  `sudo apt-get install zsh`
+
   puts 'Doing zsh the default'
   puts %x{chsh -s `which zsh`}
 
   puts 'Linking folders...'
 
-  ['vim', 'oh-my-zsh', 'rbenv'].each do |folder|
-    puts "Link #{folder}? (y|n)"
-    if gets.strip.downcase == 'y'
-      puts %x{ln -s "$PWD/#{folder}" "$HOME/.#{folder}"}
-    end
-  end
-
-  puts "Create ruby-build folder? (y|n)"
-  if gets.strip.downcase == 'y'
-    puts 'Copying ruby-build plugin'
-    puts %x{mkdir #{dotfiles_dir}/rbenv/plugins}
-    puts %x{ln -s #{dotfiles_dir}/ruby-build #{dotfiles_dir}/rbenv/plugins/ruby-build}
+  ['vim', 'oh-my-zsh'].each do |folder|
+    puts "Linking #{folder}"
+    puts %x{ln -s "$PWD/#{folder}" "$HOME/.#{folder}"}
   end
 
   puts 'Copying zsh plugins...'
@@ -54,10 +48,6 @@ task :update do
   puts %x{git submodule init}
   puts %x{git submodule update}
   puts %x{git submodule foreach "git pull origin master"}
-
-  ['rbenv/plugins/ruby-build', 'rbenv'].each do |plugin|
-    puts %x{cd #{plugin}; git pull origin master ; cd -}
-  end
 
   puts 'Done ^^'
 end
