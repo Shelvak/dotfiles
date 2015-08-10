@@ -4,30 +4,30 @@ dotfiles_dir = [Dir.home, '.dotfiles'].join('/')
 
 desc "install the dot files into user's home directory"
 task :install do
-  puts 'Install all submodules (oh-my-zsh && vim-plugins)'
-  puts %x{git submodule init}
-  puts %x{git submodule update}
+  #puts 'Install all submodules (oh-my-zsh && vim-plugins)'
+  #puts %x{git submodule init}
+  #puts %x{git submodule update}
 
-  puts "Installing zsh"
-  `sudo apt-get install zsh`
+  #puts "Installing zsh"
+  ##`sudo apt-get install zsh`
 
-  puts 'Doing zsh the default'
-  puts %x{chsh -s `which zsh`}
+  #puts 'Doing zsh the default'
+  #puts %x{chsh -s `which zsh`}
 
-  puts 'Linking folders...'
+  #puts 'Linking folders...'
 
   ['vim', 'oh-my-zsh'].each do |folder|
     puts "Linking #{folder}"
-    puts %x{ln -s "$PWD/#{folder}" "$HOME/.#{folder}"}
+    puts %x{ln -fs "$PWD/#{folder}" "$HOME/.#{folder}"}
   end
 
-  puts 'Copying zsh plugins...'
-  zsh_plugins = "#{dotfiles_dir}/oh-my-zsh/custom/plugins"
-  puts %x{mkdir -p #{zsh_plugins} }
-  puts %x{ln -s #{dotfiles_dir}/zsh-plugins/* #{zsh_plugins}/ }
-  puts %x{ln -s #{dotfiles_dir}/zsh-custom/Shelvak.zsh-theme #{dotfiles_dir}/oh-my-zsh/themes/ }
+  #puts 'Copying zsh plugins...'
+  #zsh_plugins = "#{dotfiles_dir}/oh-my-zsh/custom/plugins"
+  #puts %x{mkdir -p #{zsh_plugins} }
+  #puts %x{ln -s #{dotfiles_dir}/zsh-plugins/* #{zsh_plugins}/ }
+  #puts %x{ln -s #{dotfiles_dir}/zsh-custom/Shelvak.zsh-theme #{dotfiles_dir}/oh-my-zsh/themes/ }
 
-  puts 'Linking files...'
+  #puts 'Linking files...'
 
   for_link_files = [
     'zshrc', 'vimrc', 'gitconfig', 'gitignore_global', 'railsrc', 'gemrc',
@@ -35,7 +35,7 @@ task :install do
   ]
 
   for_link_files.each do |file|
-    puts %x{ln -s "$PWD/#{file}" "$HOME/.#{file}"}
+    puts %x{ln -fs "$PWD/#{file}" "$HOME/.#{file}"}
   end
 
   puts 'Ready ^^'

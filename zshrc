@@ -1,4 +1,6 @@
 # ZSH constants
+autoload -U +X compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
 ZSH="$HOME/.oh-my-zsh"
 DISABLE_CORRECTION="true"
 DISABLE_AUTO_UPDATE="true"
@@ -41,10 +43,12 @@ if test "$(uname)" = "Darwin"; then
   alias el_verano_es_azul="sudo kextunload -b com.apple.iokit.BroadcomBluetoothHostControllerUSBTransport;
    sudo kextload -b com.apple.iokit.BroadcomBluetoothHostControllerUSBTransport"
   source /usr/local/share/chruby/chruby.sh
-  chruby 2.1.2
-  alias vg="vagrant"
-  alias vgu="vagrant up"
-  alias vgs="vagrant ssh"
+  chruby 2.1.3
+  export ARCANIST_INSTALL_DIR=/Users/rotsen/.evbdevtools
+  source $ARCANIST_INSTALL_DIR/devtools/scripts/devenv_bash/arcanist_helpers.sh
+  alias vg="ssh-add ; vagrant"
+  alias vgu="vg up"
+  alias vgs="vg ssh"
   alias core="cd ~/eventbrite/core"
   alias docker-dev="cd ~/eventbrite/docker-dev"
 else
@@ -66,5 +70,5 @@ fi
 plugins=(git cd_rails bundler rails rbenv)
 
 source $ZSH/oh-my-zsh.sh
-source /Users/rotsen/.arcanist/arcanist_helpers.sh
+
 
