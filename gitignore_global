@@ -18,6 +18,7 @@
 # Editor temporal files #
 #########################
 *.swp
+*.swo
 *~
 
 # Rails files #
@@ -44,6 +45,7 @@ dump.rdb
 # Gems configs #
 ################
 config/i18n-tasks.yml
+.bundle/
 
 # Mac #
 #######

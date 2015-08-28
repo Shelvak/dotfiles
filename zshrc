@@ -27,6 +27,7 @@ alias rcp="rails c production"
 alias rgm='rails g migration'
 alias fuck='sudo $(fc -ln |tail -1)'
 alias t="ruby -I test"
+alias gpr="git pull --rebase origin master"
 
 if test "$(uname)" = "Darwin"; then
   alias rtest="mysql -u root -e 'DROP database eventioz_test;CREATE database eventioz_test;';
@@ -34,7 +35,6 @@ if test "$(uname)" = "Darwin"; then
                RAILS_ENV=test be rake db:migrate; be rake test:all"
   alias brc="be rails c"
   alias a="echo 'rock'"
-  alias gpr="git pull --rebase origin master"
   export LANG="en_US.UTF-8"
   export LC_ALL="en_US.UTF-8"
   export PATH="/usr/local/sbin:/usr/local/bin:/Users/rotsen/.arcanist/arcanist/bin:$PATH"
@@ -47,6 +47,7 @@ if test "$(uname)" = "Darwin"; then
   alias vgs="vagrant ssh"
   alias core="cd ~/eventbrite/core"
   alias docker-dev="cd ~/eventbrite/docker-dev"
+  source /Users/rotsen/.arcanist/arcanist_helpers.sh
 else
   alias pac="sudo pacman"
   alias install="sudo pacman -S"
@@ -66,5 +67,4 @@ fi
 plugins=(git cd_rails bundler rails rbenv)
 
 source $ZSH/oh-my-zsh.sh
-source /Users/rotsen/.arcanist/arcanist_helpers.sh
 

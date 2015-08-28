@@ -4,10 +4,7 @@
 HOME=/home/rotsen
 BackupDir=$HOME/Dropbox/Backups
 
-DirInHome=(Documentos Escritorio sql .ssh rails)
-
-echo "Cleaning up RailsProjects"
-~/.dotfiles/clear_rails_apps
+DirInHome=(Documentos Escritorio .ssh bins)
 
 cd $HOME
 echo `pwd`
@@ -18,9 +15,11 @@ for dir in "${DirInHome[@]}"; do
 done
 
 
+echo "Sincronizando Sql-backups"
+rsync -av sql /run/media/rotsen/Hulk/Backup-RotseN
 echo "Sincronizando música"
-rsync -av Música /run/media/rotsen/Backups/Backup-RotseN
+rsync -av Música /run/media/rotsen/Hulk/Backup-RotseN
 echo "Sincronizando imágenes"
-rsync -av Imágenes Dropbox/Backups --exclude 'backgrounds'
+rsync -av Imágenes Dropbox/Backups --exclude 'backgrounds' --exclude 'Capturas'
 echo "Sincronizando desde Dropbox"
-rsync -av Dropbox /run/media/rotsen/Backups/Backup-RotseN
+rsync -av Dropbox /run/media/rotsen/Hulk/Backup-RotseN

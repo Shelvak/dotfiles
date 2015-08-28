@@ -1,6 +1,5 @@
 #!/bin/zsh
 
-HOME=/Users/rotsen
 ORIGIN=`pwd`
 
 for dir in $HOME/rails/*; do

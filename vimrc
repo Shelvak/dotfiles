@@ -5,7 +5,7 @@ let uname = system("uname")
 let g:smart_display_opts = {'guibg': 'Blue' }
 
 "Pathogen for vim pluggins
-runtime bundle/vim-pathogen/autoload/pathogen.vim
+runtime /home/rotsen/.vim/bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 execute pathogen#helptags()
 
@@ -157,3 +157,10 @@ endfunction
 
 map <C-m>:call Dos2Unix()<CR>
 
+" Rubocop
+let fts = ['rb', 'erb']
+if index(fts, &filetype) == -1
+  let g:vimrubocop_keymap = 0
+  let g:vimrubocop_config = '~/.rubocop.yml'
+  nmap <F7> :RuboCop<CR>
+endif

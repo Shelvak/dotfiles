@@ -91,3 +91,9 @@
 [submodule "vim/bundle/jshint2.vim"]
 	path = vim/bundle/jshint2.vim
 	url = https://github.com/Shutnik/jshint2.vim
+[submodule "vim/plugin/matchit"]
+	path = vim/plugin/matchit
+	url = https://github.com/tmhedberg/matchit
+[submodule "vim/plugin/vim-rubocop"]
+	path = vim/plugin/vim-rubocop
+	url = https://github.com/ngmy/vim-rubocop
