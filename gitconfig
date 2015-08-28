@@ -19,8 +19,6 @@
 [core]
   editor = vim
   excludesfile = ~/.gitignore_global
-  eol = lf
-  autocrlf = no
 [diff]
   tool = vimdiff
 [format]
@@ -32,8 +30,10 @@
 [filter "media"]
   clean = git-media-clean %f
   smudge = git-media-smudge %f
-[reviewboard]
-  url = http://reviews.evbhome.com/
 [branch]
   autosetuprebase = always
   autosetupmerge = always
+[flake8]
+  complexity = 10
+  strict = true
+  lazy = false

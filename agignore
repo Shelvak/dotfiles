@@ -3,6 +3,8 @@
 *.swp
 *.swa
 *.xml
+*.csv
+*.pot
 *require_built*
 .git
 .DS_Store

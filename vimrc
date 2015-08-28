@@ -43,6 +43,9 @@ if uname == "Darwin\n"
   set mouse=nicr
   set ai
   set si
+
+  set dictionary+=~/.evbdevtools/phabricator_users.txt
+  set dictionary+=~/.evbdevtools/phabricator_groups.txt
 else
   " Encoding
   scriptencoding utf-8

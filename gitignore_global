@@ -28,10 +28,12 @@ config/schema.rb
 coverage/
 db/schema.rb
 uploads/
+private/
 
 # Ruby version
 ##############
 .ruby-version
+.bundle/
 
 # Customs
 #########
