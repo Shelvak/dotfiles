@@ -194,6 +194,7 @@ Metrics/CyclomaticComplexity:
 Metrics/LineLength:
   Description: "Limit lines to 80 characters."
   Enabled: true
+  Max: 90
   StyleGuide: "https://github.com/bbatsov/ruby-style-guide#80-character-limits"
 Metrics/MethodLength:
   Description: "Avoid methods longer than 10 lines of code."
@@ -298,10 +299,10 @@ Style/AlignArray:
   StyleGuide: "https://github.com/bbatsov/ruby-style-guide#align-multiline-arrays"
 Style/AlignHash:
   Description: "Align the elements of a hash literal if they span more than one line."
-  Enabled: true
+  Enabled: false
 Style/AlignParameters:
   Description: "Align the parameters of a method call if they span more than one line."
-  Enabled: true
+  Enabled: false
   StyleGuide: "https://github.com/bbatsov/ruby-style-guide#no-double-indent"
 Style/AndOr:
   Description: "Use &&/|| instead of and/or."
@@ -428,7 +429,7 @@ Style/DoubleNegation:
   StyleGuide: "https://github.com/bbatsov/ruby-style-guide#no-bang-bang"
 Style/EachWithObject:
   Description: "Prefer `each_with_object` over `inject` or `reduce`."
-  Enabled: true
+  Enabled: false
 Style/ElseAlignment:
   Description: "Align elses and elsifs correctly."
   Enabled: true
@@ -506,7 +507,7 @@ Style/GlobalVars:
   StyleGuide: "https://github.com/bbatsov/ruby-style-guide#instance-vars"
 Style/GuardClause:
   Description: "Check for conditionals that can be replaced with guard clauses"
-  Enabled: true
+  Enabled: false
   StyleGuide: "https://github.com/bbatsov/ruby-style-guide#no-nested-conditionals"
 Style/HashSyntax:
   Description: "Prefer Ruby 1.9 hash syntax { a: 1, b: 2 } over 1.8 syntax { :a => 1, :b => 2 }."
@@ -728,7 +729,7 @@ Style/SignalException:
   StyleGuide: "https://github.com/bbatsov/ruby-style-guide#fail-method"
 Style/SingleLineBlockParams:
   Description: "Enforces the names of some block params."
-  Enabled: true
+  Enabled: false
   StyleGuide: "https://github.com/bbatsov/ruby-style-guide#reduce-blocks"
 Style/SingleLineMethods:
   Description: "Avoid single-line methods."
@@ -765,11 +766,11 @@ Style/SpaceAroundBlockParameters:
   Enabled: true
 Style/SpaceAroundEqualsInParameterDefault:
   Description: 'Checks that the equals signs in parameter default assignments have or don"t have surrounding space depending on configuration.'
-  Enabled: true
+  Enabled: false
   StyleGuide: "https://github.com/bbatsov/ruby-style-guide#spaces-around-equals"
 Style/SpaceAroundOperators:
   Description: "Use a single space around operators."
-  Enabled: true
+  Enabled: false
   StyleGuide: "https://github.com/bbatsov/ruby-style-guide#spaces-operators"
 Style/SpaceBeforeBlockBraces:
   Description: 'Checks that the left block brace has or doesn"t have space before it.'
