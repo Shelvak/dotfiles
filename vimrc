@@ -66,8 +66,12 @@ if has("autocmd")
   " Ruby surround
   autocmd FileType ruby let b:surround_35 = "#{\r}"
   autocmd! BufRead,BufNewFile Gemfile setfiletype ruby
+  autocmd! BufRead,BufNewFile Vagrantfile setfiletype ruby
   autocmd! BufRead,BufNewFile *.cap setfiletype ruby
 endif
+
+autocmd Filetype javascript setlocal tabstop=4 shiftwidth=4 expandtab
+autocmd BufEnter *.handlebars setlocal tabstop=4 shiftwidth=4 expandtab
 
 " Restore cursor to last positon
 function! ResCur()
@@ -159,3 +163,5 @@ map <C-m>:call Dos2Unix()<CR>
 
 set dictionary+=~/.evbdevtools/phabricator_users.txt
 set dictionary+=~/.evbdevtools/phabricator_groups.txt
+
+set tags=~/tags
