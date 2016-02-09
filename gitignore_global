@@ -19,6 +19,7 @@
 #########################
 *.swp
 *.swo
+*.sw*
 *~
 
 # Rails files #
@@ -54,3 +55,15 @@ config/i18n-tasks.yml
 #######
 .DS_Store
 .arclint
+.arcconfig
+
+# JS #
+######
+node_modules/
+
+# Helpers and others #
+######
+rotsen_ignore_me*
+
+mysqlbinlog/
+

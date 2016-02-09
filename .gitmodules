@@ -100,3 +100,15 @@
 [submodule "vim/bundle/vim-easy-align"]
 	path = vim/bundle/vim-easy-align
 	url = https://github.com/junegunn/vim-easy-align
+[submodule "vim/bundle/vim-jsbeatify"]
+	path = vim/bundle/vim-jsbeatify
+	url = https://github.com/maksimr/vim-jsbeautify
+[submodule "vim/bundle/Command-T"]
+	path = vim/bundle/Command-T
+	url = https://github.com/wincent/Command-T
+[submodule "vim/bundle/vim-tags"]
+	path = vim/bundle/vim-tags
+	url = https://github.com/szw/vim-tags.git
+[submodule "vim/bundle/vim-isort"]
+	path = vim/bundle/vim-isort
+	url = https://github.com/fisadev/vim-isort

@@ -74,6 +74,7 @@ if has("autocmd")
   " Ruby surround
   autocmd FileType ruby let b:surround_35 = "#{\r}"
   autocmd! BufRead,BufNewFile Gemfile setfiletype ruby
+  autocmd! BufRead,BufNewFile Vagrantfile setfiletype ruby
   autocmd! BufRead,BufNewFile *.cap setfiletype ruby
 
   " Restore cursor last position
@@ -86,6 +87,9 @@ if has("autocmd")
       \ endif
   augroup END
 endif
+
+autocmd Filetype javascript setlocal tabstop=4 shiftwidth=4 expandtab
+autocmd BufEnter *.handlebars setlocal tabstop=4 shiftwidth=4 expandtab
 
 " Restore cursor to last positon
 
@@ -171,3 +175,5 @@ if index(fts, &filetype) == -1
   let g:vimrubocop_config = '~/.rubocop.yml'
   nmap <F7> :RuboCop<CR>
 endif
+
+set tags=~/tags
