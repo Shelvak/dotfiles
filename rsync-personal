@@ -20,6 +20,6 @@ rsync -av sql /run/media/rotsen/Hulk/Backup-RotseN
 echo "Sincronizando música"
 rsync -av Música /run/media/rotsen/Hulk/Backup-RotseN
 echo "Sincronizando imágenes"
-rsync -av Imágenes Dropbox/Backups --exclude 'backgrounds' --exclude 'Capturas'
+rsync -av Imágenes Dropbox/Backups --exclude 'backgrounds' --exclude 'Capturas' --exclude 'backgrounds-checked' --exclude 'backgrounds-nuevos' --exclude 'backgrounds-pasados'
 echo "Sincronizando desde Dropbox"
 rsync -av Dropbox /run/media/rotsen/Hulk/Backup-RotseN

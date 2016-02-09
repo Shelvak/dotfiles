@@ -30,9 +30,6 @@ alias t="ruby -I test"
 alias gpr="git pull --rebase origin master"
 
 if test "$(uname)" = "Darwin"; then
-  alias rtest="mysql -u root -e 'DROP database eventioz_test;CREATE database eventioz_test;';
-               mysql -u root eventioz_test < db/structure.sql;
-               RAILS_ENV=test be rake db:migrate; be rake test:all"
   alias brc="be rails c"
   alias a="echo 'rock'"
   export LANG="en_US.UTF-8"
@@ -57,6 +54,7 @@ else
   # RotseN Bins
   export PATH="/home/rotsen/bins:$PATH"
   source /etc/profile.d/vte.sh
+  export PKGDEST=/home/rotsen/tmp/cache
 
   #if [[ ! ${DISPLAY} && ${XDG_VTNR} = 1 ]]; then
   #  exec startx
@@ -67,4 +65,3 @@ fi
 plugins=(git cd_rails bundler rails rbenv)
 
 source $ZSH/oh-my-zsh.sh
-

@@ -14,6 +14,9 @@ set viminfo='100,\"5,:50,%,n~/.viminfo'
 
 " Config
 set nocompatible
+set timeout
+set timeoutlen=1000
+set ttimeoutlen=100 """"" Delayer
 set showcmd
 set showmatch
 set smartcase
@@ -58,8 +61,10 @@ set encoding=utf-8
 let mapleader=","
 
 " Persistent undo
-set undodir=~/.vim/undodir
-set undofile
+if exists('+undofile') && exists('+undodir')
+	set undodir=~/.vim/undodir
+	set undofile
+endif
 
 syntax on
 
@@ -70,20 +75,19 @@ if has("autocmd")
   autocmd FileType ruby let b:surround_35 = "#{\r}"
   autocmd! BufRead,BufNewFile Gemfile setfiletype ruby
   autocmd! BufRead,BufNewFile *.cap setfiletype ruby
+
+  " Restore cursor last position
+  augroup lastCursorPosition
+    autocmd!
+    " Remember last cursor position in file
+    autocmd BufReadPost *
+      \ if line("'\"") > 0 && line("'\"") <= line("$") |
+      \   exe "normal g`\"" |
+      \ endif
+  augroup END
 endif
 
 " Restore cursor to last positon
-function! ResCur()
-  if line("'\"") <= line("$")
-    normal! g`"
-    return 1
-  endif
-endfunction
-
-augroup resCur
-  autocmd!
-  autocmd BufWinEnter * call ResCur()
-augroup END
 
 " Set colors
 hi CursorLine term=bold cterm=bold ctermbg=none
