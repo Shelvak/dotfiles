@@ -34,6 +34,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tmhedberg/matchit'
 Plug 'tomtom/tlib_vim'
 Plug 'mustache/vim-mustache-handlebars'
+Plug 'scrooloose/nerdtree'
 
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-endwise'
