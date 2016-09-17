@@ -2,6 +2,8 @@
 let isMac = system("uname") == "Darwin\n"
 
 " Load plugins
+let b:deoplete_ignore_sources = ['buffer']
+
 if filereadable(expand("~/.vim-plugins-rc"))
   call plug#begin('~/.vim/plugs')
   source ~/.vim-plugins-rc

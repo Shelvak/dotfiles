@@ -60,10 +60,9 @@ chruby 2.3.1
 if test "$(uname)" = "Darwin"; then
   export LANG="en_US.UTF-8"
   export LC_ALL="en_US.UTF-8"
-  export PATH="/usr/local/sbin:/usr/local/bin:/Users/rotsen/.arcanist/arcanist/bin:$PATH"
+  export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
   export ARCANIST_INSTALL_DIR=/Users/rotsen/.evbdevtools
   source $ARCANIST_INSTALL_DIR/devtools/scripts/devenv_bash/arcanist_helpers.sh
-  source /Users/rotsen/.arcanist/arcanist_helpers.sh
 
   alias brc="be rails c"
   alias vg="ssh-add ; vagrant"
@@ -83,6 +82,9 @@ else
 fi
 
 # Plugins
-plugins=(git cd_rails bundler rails tmux)
+plugins=(git cd_rails bundler rails)
+if test "$(uname)" != "Darwin"; then
+  plugins+=(tmux)
+fi
 
 source $ZSH/oh-my-zsh.sh
