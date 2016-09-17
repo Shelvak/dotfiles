@@ -24,6 +24,7 @@
 
 # Rails files #
 #######################
+config/deploy/production.rb
 config/app_config.yml
 config/schema.rb
 coverage/

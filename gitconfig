@@ -17,7 +17,7 @@
   l = log --graph --date=relative
   ls = log --branches --graph --stat --date=relative --all
 [core]
-  editor = vim
+  editor = nvim
   excludesfile = ~/.gitignore_global
 [diff]
   tool = vimdiff

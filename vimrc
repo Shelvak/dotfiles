@@ -1,22 +1,23 @@
 " Running SO...
-let uname = system("uname")
+let isMac = system("uname") == "Darwin\n"
 
-" SmartColumns
-let g:smart_display_opts = {'guibg': 'Blue' }
+" Load plugins
+if filereadable(expand("~/.vim-plugins-rc"))
+  call plug#begin('~/.vim/plugs')
+  source ~/.vim-plugins-rc
+  call plug#end()
+endif
 
-"Pathogen for vim pluggins
-runtime /home/rotsen/.vim/bundle/vim-pathogen/autoload/pathogen.vim
-execute pathogen#infect()
-execute pathogen#helptags()
 
 " VimInfo
 set viminfo='100,\"5,:50,%,n~/.viminfo'
 
 " Config
-set nocompatible
+"set nocompatible
 set timeout
-set timeoutlen=1000
-set ttimeoutlen=100 """"" Delayer
+"set timeoutlen=1000
+"set ttimeoutlen=100
+"Delayer
 set showcmd
 set showmatch
 set smartcase
@@ -42,7 +43,7 @@ set re=1
 set ttyfast
 set lazyredraw
 
-if uname == "Darwin\n"
+if isMac
   set mouse=nicr
   set ai
   set si
@@ -116,11 +117,14 @@ hi SignColumn ctermbg=none
 " Gist-vim
 let g:gist_detect_filetype = 1
 
-if uname == "Darwin\n"
+if isMac
   let g:gist_clip_command = 'pbcopy'
 else
   let g:gist_clip_command = 'xclip -selection clipboard'
 endif
+
+" SmartColumns
+let g:smart_display_opts = {'guibg': 'Blue' }
 
 " JSHint
 let jshint2_save = 1
@@ -132,7 +136,7 @@ map <Leader>n :set number!<CR>:GitGutterToggle<CR>
 map <Leader>y <Plug>Yssurround=<cr>
 map <Leader>i <Plug>Yssurround-<cr>
 map <leader># ysiw#
-map <C-n> :set relativenumber! <CR>
+"map <C-n> :set relativenumber! <CR>
 
 " Invisibles characters setup
 set listchars=tab:▸\ ,eol:¬
@@ -177,3 +181,20 @@ if index(fts, &filetype) == -1
 endif
 
 set tags=~/tags
+
+
+runtime! settings/*
+
+let g:python_host_prog = '/usr/bin/python2'
+let g:python3_host_prog = '/usr/bin/python'
+
+let g:ruby_host_prog = '/home/rotsen/.rubies/ruby-2.3.1/bin/ruby'
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsListSnippets="<m-tab>"
+
+let g:vim_tags_auto_generate = 1
+set tags=./.git/tags
+nnoremap · :CtrolPTag<CR>

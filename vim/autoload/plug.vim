@@ -1,0 +1,1 @@
+/home/rotsen/.dotfiles/vim/bundle/vim-plug/plug.vim
