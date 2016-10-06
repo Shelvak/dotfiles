@@ -2,7 +2,7 @@
 let isMac = system("uname") == "Darwin\n"
 
 " Load plugins
-let b:deoplete_ignore_sources = ['buffer']
+"let b:deoplete_ignore_sources = ['buffer']
 
 if filereadable(expand("~/.vim-plugins-rc"))
   call plug#begin('~/.vim/plugs')
@@ -91,7 +91,7 @@ if has("autocmd")
   augroup END
 endif
 
-autocmd Filetype javascript setlocal tabstop=4 shiftwidth=4 expandtab
+autocmd Filetype javascript,python setlocal tabstop=4 shiftwidth=4 expandtab
 autocmd BufEnter *.handlebars setlocal tabstop=4 shiftwidth=4 expandtab
 
 " Restore cursor to last positon
@@ -200,3 +200,7 @@ let g:UltiSnipsListSnippets="<m-tab>"
 let g:vim_tags_auto_generate = 1
 set tags=./.git/tags
 nnoremap · :CtrolPTag<CR>
+
+let g:ctrlp_map = '<leader>t'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+

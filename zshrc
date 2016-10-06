@@ -57,6 +57,10 @@ alias clear_rails_apps="~/.dotfiles/clear_rails_apps"
 source /usr/local/share/chruby/chruby.sh
 chruby 2.3.1
 
+sustituir() {
+  egrep -rl "$1" * | xargs gsed -i "s/$1/$2/g"
+}
+
 if test "$(uname)" = "Darwin"; then
   export LANG="en_US.UTF-8"
   export LC_ALL="en_US.UTF-8"
@@ -70,6 +74,9 @@ if test "$(uname)" = "Darwin"; then
   alias vgs="vg ssh"
   alias core="cd ~/eventbrite/core"
   alias docker-dev="cd ~/eventbrite/docker-dev"
+	function restart_sound() {
+		sudo kill -9 "$(ps ax|grep 'coreaudio[a-z]' | awk '{print $1}')"
+	}
 else
   source /etc/profile.d/vte.sh
   export PKGDEST=/home/rotsen/tmp/cache
