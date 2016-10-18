@@ -37,7 +37,7 @@ ZSH_TMUX_AUTOSTART="true"
 # Aliases
 alias vim='nvim'
 alias zc="vim ~/.zshrc"
-alias vc="vim ~/.vimrc"
+alias vc="vim ~/.config/nvim/init.vim"
 alias v='vim'
 alias sv="sudo vim"
 alias ctl="sudo systemctl"
@@ -88,10 +88,14 @@ else
   alias clear_arch="pac -Rsn $(pacman -Qdtq)"
 fi
 
-# Plugins
+
 plugins=(git cd_rails bundler rails)
 if test "$(uname)" != "Darwin"; then
   plugins+=(tmux)
 fi
 
 source $ZSH/oh-my-zsh.sh
+unalias rg
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
