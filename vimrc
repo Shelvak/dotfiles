@@ -25,7 +25,7 @@ set hlsearch
 set tabstop=2
 set shiftwidth=2
 set expandtab
-set smarttab
+"set smarttab
 set history=2000
 set scrolljump=5
 set scrolloff=3
@@ -153,7 +153,10 @@ nnoremap <Leader>gc :Gcommit<CR>
 map <F2> :cprev<CR>
 map <F1> :cnext<CR>
 
+" Copy the entire file
 map <C-C> :%y+<CR>
+" Copy the current file path
+nnoremap <leader>C :let @+=expand("%")<CR>
 
 " Rubocop
 let fts = ['rb', 'erb']
@@ -177,14 +180,49 @@ let g:UltiSnipsListSnippets="<m-tab>"
 
 let g:vim_tags_auto_generate = 1
 set tags=./.git/tags
-nnoremap · :CtrolPTag<CR>
 
-let g:ctrlp_map = '<leader>t'
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+" ========================================
+" FZF setup
+" ========================================
+set grepprg=rg\ —vimgrep
+let g:grep_operator = 'rg'
+let g:fzf_nvim_statusline=0
+nnoremap <silent> <leader>t :Files<CR>
+nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <leader>. :Lines<CR>
+map <silent> · :call SearchDefWithAg()<CR>
 
-if executable("rg")
-    set grepprg=rg\ --vimgrep\ --no-heading
-    set grepformat=%f:%l:%c:%m,%f:%l:%m
-endif
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
 
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+
+function! SearchDefWithAg()
+  execute 'Rg' 'def '.expand('<cword>')
+  "execute 'rg -i --column --line-number --no-heading --color=always "def '.expand('<cword>').'"'
+endfunction
+
+function! SearchVisualSelectionWithAg() range
+  let old_reg = getreg('"')
+  let old_regtype = getregtype('"')
+  let old_clipboard = &clipboard
+  set clipboard&
+  normal! ""gvy
+  let selection = getreg('"')
+  call setreg('"', old_reg, old_regtype)
+  let &clipboard = old_clipboard
+  execute 'Ag' selection
+endfunction
+
+command! -bang -nargs=* Agi call fzf#vim#grep('rg -i --column --line-number --no-heading --color=always '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+
+let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_start_key='<F3>'
+let g:multi_cursor_next_key='<F4>'
+let g:multi_cursor_prev_key='<F5>'
+let g:multi_cursor_skip_key='<F6>'
+let g:multi_cursor_quit_key='<Esc>'
+

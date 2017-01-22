@@ -77,6 +77,7 @@ if test "$(uname)" = "Darwin"; then
 	function restart_sound() {
 		sudo kill -9 "$(ps ax|grep 'coreaudio[a-z]' | awk '{print $1}')"
 	}
+  alias flush_cache="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder"
 else
   source /etc/profile.d/vte.sh
   export PKGDEST=/home/rotsen/tmp/cache
@@ -98,4 +99,4 @@ source $ZSH/oh-my-zsh.sh
 unalias rg
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+export FZF_DEFAULT_COMMAND='rg --files --follow --glob "!.git/*"'
