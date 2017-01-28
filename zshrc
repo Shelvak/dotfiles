@@ -55,7 +55,7 @@ alias dotfiles_update="cd ~/.dotfiles; rake update; cd -"
 alias clear_rails_apps="~/.dotfiles/clear_rails_apps"
 
 source /usr/local/share/chruby/chruby.sh
-chruby 2.3.1
+chruby 2.2.5
 
 sustituir() {
   egrep -rl "$1" * | xargs gsed -i "s/$1/$2/g"

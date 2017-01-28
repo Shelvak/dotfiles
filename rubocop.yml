@@ -26,7 +26,6 @@ AllCops:
     - "**/Berksfile"
     - "**/Cheffile"
     - "**/Vagabondfile"
-  RunRailsCops: false
   StyleGuideCopsOnly: false
 Documentation:
   Enabled: false
@@ -250,9 +249,6 @@ Rails/ActionFilter:
 Rails/Date:
   Description: "Checks the correct usage of date aware methods, such as Date.today, Date.current etc."
   Enabled: true
-Rails/DefaultScope:
-  Description: "Checks if the argument passed to default_scope is a block."
-  Enabled: true
 Rails/Delegate:
   Description: "Prefer delegate method for delegations."
   Enabled: true
@@ -412,9 +408,6 @@ Style/DefWithParentheses:
   Description: "Use def with parentheses when there are arguments."
   Enabled: true
   StyleGuide: "https://github.com/bbatsov/ruby-style-guide#method-parens"
-Style/DeprecatedHashMethods:
-  Description: "Checks for use of deprecated Hash methods."
-  Enabled: true
   StyleGuide: "https://github.com/bbatsov/ruby-style-guide#hash-key"
 Style/Documentation:
   Description: "Document classes and non-namespace modules."
@@ -645,18 +638,10 @@ Style/OpMethod:
   Description: "When defining binary operators, name the argument other."
   Enabled: true
   StyleGuide: "https://github.com/bbatsov/ruby-style-guide#other-arg"
-#Style/OptionHash:
-#  Description: 'Don"t use option hashes when you can use keyword arguments.'
-#  Enabled: false
 Style/OptionalArguments:
   Description: "Checks for optional arguments that do not appear at the end of the argument list"
   Enabled: true
   StyleGuide: "https://github.com/bbatsov/ruby-style-guide#optional-arguments"
-Style/ParallelAssignment:
-  Description: "Check for simple usages of parallel assignment. It will only warn when the number of variables matches on both sides of the assignment. This also provides performance benefits"
-  Enabled: true
-  Reference: "https://github.com/JuanitoFatas/fast-ruby#parallel-assignment-vs-sequential-assignment-code"
-  StyleGuide: "https://github.com/bbatsov/ruby-style-guide#parallel-assignment"
 Style/ParenthesesAroundCondition:
   Description: 'Don"t use parentheses around the condition of an if/unless/while.'
   Enabled: true
@@ -735,10 +720,10 @@ Style/SingleLineMethods:
   Description: "Avoid single-line methods."
   Enabled: true
   StyleGuide: "https://github.com/bbatsov/ruby-style-guide#no-single-line-methods"
-Style/SingleSpaceBeforeFirstArg:
+Style/SpaceBeforeFirstArg:
   Description: "Checks that exactly one space is used between a method name and the first argument for method calls without parentheses."
   Enabled: true
-Style/SpaceAfterColon:
+Style/SpaceAroundKeyword:
   Description: "Use spaces after colons."
   Enabled: true
   StyleGuide: "https://github.com/bbatsov/ruby-style-guide#spaces-operators"
@@ -746,9 +731,6 @@ Style/SpaceAfterComma:
   Description: "Use spaces after commas."
   Enabled: true
   StyleGuide: "https://github.com/bbatsov/ruby-style-guide#spaces-operators"
-Style/SpaceAfterControlKeyword:
-  Description: "Use spaces after if/elsif/unless/while/until/case/when."
-  Enabled: true
 Style/SpaceAfterMethodName:
   Description: "Do not put a space between a method name and the opening parenthesis in a method definition."
   Enabled: true
@@ -780,9 +762,6 @@ Style/SpaceBeforeComma:
   Enabled: true
 Style/SpaceBeforeComment:
   Description: "Checks for missing space between code and a comment on the same line."
-  Enabled: true
-Style/SpaceBeforeModifierKeyword:
-  Description: "Put a space before the modifier keyword."
   Enabled: true
 Style/SpaceBeforeSemicolon:
   Description: "No spaces before semicolons."
@@ -843,10 +822,6 @@ Style/TrailingBlankLines:
   Description: "Checks trailing blank lines and final newline."
   Enabled: true
   StyleGuide: "https://github.com/bbatsov/ruby-style-guide#newline-eof"
-Style/TrailingComma:
-  Description: "Checks for trailing comma in parameter lists and literals."
-  Enabled: true
-  StyleGuide: "https://github.com/bbatsov/ruby-style-guide#no-trailing-array-commas"
 Style/TrailingUnderscoreVariable:
   Description: "Checks for the usage of unneeded trailing underscores at the end of parallel variable assignment."
   Enabled: true

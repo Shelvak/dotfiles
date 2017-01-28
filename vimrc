@@ -120,16 +120,16 @@ let g:smart_display_opts = {'guibg': 'Blue' }
 autocmd Filetype python let g:smart_display_opts = {'guibg': 'Blue', 'column': '120' }
 
 " JSHint
-let jshint2_save = 1
-let jshint2_error = 0
-let jshint2_height = 5
+"let jshint2_save = 1
+"let jshint2_error = 0
+"let jshint2_height = 5
 
 " Short Cuts
 map <Leader>n :set number!<CR>:GitGutterToggle<CR>
 map <Leader>y <Plug>Yssurround=<cr>
 map <Leader>i <Plug>Yssurround-<cr>
 map <leader># ysiw#
-"map <C-n> :set relativenumber! <CR>
+map <C-n> :set relativenumber! <CR>
 
 " Invisibles characters setup
 set listchars=tab:▸\ ,eol:¬
@@ -166,6 +166,7 @@ if index(fts, &filetype) == -1
   nmap <F7> :RuboCop<CR>
 endif
 
+set tags=~/tags
 runtime! settings/*
 
 let g:python_host_prog = '/usr/bin/python2'
@@ -179,7 +180,6 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsListSnippets="<m-tab>"
 
 let g:vim_tags_auto_generate = 1
-set tags=./.git/tags
 
 " ========================================
 " FZF setup
@@ -226,3 +226,9 @@ let g:multi_cursor_prev_key='<F5>'
 let g:multi_cursor_skip_key='<F6>'
 let g:multi_cursor_quit_key='<Esc>'
 
+" NeoMake
+let g:neomake_javascript_eslint_maker = {
+    \ 'args': ['--verbose'],
+    \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
+    \ }
+let g:neomake_javascript_enabled_makers = ['eslint']
