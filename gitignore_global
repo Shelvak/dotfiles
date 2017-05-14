@@ -13,7 +13,7 @@
 ######################
 *.log
 *.sql
-*.sqlite
+*.sqlite3
 
 # Editor temporal files #
 #########################
@@ -24,8 +24,9 @@
 
 # Rails files #
 #######################
-config/deploy/production.rb
+config/deploy/*
 config/app_config.yml
+config/secrets.yml
 config/schema.rb
 coverage/
 db/schema.rb
@@ -68,3 +69,4 @@ rotsen_ignore_me*
 
 mysqlbinlog/
 
+.vagrant

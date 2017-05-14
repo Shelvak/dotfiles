@@ -58,7 +58,7 @@ source /usr/local/share/chruby/chruby.sh
 chruby 2.2.5
 
 sustituir() {
-  egrep -rl "$1" * | xargs gsed -i "s/$1/$2/g"
+  egrep -rl "$1" * | xargs sed -i "s/$1/$2/g"
 }
 
 if test "$(uname)" = "Darwin"; then
@@ -100,3 +100,6 @@ unalias rg
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files --follow --glob "!.git/*"'
+
+# OPAM configuration
+. /home/rotsen/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true

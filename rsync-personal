@@ -3,23 +3,31 @@
 
 HOME=/home/rotsen
 BackupDir=$HOME/Dropbox/Backups
+DriveDir="google-drive://coppielfico@gmail.com/Backups/"
+SUBIR_A_MEGA=$HOME/bins/upload_to_mega
 
-DirInHome=(Documentos Escritorio .ssh bins)
+DirInHome=(Documentos Escritorio .ssh bins .dotfiles sql)
 
 cd $HOME
 echo `pwd`
 
 for dir in "${DirInHome[@]}"; do
   echo $dir
-  tar -c $dir | bzip2 > $BackupDir/$dir.tar.bz2
+  current_file=$BackupDir/$dir.tar.bz2
+  tar -c $dir | bzip2 > $current_file
+
+  #echo  "Copiando $dir a Drive"
+  #cp $current_file $DriveDir
+  echo  "Subiendo $dir a Mega"
+  $SUBIR_A_MEGA $current_file
 done
 
 
 echo "Sincronizando Sql-backups"
 rsync -av sql /run/media/rotsen/Hulk/Backup-RotseN
 echo "Sincronizando música"
-rsync -av Música /run/media/rotsen/Hulk/Backup-RotseN
+ls -1 /Música | parallel rsync -av {} /run/media/rotsen/Hulk/Backup-RotseN
 echo "Sincronizando imágenes"
 rsync -av Imágenes Dropbox/Backups --exclude 'backgrounds' --exclude 'Capturas' --exclude 'backgrounds-checked' --exclude 'backgrounds-nuevos' --exclude 'backgrounds-pasados'
-echo "Sincronizando desde Dropbox"
+echo "Sincronizando desde Dropbox a Disco Externo"
 rsync -av Dropbox /run/media/rotsen/Hulk/Backup-RotseN

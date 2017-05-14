@@ -3,7 +3,7 @@ set nocompatible
 filetype off
 
 Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'Shelvak/vim-yaml-flattener'
+Plug 'Shelvak/vim-yaml-flattener', { 'for': 'yaml' }
 Plug 'Shougo/deoplete.nvim'
 Plug 'Shutnik/jshint2.vim'
 Plug 'Slava/vim-spacebars'
