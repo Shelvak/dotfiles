@@ -103,3 +103,5 @@ export FZF_DEFAULT_COMMAND='rg --files --follow --glob "!.git/*"'
 
 # OPAM configuration
 . /home/rotsen/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+source /usr/share/doc/pkgfile/command-not-found.zsh
