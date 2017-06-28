@@ -1,43 +1,47 @@
-# ZSH constants
+# ZSH Configs
 ZSH="$HOME/.oh-my-zsh"
 DISABLE_CORRECTION="true"
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 ZSH_THEME='Shelvak'
+plugins=(git cd_rails bundler rails)
+if test "$(uname)" != "Darwin"; then
+  plugins+=(tmux)
+fi
 
-# Completion
-autoload -U +X compinit && compinit
-autoload -U +X bashcompinit && bashcompinit
-autoload -U zmv
-unsetopt correct
-
-# Configuring history
-unsetopt share_history
-setopt inc_append_history
-setopt hist_ignore_dups
-setopt hist_find_no_dups
-setopt hist_reduce_blanks
-setopt hist_no_store
-export HISTSIZE=10000
-export HISTFILE="$HOME/.history"
-export SAVEHIST=$HISTSIZE
-
-export EDITOR="nvim"
-export USE_EDITOR=$EDITOR
-export VISUAL=$EDITOR
-# GNU Screen sets -o vi if EDITOR=vi, so we have to force it back.
-set -o vi
-
+source $ZSH/oh-my-zsh.sh
 
 # Autostart tmux
 export TERM=screen-256color
 ZSH_TMUX_AUTOSTART="true"
 
+# Completion
+# autoload -U +X compinit && compinit   # Already implemented on oh-my-zsh
+autoload -U +X bashcompinit && bashcompinit
+autoload -U zmv
+unsetopt correct
+
+# Configuring history
+# setopt inc_append_history # Already implemented on oh-my-zsh
+# setopt hist_ignore_dups   # Already implemented on oh-my-zsh
+setopt hist_find_no_dups
+setopt hist_reduce_blanks
+setopt hist_no_store
+unsetopt share_history
+export HISTSIZE=10000
+export HISTFILE="$HOME/.history"
+export SAVEHIST=$HISTSIZE
+
+# Editor
+export EDITOR="vim"
+export USE_EDITOR=$EDITOR
+export VISUAL=$EDITOR
+# GNU Screen sets -o vi if EDITOR=vi, so we have to force it back.
+# set -o vi
 
 # Aliases
-alias vim='nvim'
 alias zc="vim ~/.zshrc"
-alias vc="vim ~/.config/nvim/init.vim"
+alias vc="vim ~/.vimrc"
 alias v='vim'
 alias sv="sudo vim"
 alias ctl="sudo systemctl"
@@ -47,31 +51,17 @@ alias rgm='rails g migration'
 alias fuck='sudo $(fc -ln |tail -1)'
 alias t="bin/rake test"
 alias gpr="git pull --rebase origin master"
-alias rsync-personal="~/.dotfiles/rsync-personal"
 alias ..='cd ..'
 alias ..2='cd ../..'
 alias ..3='cd ../../..'
-alias dotfiles_update="cd ~/.dotfiles; rake update; cd -"
-alias clear_rails_apps="~/.dotfiles/clear_rails_apps"
-
-source /usr/local/share/chruby/chruby.sh
-chruby 2.2.5
-
-sustituir() {
-  egrep -rl "$1" * | xargs sed -i "s/$1/$2/g"
-}
 
 if test "$(uname)" = "Darwin"; then
-  export LANG="en_US.UTF-8"
-  export LC_ALL="en_US.UTF-8"
+  # export LANG="en_US.UTF-8"
+  # export LC_ALL="en_US.UTF-8"
   export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
   export ARCANIST_INSTALL_DIR=/Users/rotsen/.evbdevtools
   source $ARCANIST_INSTALL_DIR/devtools/scripts/devenv_bash/arcanist_helpers.sh
 
-  alias brc="be rails c"
-  alias vg="ssh-add ; vagrant"
-  alias vgu="vg up"
-  alias vgs="vg ssh"
   alias core="cd ~/eventbrite/core"
   alias docker-dev="cd ~/eventbrite/docker-dev"
 	function restart_sound() {
@@ -79,9 +69,7 @@ if test "$(uname)" = "Darwin"; then
 	}
   alias flush_cache="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder"
 else
-  source /etc/profile.d/vte.sh
   export PKGDEST=/home/rotsen/tmp/cache
-  export PATH="/home/rotsen/bins:$PATH"
 
   alias pac="sudo pacman"
   alias install="sudo pacman -S"
@@ -89,19 +77,30 @@ else
   alias clear_arch="pac -Rsn $(pacman -Qdtq)"
 fi
 
+# Ruby version
+source /usr/share/chruby/chruby.sh
+source /usr/share/chruby/auto.sh
+chruby 2.3.4
 
-plugins=(git cd_rails bundler rails)
-if test "$(uname)" != "Darwin"; then
-  plugins+=(tmux)
-fi
+# AutoHook for dir/.envrc
+eval "$(direnv hook zsh)"
+export DIRENV_LOG_FORMAT=''  # skip the script echo's
 
-source $ZSH/oh-my-zsh.sh
-unalias rg
+# No se para que puta es esto pero estaba bueno
+[ -f /etc/profile.d/vte.sh ] && source /etc/profile.d/vte.sh
 
+# Pkgfile bin hook to find unknown commands
+[ -f /usr/share/doc/pkgfile/command-not-found.zsh ] && source /usr/share/doc/pkgfile/command-not-found.zsh
+
+# FuzzyFind Config
+unalias rg 2>/dev/null >/dev/null # in some cases rg is set
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files --follow --glob "!.git/*"'
 
 # OPAM configuration
-. /home/rotsen/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+# . /home/rotsen/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
-source /usr/share/doc/pkgfile/command-not-found.zsh
+# Custom Fn
+sustituir() {
+  egrep -rl "$1" * | xargs sed -i "s/$1/$2/g"
+}

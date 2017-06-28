@@ -153,7 +153,7 @@ nnoremap <Leader>gc :Gcommit<CR>
 map <F2> :cprev<CR>
 map <F1> :cnext<CR>
 
-" Copy the entire file
+" Copy selected|entire file to systemclipboard
 map <C-C> :%y+<CR>
 " Copy the current file path
 nnoremap <leader>C :let @+=expand("%")<CR>
@@ -172,7 +172,7 @@ runtime! settings/*
 let g:python_host_prog = '/usr/bin/python2'
 let g:python4_host_prog = '/usr/bin/python'
 
-let g:ruby_host_prog = '/home/rotsen/.rubies/ruby-2.3.1/bin/ruby'
+let g:ruby_host_prog = '/home/rotsen/.rubies/ruby-2.3.4/bin/ruby'
 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
