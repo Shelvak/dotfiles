@@ -31,8 +31,10 @@ endfunction
 
 function! BranchName()
   if exists("*fugitive#head")
-    let _ = fugitive#head()
-    return strlen(_) ? '['._.']♆' : ''
+    let branch = fugitive#head()
+    let git_path = fugitive#extract_git_dir(expand('%:p')) " Get the .git absolute path
+    let project_name = get(split(git_path, '/'), '-2', '')  " split and get the project dir name (last item is .git)
+    return strlen(branch) ? '['.project_name.'#'.branch.']♆' : ''
   endif
 
   return ''

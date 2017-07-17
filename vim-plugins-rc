@@ -2,6 +2,7 @@ set nocompatible
 
 filetype off
 
+Plug 'michaelbruce/vim-chruby'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'Shelvak/vim-yaml-flattener', { 'for': 'yaml' }
 Plug 'Shougo/deoplete.nvim'

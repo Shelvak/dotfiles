@@ -18,6 +18,7 @@ set timeout
 "Delayer
 set showcmd
 set showmatch
+set noshowmode
 set smartcase
 set incsearch
 set mouse=v
@@ -65,10 +66,9 @@ if exists('+undofile') && exists('+undodir')
 endif
 
 syntax on
+filetype plugin indent on
 
 if has("autocmd")
-  filetype plugin indent on
-
   " Ruby surround
   autocmd FileType ruby let b:surround_35 = "#{\r}"
   autocmd! BufRead,BufNewFile Gemfile setfiletype ruby

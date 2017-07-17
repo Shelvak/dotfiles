@@ -1,3 +1,9 @@
+# Autostart tmux
+export TERM=screen-256color
+ZSH_TMUX_AUTOSTART="true"
+stty stop undef  # Ctrol-S stop freezing
+setopt no_flowcontrol
+
 # ZSH Configs
 ZSH="$HOME/.oh-my-zsh"
 DISABLE_CORRECTION="true"
@@ -10,10 +16,6 @@ if test "$(uname)" != "Darwin"; then
 fi
 
 source $ZSH/oh-my-zsh.sh
-
-# Autostart tmux
-export TERM=screen-256color
-ZSH_TMUX_AUTOSTART="true"
 
 # Completion
 # autoload -U +X compinit && compinit   # Already implemented on oh-my-zsh
@@ -79,8 +81,8 @@ fi
 
 # Ruby version
 source /usr/share/chruby/chruby.sh
-source /usr/share/chruby/auto.sh
 chruby 2.3.4
+source /usr/share/chruby/auto.sh
 
 # AutoHook for dir/.envrc
 eval "$(direnv hook zsh)"
