@@ -80,16 +80,17 @@ else
   alias update_system="pac -Syyuu && pacaur -Syua"
   alias clear_arch="pac -Rsn $(pacman -Qdtq)"
 
+  # Ruby version
+  source /usr/share/chruby/chruby.sh
+  chruby 2.3.4
+  source /usr/share/chruby/auto.sh
+
+  # AutoHook for dir/.envrc
+  eval "$(direnv hook zsh)"
+  export DIRENV_LOG_FORMAT=''  # skip the script echo's
 fi
 
-# Ruby version
-# source /usr/share/chruby/chruby.sh
-# chruby 2.3.4
-# source /usr/share/chruby/auto.sh
 
-# AutoHook for dir/.envrc
-# eval "$(direnv hook zsh)"
-# export DIRENV_LOG_FORMAT=''  # skip the script echo's
 
 # No se para que puta es esto pero estaba bueno
 [ -f /etc/profile.d/vte.sh ] && source /etc/profile.d/vte.sh
@@ -109,9 +110,3 @@ export FZF_DEFAULT_COMMAND='rg --files --follow --glob "!.git/*"'
 sustituir() {
   egrep -rl "$1" * | xargs sed -i "s/$1/$2/g"
 }
-# source $ZSH/oh-my-zsh.sh
-#unalias rg
-
-# export FZF_DEFAULT_COMMAND='rg --files --follow --glob "!.git/*"'
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export TERM=screen-256color
