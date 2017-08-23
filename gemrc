@@ -6,4 +6,4 @@
 - http://gems.github.com
 :update_sources: true
 :verbose: true
-gem: --no-ri --no-rdoc
+gem: --no-ri --no-rdoc --jobs 8

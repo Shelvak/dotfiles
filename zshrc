@@ -42,10 +42,10 @@ export VISUAL=$EDITOR
 # set -o vi
 
 # Aliases
-alias zc="vim ~/.zshrc"
-alias vc="vim ~/.vimrc"
-alias v='vim'
-alias sv="sudo vim"
+alias v=$EDITOR
+alias zc="v ~/.zshrc"
+alias vc="v ~/.vimrc"
+alias sv="sudo v"
 alias ctl="sudo systemctl"
 alias pq="sudo psql -U postgres"
 alias rcp="rails c production"
@@ -70,6 +70,8 @@ if test "$(uname)" = "Darwin"; then
 		sudo kill -9 "$(ps ax|grep 'coreaudio[a-z]' | awk '{print $1}')"
 	}
   alias flush_cache="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder"
+  export BAY_HOME=/Users/rotsen/eventbrite/docker-dev
+  eval $(docker-machine env evbdev)
 else
   export PKGDEST=/home/rotsen/tmp/cache
 
@@ -77,16 +79,17 @@ else
   alias install="sudo pacman -S"
   alias update_system="pac -Syyuu && pacaur -Syua"
   alias clear_arch="pac -Rsn $(pacman -Qdtq)"
+
 fi
 
 # Ruby version
-source /usr/share/chruby/chruby.sh
-chruby 2.3.4
-source /usr/share/chruby/auto.sh
+# source /usr/share/chruby/chruby.sh
+# chruby 2.3.4
+# source /usr/share/chruby/auto.sh
 
 # AutoHook for dir/.envrc
-eval "$(direnv hook zsh)"
-export DIRENV_LOG_FORMAT=''  # skip the script echo's
+# eval "$(direnv hook zsh)"
+# export DIRENV_LOG_FORMAT=''  # skip the script echo's
 
 # No se para que puta es esto pero estaba bueno
 [ -f /etc/profile.d/vte.sh ] && source /etc/profile.d/vte.sh
@@ -106,3 +109,9 @@ export FZF_DEFAULT_COMMAND='rg --files --follow --glob "!.git/*"'
 sustituir() {
   egrep -rl "$1" * | xargs sed -i "s/$1/$2/g"
 }
+# source $ZSH/oh-my-zsh.sh
+#unalias rg
+
+# export FZF_DEFAULT_COMMAND='rg --files --follow --glob "!.git/*"'
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export TERM=screen-256color

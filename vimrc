@@ -1,6 +1,8 @@
 " Running SO...
 let isMac = system("uname") == "Darwin\n"
 
+source ~/.vim/color-reference.txt
+
 if filereadable(expand("~/.vim-plugins-rc"))
   call plug#begin('~/.vim/plugs')
   source ~/.vim-plugins-rc
@@ -11,7 +13,7 @@ endif
 set viminfo='100,\"5,:50,%,n~/.viminfo'
 
 " Config
-"set nocompatible
+set nocompatible
 set timeout
 "set timeoutlen=1000
 "set ttimeoutlen=100
@@ -26,7 +28,7 @@ set hlsearch
 set tabstop=2
 set shiftwidth=2
 set expandtab
-"set smarttab
+set smarttab
 set history=2000
 set scrolljump=5
 set scrolloff=3
@@ -40,6 +42,7 @@ set laststatus=2
 " Some magic... for delay
 set re=1
 set lazyredraw
+set et   "spaces instead of tabs
 
 if isMac
   set mouse=nicr
@@ -89,18 +92,15 @@ endif
 autocmd Filetype javascript,python setlocal tabstop=4 shiftwidth=4 expandtab
 autocmd BufEnter *.handlebars setlocal tabstop=4 shiftwidth=4 expandtab
 
-" Restore cursor to last positon
-
 " Set colors
 hi CursorLine term=bold cterm=bold ctermbg=none
 hi Search ctermfg=black ctermbg=green
-
-" Solarized + Colorscheme configs
-" In Iterm put TangoDark theme + term-new simulation
-let g:solarized_termcolors=256
+" In Iterm put TangoDark theme
+set t_Co=256
+set term=screen-256color
 colorscheme grb256
-set background=dark
-"set t_Co=256
+" let g:solarized_termcolors=256
+set background=light
 
 " GitGutter
 let g:gitgutter_enabled = 0
