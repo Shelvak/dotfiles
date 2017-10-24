@@ -70,8 +70,8 @@ if test "$(uname)" = "Darwin"; then
 		sudo kill -9 "$(ps ax|grep 'coreaudio[a-z]' | awk '{print $1}')"
 	}
   alias flush_cache="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder"
+  export BAY_HOST=localhost
   export BAY_HOME=/Users/rotsen/eventbrite/docker-dev
-  eval $(docker-machine env evbdev)
 else
   export PKGDEST=/home/rotsen/tmp/cache
 
