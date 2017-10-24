@@ -20,7 +20,7 @@ set timeout
 "Delayer
 set showcmd
 set showmatch
-set noshowmode
+" set noshowmode
 set smartcase
 set incsearch
 set mouse=v
@@ -64,8 +64,8 @@ let mapleader=","
 
 " Persistent undo
 if exists('+undofile') && exists('+undodir')
-	set undodir=~/.vim/undodir
-	set undofile
+  set undodir=~/.vim/undodir
+  set undofile
 endif
 
 syntax on
@@ -91,15 +91,18 @@ endif
 
 autocmd Filetype javascript,python setlocal tabstop=4 shiftwidth=4 expandtab
 autocmd BufEnter *.handlebars setlocal tabstop=4 shiftwidth=4 expandtab
+autocmd BufWritePre * if index(['gitcommit'], &ft) < 0 | %s/\t/  /ge  " Replace tabs except in gitcommit msg
 
 " Set colors
 hi CursorLine term=bold cterm=bold ctermbg=none
 hi Search ctermfg=black ctermbg=green
-" In Iterm put TangoDark theme
+
+" Solarized + Colorscheme configs
+" In Iterm put TangoDark theme + term-new simulation
 set t_Co=256
 set term=screen-256color
+let g:solarized_termcolors=256
 colorscheme grb256
-" let g:solarized_termcolors=256
 set background=light
 
 " GitGutter
@@ -118,11 +121,6 @@ endif
 " SmartColumns
 let g:smart_display_opts = {'guibg': 'Blue' }
 autocmd Filetype python let g:smart_display_opts = {'guibg': 'Blue', 'column': '120' }
-
-" JSHint
-"let jshint2_save = 1
-"let jshint2_error = 0
-"let jshint2_height = 5
 
 " Short Cuts
 map <Leader>n :set number!<CR>:GitGutterToggle<CR>
@@ -190,22 +188,31 @@ let g:fzf_nvim_statusline=0
 nnoremap <silent> <leader>t :Files<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>. :Lines<CR>
-map <silent> · :call SearchDefWithAg()<CR>
+"Fuck ctags
+nnoremap <silent> · :call SearchDefWithRg()<CR>
+vnoremap <silent> · :call SearchVisualSelectionWithRg()<CR>
+
 
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   'rg --column --line-number --follow --no-heading --color=always '.shellescape(<q-args>), 1,
   \   <bang>0 ? fzf#vim#with_preview('up:60%')
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
 
+command! -bang -nargs=* Rgi
+  \ call fzf#vim#grep(
+  \   'rg -i --column --line-number --follow --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
 
-function! SearchDefWithAg()
-  execute 'Rg' 'def '.expand('<cword>')
-  "execute 'rg -i --column --line-number --no-heading --color=always "def '.expand('<cword>').'"'
+function! SearchDefWithRg()
+  " Ultra searcher viejaaa
+  execute 'Rg' 'def '.expand('<cword>').'|module '.expand('<cword>').'|class '.expand('<cword>').'|^'.expand('<cword>')'\s?='
 endfunction
 
-function! SearchVisualSelectionWithAg() range
+function! SearchVisualSelectionWithRg() range
   let old_reg = getreg('"')
   let old_regtype = getregtype('"')
   let old_clipboard = &clipboard
@@ -214,21 +221,17 @@ function! SearchVisualSelectionWithAg() range
   let selection = getreg('"')
   call setreg('"', old_reg, old_regtype)
   let &clipboard = old_clipboard
-  execute 'Ag' selection
+  execute 'Rg' selection
 endfunction
 
-command! -bang -nargs=* Agi call fzf#vim#grep('rg -i --column --line-number --no-heading --color=always '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+"Checkear esta mierda
+"let g:multi_cursor_use_default_mapping=0
+"let g:multi_cursor_start_key='<F3>'
+"let g:multi_cursor_next_key='<F4>'
+"let g:multi_cursor_prev_key='<F5>'
+"let g:multi_cursor_skip_key='<F6>'
+"let g:multi_cursor_quit_key='<Esc>'
 
-let g:multi_cursor_use_default_mapping=0
-let g:multi_cursor_start_key='<F3>'
-let g:multi_cursor_next_key='<F4>'
-let g:multi_cursor_prev_key='<F5>'
-let g:multi_cursor_skip_key='<F6>'
-let g:multi_cursor_quit_key='<Esc>'
-
-" NeoMake
-let g:neomake_javascript_eslint_maker = {
-    \ 'args': ['--verbose'],
-    \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
-    \ }
-let g:neomake_javascript_enabled_makers = ['eslint']
+" Ctrol arrows move
+map <C-Left> b
+map <C-Right> w

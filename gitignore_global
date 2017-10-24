@@ -28,10 +28,12 @@ config/deploy/*
 config/app_config.yml
 config/secrets.yml
 config/schema.rb
+config/projections.json
 coverage/
 db/schema.rb
 uploads/
 private/
+public/*
 
 # Ruby version
 ##############
@@ -66,7 +68,6 @@ node_modules/
 # Helpers and others #
 ######
 rotsen_ignore_me*
-
 mysqlbinlog/
-
 .vagrant
+.envrc

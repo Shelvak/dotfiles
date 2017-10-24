@@ -10,10 +10,7 @@ DISABLE_CORRECTION="true"
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 ZSH_THEME='Shelvak'
-plugins=(git cd_rails bundler rails)
-if test "$(uname)" != "Darwin"; then
-  plugins+=(tmux)
-fi
+plugins=(git cd_rails bundler rails autoenv tmux)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -66,9 +63,9 @@ if test "$(uname)" = "Darwin"; then
 
   alias core="cd ~/eventbrite/core"
   alias docker-dev="cd ~/eventbrite/docker-dev"
-	function restart_sound() {
-		sudo kill -9 "$(ps ax|grep 'coreaudio[a-z]' | awk '{print $1}')"
-	}
+  function restart_sound() {
+    sudo kill -9 "$(ps ax|grep 'coreaudio[a-z]' | awk '{print $1}')"
+  }
   alias flush_cache="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder"
   export BAY_HOST=localhost
   export BAY_HOME=/Users/rotsen/eventbrite/docker-dev
@@ -79,18 +76,13 @@ else
   alias install="sudo pacman -S"
   alias update_system="pac -Syyuu && pacaur -Syua"
   alias clear_arch="pac -Rsn $(pacman -Qdtq)"
-
-  # Ruby version
-  source /usr/share/chruby/chruby.sh
-  chruby 2.3.4
-  source /usr/share/chruby/auto.sh
-
-  # AutoHook for dir/.envrc
-  eval "$(direnv hook zsh)"
-  export DIRENV_LOG_FORMAT=''  # skip the script echo's
+  alias pacaur_apps="pac -Qm"
+  export GOPATH=/opt/go
 fi
 
-
+# Ruby version
+source /usr/share/chruby/chruby.sh
+source /usr/share/chruby/auto.sh
 
 # No se para que puta es esto pero estaba bueno
 [ -f /etc/profile.d/vte.sh ] && source /etc/profile.d/vte.sh
