@@ -1,3 +1,8 @@
+# Required Fn
+
+safe_source () { [ -f $1 ] && source $1 }
+
+
 # Autostart tmux
 export TERM=screen-256color
 ZSH_TMUX_AUTOSTART="true"
@@ -6,13 +11,14 @@ setopt no_flowcontrol
 
 # ZSH Configs
 ZSH="$HOME/.oh-my-zsh"
+ZSH_CUSTOM="$ZSH/custom"
+ZSH_THEME='Shelvak'
 DISABLE_CORRECTION="true"
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
-ZSH_THEME='Shelvak'
-plugins=(git cd_rails bundler rails autoenv tmux)
 
-source $ZSH/oh-my-zsh.sh
+plugins=(git cd_git bundler rails autoenv tmux)
+safe_source $ZSH/oh-my-zsh.sh
 
 # Completion
 # autoload -U +X compinit && compinit   # Already implemented on oh-my-zsh
@@ -59,7 +65,7 @@ if test "$(uname)" = "Darwin"; then
   # export LC_ALL="en_US.UTF-8"
   export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
   export ARCANIST_INSTALL_DIR=/Users/rotsen/.evbdevtools
-  source $ARCANIST_INSTALL_DIR/devtools/scripts/devenv_bash/arcanist_helpers.sh
+  safe_source $ARCANIST_INSTALL_DIR/devtools/scripts/devenv_bash/arcanist_helpers.sh
 
   alias core="cd ~/eventbrite/core"
   alias docker-dev="cd ~/eventbrite/docker-dev"
@@ -81,18 +87,22 @@ else
 fi
 
 # Ruby version
-source /usr/share/chruby/chruby.sh
-source /usr/share/chruby/auto.sh
+safe_source /usr/share/chruby/chruby.sh
+chruby 2.4.2
+safe_source /usr/share/chruby/auto.sh
+
+# Autoenv
+safe_source ~/.autoenv/activate.sh
 
 # No se para que puta es esto pero estaba bueno
-[ -f /etc/profile.d/vte.sh ] && source /etc/profile.d/vte.sh
+safe_source /etc/profile.d/vte.sh
 
 # Pkgfile bin hook to find unknown commands
-[ -f /usr/share/doc/pkgfile/command-not-found.zsh ] && source /usr/share/doc/pkgfile/command-not-found.zsh
+safe_source /usr/share/doc/pkgfile/command-not-found.zsh
 
 # FuzzyFind Config
 unalias rg 2>/dev/null >/dev/null # in some cases rg is set
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+safe_source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files --follow --glob "!.git/*"'
 
 # OPAM configuration

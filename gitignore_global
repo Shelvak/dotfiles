@@ -34,6 +34,7 @@ db/schema.rb
 uploads/
 private/
 public/*
+tmp/
 
 # Ruby version
 ##############
@@ -71,3 +72,6 @@ rotsen_ignore_me*
 mysqlbinlog/
 .vagrant
 .envrc
+.env
+
+.gitignore
