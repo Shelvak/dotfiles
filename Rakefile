@@ -1,6 +1,12 @@
 require 'rake'
 
-dotfiles_dir = [Dir.home, '.dotfiles'].join('/')
+def sym_link(origin, destiny)
+  puts %x{ln -fvs #{origin} #{destiny}}
+end
+
+def sym_link_dir(origin, destiny)
+  puts %x{ln -fvsT #{origin} #{destiny}}
+end
 
 desc "install the dot files into user's home directory"
 task :install do
@@ -14,16 +20,16 @@ task :install do
   puts 'Linking folders...'
   ['vim', 'oh-my-zsh'].each do |folder|
     puts "Linking #{folder}"
-    puts %x{ln -fs "$PWD/#{folder}" "$HOME/.#{folder}"}
+    sym_link_dir "$PWD/#{folder}", "$HOME/.#{folder}"
   end
 
-  puts 'Copying zsh customs...'
-  omz_plugins = "#{dotfiles_dir}/oh-my-zsh/custom/plugins"
-  omz_themes  = "#{dotfiles_dir}/oh-my-zsh/custom/themes"
+  puts 'Linking zsh customs...'
+  omz_plugins = '$PWD/oh-my-zsh/custom/plugins/'
+  omz_themes  = '$PWD/oh-my-zsh/custom/themes/'
   puts %x{mkdir -p #{omz_plugins} }
   puts %x{mkdir -p #{omz_themes} }
-  puts %x{ln -sf #{dotfiles_dir}/zsh-plugins/* #{omz_plugins}/ }
-  puts %x{ln -sf #{dotfiles_dir}/zsh-themes/*  #{omz_themes}/ }
+  sym_link '$PWD/zsh-plugins/*', omz_plugins
+  sym_link '$PWD/zsh-themes/*',  omz_themes
 
   puts 'Linking files...'
   %w(
@@ -41,15 +47,15 @@ task :install do
     vimrc
     zshrc
   ).each do |file|
-    puts %x{ln -vfs "$PWD/#{file}" "$HOME/.#{file}"}
+    sym_link "$PWD/#{file}", "$HOME/.#{file}"
   end
 
   puts 'linking custom-dir files'
-  puts %x{mkdir -o $HOME/.bundle}
-  puts %x{ln -vfs $PWD/bundle-config $HOME/.bundle/}
+  %x{mkdir -p $HOME/.bundle}
+  sym_link '$PWD/bundle-config', '$HOME/.bundle/'
 
   puts 'Installing vim plugins'
-  puts %x{vim +PlugUpgrade +PlugInstall +qall}
+  puts %x{vim +PlugUpgrade! +PlugInstall! +qall}
 
   puts 'Ready ^^'
 end
@@ -63,6 +69,6 @@ task :update do
   puts %x{git submodule foreach "git pull origin master"}
 
   puts 'Updating vim plugins'
-  puts %x{vim +PlugUpgrade +PlugUpdate +qall}
+  %x{vim +PlugUpgrade! +PlugUpdate! +qall 2>&1}
   puts 'Done ^^'
 end
