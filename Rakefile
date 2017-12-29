@@ -24,12 +24,10 @@ task :install do
   end
 
   puts 'Linking zsh customs...'
-  omz_plugins = '$PWD/oh-my-zsh/custom/plugins/'
-  omz_themes  = '$PWD/oh-my-zsh/custom/themes/'
-  puts %x{mkdir -p #{omz_plugins} }
-  puts %x{mkdir -p #{omz_themes} }
-  sym_link '$PWD/zsh-plugins/*', omz_plugins
-  sym_link '$PWD/zsh-themes/*',  omz_themes
+  sym_link_dir '$PWD/zsh-themes',  '$PWD/oh-my-zsh/custom/themes'
+  `ls $PWD/zsh-plugins`.split("\n").each do |dir|
+    sym_link_dir "$PWD/zsh-plugins/#{dir}", "$PWD/oh-my-zsh/custom/plugins/#{dir}"
+  end
 
   puts 'Linking files...'
   %w(
@@ -52,7 +50,7 @@ task :install do
 
   puts 'linking custom-dir files'
   %x{mkdir -p $HOME/.bundle}
-  sym_link '$PWD/bundle-config', '$HOME/.bundle/'
+  sym_link '$PWD/bundle-config', '$HOME/.bundle/config'
 
   puts 'Installing vim plugins'
   puts %x{vim +PlugUpgrade! +PlugInstall! +qall}
