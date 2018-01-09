@@ -48,7 +48,7 @@ export VISUAL=$EDITOR
 alias v=$EDITOR
 alias zc="v ~/.zshrc"
 alias vc="v ~/.vimrc"
-alias sv="sudo v"
+alias sv="sudo vim"
 alias ctl="sudo systemctl"
 alias pq="sudo psql -U postgres"
 alias rcp="rails c production"
@@ -76,14 +76,15 @@ if test "$(uname)" = "Darwin"; then
   export BAY_HOST=localhost
   export BAY_HOME=/Users/rotsen/eventbrite/docker-dev
 else
-  export PKGDEST=/home/rotsen/tmp/cache
-
   alias pac="sudo pacman"
   alias install="sudo pacman -S"
   alias update_system="pac -Syyuu && pacaur -Syua"
   alias clear_arch="pac -Rsn $(pacman -Qdtq)"
   alias pacaur_apps="pac -Qm"
+  alias pinstall="sudo powerpill -S"
+
   export GOPATH=/opt/go
+  export PKGDEST=/home/rotsen/tmp/cache
 fi
 
 # Ruby version

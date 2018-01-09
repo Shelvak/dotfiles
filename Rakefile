@@ -70,3 +70,68 @@ task :update do
   %x{vim +PlugUpgrade! +PlugUpdate! +qall 2>&1}
   puts 'Done ^^'
 end
+
+desc 'Install all basic shit'
+task :arch_install do
+  if `which powerpill 2>/dev/null`.strip == ''
+    puts "Powerpill is needed"
+    exit 0
+  end
+
+  if `which pacaur 2>/dev/null`.strip == ''
+    puts "pacaur is needed"
+    exit 0
+  end
+
+  all = %w(
+    binutils
+    chrome-gnome-shell clementine clang
+    direnv docker docker-compose
+    expac
+    ffmpeg fzf fakeroot
+    gst-libav gst-plugins-bad gst-plugins-base gst-plugins-good gst-plugins-ugly
+    gstreamer gstreamer gstreamer-vaapi git gcc
+    htop
+    icu iotop
+    lib32-icu
+    mlocate mtr make
+    nmap nodejs npm
+    pgadmin3 postgresql-libs pkg-config
+    redis-desktop-manager ripgrep
+    slack-desktop smplayer spotify sshfs
+    telegram-desktop-bin tmux
+    wine
+    xclip
+    yajl
+  )
+
+  puts 'Checking packages against official repos'
+  pacman_checks = `pacman -Si #{all.join(' ')}  2>/dev/null`
+  official_pkgs = pacman_checks.scan(/(Nombre|Name)\s+: (.+)/i).map do |_key, name|
+    name if name && name.strip != ''
+  end.uniq.compact.sort
+
+  no_official = all - official_pkgs
+  aur_pkgs = []
+  if no_official.size > 0
+    puts 'Checking packages against AUR repo'
+    aur_pkgs = no_official.map do |pkg|
+      pkg if `pacaur -sq #{pkg} 2>/dev/null`.strip != ''
+    end.compact.uniq.sort
+  end
+
+  puts "Installing official packages: #{official_pkgs.join(', ')}\n"
+  system("sudo powerpill -Sy --needed #{official_pkgs.join(' ')}")
+  puts "\n"
+
+  if aur_pkgs.size > 0
+    puts "Installing from AUR: #{aur_pkgs.join(', ')}\n"
+    aur_pkgs.each do |pkg|
+      system("pacaur -S --noedit --noconfirm --needed #{pkg}")
+    end
+  end
+
+  if (unavailable = no_official - aur_pkgs).size > 0
+    puts "No se encontraron: #{unavailable.join(', ')}"
+  end
+end
