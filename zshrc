@@ -59,6 +59,7 @@ alias gpr="git pull --rebase origin master"
 alias ..='cd ..'
 alias ..2='cd ../..'
 alias ..3='cd ../../..'
+alias d='docker-compose'
 
 if test "$(uname)" = "Darwin"; then
   # export LANG="en_US.UTF-8"
@@ -100,6 +101,9 @@ safe_source /etc/profile.d/vte.sh
 
 # Pkgfile bin hook to find unknown commands
 safe_source /usr/share/doc/pkgfile/command-not-found.zsh
+
+# Autoenv
+[ -f ~/.autoenv/activate.sh ] && source ~/.autoenv/activate.sh
 
 # FuzzyFind Config
 unalias rg 2>/dev/null >/dev/null # in some cases rg is set

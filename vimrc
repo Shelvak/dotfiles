@@ -235,3 +235,12 @@ endfunction
 " Ctrol arrows move
 map <C-Left> b
 map <C-Right> w
+
+" ALE linter
+"let b:ale_linters=['erb']
+let g:ale_lint_on_save=0
+let g:ale_lint_on_text_changed=0
+let g:ale_lint_on_enter=0
+let g:ale_lint_on_insert_leave=0
+" let g:ale_ruby_rubocop_executable='rubocop'
+" let g:ale_ruby_ruby_executable='/home/rotsen/.rubies/ruby-2.4.2/bin/ruby'

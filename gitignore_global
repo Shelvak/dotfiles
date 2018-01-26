@@ -12,6 +12,7 @@
 # Logs and databases #
 ######################
 *.log
+*.log.*
 *.sql
 *.sqlite3
 
@@ -34,7 +35,7 @@ db/schema.rb
 uploads/
 private/
 public/*
-tmp/
+tmp/*
 
 # Ruby version
 ##############
