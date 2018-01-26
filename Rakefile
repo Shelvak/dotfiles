@@ -83,6 +83,9 @@ task :arch_install do
     exit 0
   end
 
+  # crear temporal de AUR
+  `mkdir -p ~/tmp/cache`
+
   all = %w(
     binutils
     chrome-gnome-shell clementine clang
@@ -121,7 +124,7 @@ task :arch_install do
   end
 
   puts "Installing official packages: #{official_pkgs.join(', ')}\n"
-  system("sudo powerpill -Sy --needed #{official_pkgs.join(' ')}")
+  system("sudo powerpill -S --needed #{official_pkgs.join(' ')}")
   puts "\n"
 
   if aur_pkgs.size > 0
