@@ -83,6 +83,16 @@ else
   alias clear_arch="pac -Rsn $(pacman -Qdtq)"
   alias pacaur_apps="pac -Qm"
   alias pinstall="sudo powerpill -S"
+  unalias d
+  alias d="docker-compose"
+  function localserver() {
+    port=8888
+    if [ "$1" != "" ]; then
+      port=$1
+    fi
+
+    ruby -run -e httpd . -p $port -b 0.0.0.0
+  }
 
   export GOPATH=/opt/go
   export PKGDEST=/home/rotsen/tmp/cache

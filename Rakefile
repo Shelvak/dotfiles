@@ -134,4 +134,15 @@ task :arch_install do
   if (unavailable = no_official - aur_pkgs).size > 0
     puts "No se encontraron: #{unavailable.join(', ')}"
   end
+
+
+  puts "Configs:"
+  puts 'Run this to install the terminal bk'
+  puts 'dconf load /org/gnome/terminal/ < gnome_terminal.bk'
+
+  puts 'smplayer...'
+  puts `mkdir -p ~/.config/smplayer/; cp -vf smplayer.ini ~/.config/smplayer/smplayer.ini`
+
+  puts "Adding user to docker group"
+  puts `sudo gpasswd -a $USER docker`
 end
