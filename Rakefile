@@ -42,6 +42,7 @@ task :install do
     rubocop.yml
     screenrc
     tmux.conf
+    vim-plugins-rc
     vimrc
     zshrc
   ).each do |file|
@@ -103,7 +104,7 @@ task :arch_install do
     redis-desktop-manager ripgrep
     slack-desktop smplayer spotify sshfs
     telegram-desktop-bin tmux
-    wine
+    whatsapp-desktop wine
     xclip
     yajl
   )

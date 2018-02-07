@@ -101,8 +101,8 @@ fi
 
 # Ruby version
 safe_source /usr/share/chruby/chruby.sh
-chruby 2.4.2
 safe_source /usr/share/chruby/auto.sh
+chruby 2.4
 
 # Autoenv
 safe_source ~/.autoenv/activate.sh
