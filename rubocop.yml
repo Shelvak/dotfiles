@@ -97,9 +97,6 @@ Lint/HandleExceptions:
   Description: 'Don"t suppress exception.'
   Enabled: true
   StyleGuide: "https://github.com/bbatsov/ruby-style-guide#dont-hide-exceptions"
-Lint/InvalidCharacterLiteral:
-  Description: "Checks for invalid character literals with a non-escaped whitespace character."
-  Enabled: true
 Lint/LiteralInCondition:
   Description: "Checks of literals used in conditions."
   Enabled: true
@@ -176,7 +173,7 @@ Lint/Void:
   Enabled: true
 Metrics/AbcSize:
   Description: "A calculated magnitude based on number of assignments, branches, and conditions."
-  Enabled: true
+  Enabled: false
   Reference: "http://c2.com/cgi/wiki?AbcMetric"
 Metrics/BlockNesting:
   Description: "Avoid excessive block nesting"
@@ -193,7 +190,7 @@ Metrics/CyclomaticComplexity:
 Metrics/LineLength:
   Description: "Limit lines to 80 characters."
   Enabled: true
-  Max: 90
+  Max: 120
   StyleGuide: "https://github.com/bbatsov/ruby-style-guide#80-character-limits"
 Metrics/MethodLength:
   Description: "Avoid methods longer than 10 lines of code."
@@ -310,7 +307,7 @@ Style/ArrayJoin:
   StyleGuide: "https://github.com/bbatsov/ruby-style-guide#array-join"
 Style/AsciiComments:
   Description: "Use only ascii symbols in comments."
-  Enabled: true
+  Enabled: false
   StyleGuide: "https://github.com/bbatsov/ruby-style-guide#english-comments"
 Style/AsciiIdentifiers:
   Description: "Use only ascii symbols in identifiers."
@@ -552,10 +549,6 @@ Style/LeadingCommentSpace:
 Style/LineEndConcatenation:
   Description: "Use  instead of + or << to concatenate two string literals at line end."
   Enabled: true
-Style/MethodCallParentheses:
-  Description: "Do not use parentheses for method calls with no arguments."
-  Enabled: true
-  StyleGuide: "https://github.com/bbatsov/ruby-style-guide#no-args-no-parens"
 Style/MethodCalledOnDoEndBlock:
   Description: "Avoid chaining a method call on a do...end block."
   Enabled: false
@@ -634,10 +627,6 @@ Style/OneLineConditional:
   Description: "Favor the ternary operator(?:) over if/then/else/end constructs."
   Enabled: true
   StyleGuide: "https://github.com/bbatsov/ruby-style-guide#ternary-operator"
-Style/OpMethod:
-  Description: "When defining binary operators, name the argument other."
-  Enabled: true
-  StyleGuide: "https://github.com/bbatsov/ruby-style-guide#other-arg"
 Style/OptionalArguments:
   Description: "Checks for optional arguments that do not appear at the end of the argument list"
   Enabled: true
@@ -868,3 +857,9 @@ Style/WordArray:
   Description: "Use %w or %W for arrays of words."
   Enabled: true
   StyleGuide: "https://github.com/bbatsov/ruby-style-guide#percent-w"
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/RescueStandardError:
+  Enabled: false
+Layout/EmptyLineAfterMagicComment:
+  Enabled: false

@@ -56,6 +56,7 @@ alias rgm='rails g migration'
 alias fuck='sudo $(fc -ln |tail -1)'
 alias t="bin/rake test"
 alias gpr="git pull --rebase origin master"
+alias gpl="git pull --no-rebase origin master"
 alias ..='cd ..'
 alias ..2='cd ../..'
 alias ..3='cd ../../..'
@@ -105,16 +106,13 @@ safe_source /usr/share/chruby/auto.sh
 chruby 2.4
 
 # Autoenv
-safe_source ~/.autoenv/activate.sh
+# safe_source ~/.autoenv/activate.sh
 
 # No se para que puta es esto pero estaba bueno
 safe_source /etc/profile.d/vte.sh
 
 # Pkgfile bin hook to find unknown commands
 safe_source /usr/share/doc/pkgfile/command-not-found.zsh
-
-# Autoenv
-[ -f ~/.autoenv/activate.sh ] && source ~/.autoenv/activate.sh
 
 # FuzzyFind Config
 unalias rg 2>/dev/null >/dev/null # in some cases rg is set

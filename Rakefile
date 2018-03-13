@@ -94,7 +94,7 @@ task :arch_install do
     expac
     ffmpeg fzf fakeroot
     gst-libav gst-plugins-bad gst-plugins-base gst-plugins-good gst-plugins-ugly
-    gstreamer gstreamer gstreamer-vaapi git gcc
+    gstreamer gstreamer gstreamer-vaapi git gcc gvim
     htop
     icu iotop
     lib32-icu
