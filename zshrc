@@ -83,7 +83,7 @@ else
   alias update_system="pac -Syyuu && pacaur -Syua"
   alias clear_arch="pac -Rsn $(pacman -Qdtq)"
   alias pacaur_apps="pac -Qm"
-  alias pinstall="sudo powerpill -S"
+  alias power="sudo powerpill"
   alias minar="cd /Secundario/rotsen/crypto/xmrig-nvidia-2.4.2/build; sudo ./xmrig-nvidia"
   unalias d
   alias d="docker-compose"
