@@ -1,0 +1,24 @@
+# zshrc
+if test "$(uname)" = "Darwin"; then
+  # export LANG="en_US.UTF-8"
+  # export LC_ALL="en_US.UTF-8"
+  export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
+
+  function restart_sound() {
+    sudo kill -9 "$(ps ax|grep 'coreaudio[a-z]' | awk '{print $1}')"
+  }
+  alias flush_cache="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder"
+fi
+
+
+# vimrc
+let isMac = system("uname") == "Darwin\n"
+
+if isMac
+  set mouse=nicr
+  set ai
+  set si
+
+  let g:gist_clip_command = 'pbcopy'
+else
+

@@ -1,6 +1,4 @@
 " Running SO...
-let isMac = system("uname") == "Darwin\n"
-
 source ~/.vim/color-reference.txt
 
 if filereadable(expand("~/.vim-plugins-rc"))
@@ -44,19 +42,9 @@ set re=1
 set lazyredraw
 set et   "spaces instead of tabs
 
-if isMac
-  set mouse=nicr
-  set ai
-  set si
-
-  set dictionary+=~/.evbdevtools/phabricator_users.txt
-  set dictionary+=~/.evbdevtools/phabricator_groups.txt
-else
-  " Encoding
-  scriptencoding utf-8
-  setglobal fileencoding=utf-8
-endif
-
+" Encoding
+scriptencoding utf-8
+setglobal fileencoding=utf-8
 set encoding=utf-8
 "set fileformats=unix,dos
 
@@ -111,12 +99,7 @@ hi SignColumn ctermbg=none
 
 " Gist-vim
 let g:gist_detect_filetype = 1
-
-if isMac
-  let g:gist_clip_command = 'pbcopy'
-else
-  let g:gist_clip_command = 'xclip -selection clipboard'
-endif
+let g:gist_clip_command = 'xclip -selection clipboard'
 
 " SmartColumns
 let g:smart_display_opts = {'guibg': 'Blue' }
@@ -151,13 +134,17 @@ nnoremap <Leader>gc :Gcommit<CR>
 map <F2> :cprev<CR>
 map <F1> :cnext<CR>
 
-" Copy selected|entire file to systemclipboard
+" ========================================
+" Clipboard / Copy selected|entire file to systemclipboard
+" ========================================
 " set clipboard=unnamedplus
 map <C-C> :%y+<CR>
 " Copy the current file path
 nnoremap <leader>C :let @+=expand("%")<CR>
 
-" Rubocop
+" ========================================
+" RuboCop
+" ========================================
 let fts = ['rb', 'erb']
 if index(fts, &filetype) == -1
   let g:vimrubocop_keymap = 0
@@ -165,20 +152,20 @@ if index(fts, &filetype) == -1
   nmap <F7> :RuboCop<CR>
 endif
 
-set tags=~/tags
-runtime! settings/*
+" ========================================
+" CTAGS (no configurado)
+" ========================================
+" set tags=~/tags
+" runtime! settings/*
+" let g:vim_tags_auto_generate = 1
 
-let g:python_host_prog = '/usr/bin/python2'
-let g:python4_host_prog = '/usr/bin/python'
-
-let g:ruby_host_prog = '/home/rotsen/.rubies/ruby-2.3.4/bin/ruby'
-
+" ========================================
+" UltinSnippets
+" ========================================
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsListSnippets="<m-tab>"
-
-let g:vim_tags_auto_generate = 1
 
 " ========================================
 " FZF setup
@@ -192,7 +179,6 @@ nnoremap <silent> <leader>. :Lines<CR>
 "Fuck ctags
 nnoremap <silent> · :call SearchDefWithRg()<CR>
 vnoremap <silent> · :call SearchVisualSelectionWithRg()<CR>
-
 
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
@@ -210,7 +196,7 @@ command! -bang -nargs=* Rgi
 
 function! SearchDefWithRg()
   " Ultra searcher viejaaa
-  execute 'Rg' 'def '.expand('<cword>').'|module '.expand('<cword>').'|class '.expand('<cword>').'|^'.expand('<cword>')'\s?='
+  execute 'Rg' 'def '.expand('<cword>').'|def self.'.expand('<cword>').'|module '.expand('<cword>').'|class '.expand('<cword>').'|^'.expand('<cword>')'\s?='
 endfunction
 
 function! SearchVisualSelectionWithRg() range
@@ -225,7 +211,9 @@ function! SearchVisualSelectionWithRg() range
   execute 'Rg' selection
 endfunction
 
-"Checkear esta mierda
+" ========================================
+" MultiCursor (Checkear esta mierda)
+" ========================================
 "let g:multi_cursor_use_default_mapping=0
 "let g:multi_cursor_start_key='<F3>'
 "let g:multi_cursor_next_key='<F4>'
@@ -233,12 +221,16 @@ endfunction
 "let g:multi_cursor_skip_key='<F6>'
 "let g:multi_cursor_quit_key='<Esc>'
 
+" ========================================
 " Ctrol arrows move
-map <C-Left> b
-map <C-Right> w
+" ========================================
+" map <C-Left> b
+" map <C-Right> w
 
+" ========================================
 " ALE linter
-"let b:ale_linters=['erb']
+" ========================================
+" let b:ale_linters=['erb']
 " let g:ale_lint_on_save=0
 " let g:ale_lint_on_text_changed=0
 " let g:ale_lint_on_enter=0

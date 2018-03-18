@@ -45,6 +45,7 @@ task :install do
     vim-plugins-rc
     vimrc
     zshrc
+    zsh-functions
   ).each do |file|
     sym_link "$PWD/#{file}", "$HOME/.#{file}"
   end

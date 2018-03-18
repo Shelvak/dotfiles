@@ -1,7 +1,5 @@
-# Required Fn
-
-safe_source () { [ -f $1 ] && source $1 }
-
+# Load base-custom functions
+source ~/.zsh-functions
 
 # Autostart tmux
 export TERM=screen-256color
@@ -17,7 +15,7 @@ DISABLE_CORRECTION="true"
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(git cd_git bundler rails autoenv tmux)
+plugins=(git cd_git bundler rails autoenv tmux docker)
 safe_source $ZSH/oh-my-zsh.sh
 
 # Completion
@@ -55,59 +53,28 @@ alias pq="psql -U docker -h localhost -p 5432"
 alias rcp="rails c production"
 alias rgm='rails g migration'
 alias fuck='sudo $(fc -ln |tail -1)'
-alias t="bin/rake test"
+alias t="rails test"
 alias gpr="git pull --rebase origin master"
 alias gpl="git pull --no-rebase origin master"
 alias ..='cd ..'
 alias ..2='cd ../..'
 alias ..3='cd ../../..'
-alias d='docker-compose'
+alias minar="cd /Secundario/rotsen/crypto/xmrig-nvidia-2.4.2/build; sudo ./xmrig-nvidia"
 
-if test "$(uname)" = "Darwin"; then
-  # export LANG="en_US.UTF-8"
-  # export LC_ALL="en_US.UTF-8"
-  export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
-  export ARCANIST_INSTALL_DIR=/Users/rotsen/.evbdevtools
-  safe_source $ARCANIST_INSTALL_DIR/devtools/scripts/devenv_bash/arcanist_helpers.sh
+# Arch specific logic
+export PKGDEST=/home/rotsen/tmp/cache  # AUR cache
+alias pac="sudo pacman"
+alias install="pac -S"
+alias power="sudo powerpill"
+alias qinstall="power -S"
+alias update_system="pac -Syy && power -Suu && pacaur -Syua"
+alias clear_arch="pac -Rsn $(pacman -Qdtq)"
+alias pacaur_apps="pac -Qm"
 
-  alias core="cd ~/eventbrite/core"
-  alias docker-dev="cd ~/eventbrite/docker-dev"
-  function restart_sound() {
-    sudo kill -9 "$(ps ax|grep 'coreaudio[a-z]' | awk '{print $1}')"
-  }
-  alias flush_cache="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder"
-  export BAY_HOST=localhost
-  export BAY_HOME=/Users/rotsen/eventbrite/docker-dev
-else
-  alias pac="sudo pacman"
-  alias install="sudo pacman -S"
-  alias update_system="pac -Syyuu && pacaur -Syua"
-  alias clear_arch="pac -Rsn $(pacman -Qdtq)"
-  alias pacaur_apps="pac -Qm"
-  alias power="sudo powerpill"
-  alias minar="cd /Secundario/rotsen/crypto/xmrig-nvidia-2.4.2/build; sudo ./xmrig-nvidia"
-  unalias d
-  alias d="docker-compose"
-  function localserver() {
-    port=8888
-    if [ "$1" != "" ]; then
-      port=$1
-    fi
-
-    ruby -run -e httpd . -p $port -b 0.0.0.0
-  }
-
-  export GOPATH=/opt/go
-  export PKGDEST=/home/rotsen/tmp/cache
-fi
-
-# Ruby version
+# Ruby logic
 safe_source /usr/share/chruby/chruby.sh
-safe_source /usr/share/chruby/auto.sh
 chruby 2.4
-
-# Autoenv
-# safe_source ~/.autoenv/activate.sh
+safe_source /usr/share/chruby/auto.sh
 
 # No se para que puta es esto pero estaba bueno
 safe_source /etc/profile.d/vte.sh
@@ -121,9 +88,7 @@ safe_source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files --follow --glob "!.git/*"'
 
 # OPAM configuration
-# . /home/rotsen/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+# safe_source /home/rotsen/.opam/opam-init/init.zsh
 
-# Custom Fn
-sustituir() {
-  egrep -rl "$1" * | xargs sed -i "s/$1/$2/g"
-}
+# GO logic
+export GOPATH=/opt/go
