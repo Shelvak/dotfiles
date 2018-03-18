@@ -37,6 +37,7 @@ export HISTSIZE=10000
 export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
 
+export DISPLAY=${DISPLAY:-:0} # fix for vim clipboard
 # Editor
 export EDITOR="vim"
 export USE_EDITOR=$EDITOR
@@ -50,7 +51,7 @@ alias zc="v ~/.zshrc"
 alias vc="v ~/.vimrc"
 alias sv="sudo vim"
 alias ctl="sudo systemctl"
-alias pq="sudo psql -U postgres"
+alias pq="psql -U docker -h localhost -p 5432"
 alias rcp="rails c production"
 alias rgm='rails g migration'
 alias fuck='sudo $(fc -ln |tail -1)'

@@ -152,7 +152,7 @@ map <F2> :cprev<CR>
 map <F1> :cnext<CR>
 
 " Copy selected|entire file to systemclipboard
-set clipboard=unnamedplus
+" set clipboard=unnamedplus
 map <C-C> :%y+<CR>
 " Copy the current file path
 nnoremap <leader>C :let @+=expand("%")<CR>
