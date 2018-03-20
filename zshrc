@@ -62,6 +62,7 @@ alias ..3='cd ../../..'
 alias minar="cd /Secundario/rotsen/crypto/xmrig-nvidia-2.4.2/build; sudo ./xmrig-nvidia"
 
 # Arch specific logic
+export PATH="/home/rotsen/bins/:$PATH"
 export PKGDEST=/home/rotsen/tmp/cache  # AUR cache
 alias pac="sudo pacman"
 alias install="pac -S"
