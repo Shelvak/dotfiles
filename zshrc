@@ -15,7 +15,7 @@ DISABLE_CORRECTION="true"
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(git cd_git bundler rails autoenv tmux docker)
+plugins=(git rotsen bundler rails autoenv tmux docker)
 safe_source $ZSH/oh-my-zsh.sh
 
 # Completion
@@ -53,7 +53,6 @@ alias pq="psql -U docker -h localhost -p 5432"
 alias rcp="rails c production"
 alias rgm='rails g migration'
 alias fuck='sudo $(fc -ln |tail -1)'
-alias t="rails test"
 alias gpr="git pull --rebase origin master"
 alias gpl="git pull --no-rebase origin master"
 alias ..='cd ..'
