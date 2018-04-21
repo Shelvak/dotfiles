@@ -15,7 +15,7 @@ DISABLE_CORRECTION="true"
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(git rotsen bundler rails autoenv tmux docker)
+plugins=(git rotsen bundler rails autoenv tmux docker docker-compose)
 safe_source $ZSH/oh-my-zsh.sh
 
 # Completion
@@ -59,6 +59,7 @@ alias ..='cd ..'
 alias ..2='cd ../..'
 alias ..3='cd ../../..'
 alias minar="cd /Secundario/rotsen/crypto/xmrig-nvidia-2.4.2/build; sudo ./xmrig-nvidia"
+alias tmux_reload="tmux source-file ~/.tmux.conf"
 
 # Arch specific logic
 export PATH="/home/rotsen/bins/:$PATH"
@@ -73,8 +74,8 @@ alias pacaur_apps="pac -Qm"
 
 # Ruby logic
 safe_source /usr/share/chruby/chruby.sh
-chruby 2.4
 safe_source /usr/share/chruby/auto.sh
+chruby 2.4
 
 # No se para que puta es esto pero estaba bueno
 safe_source /etc/profile.d/vte.sh
