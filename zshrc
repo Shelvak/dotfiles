@@ -58,7 +58,7 @@ alias gpl="git pull --no-rebase origin master"
 alias ..='cd ..'
 alias ..2='cd ../..'
 alias ..3='cd ../../..'
-alias minar="cd /Secundario/rotsen/crypto/xmrig-nvidia-2.4.2/build; sudo ./xmrig-nvidia"
+alias minar="cd /Secundario/rotsen/crypto/xmrig-nvidia-2.6.0-beta1/build; sudo ./xmrig-nvidia"
 alias tmux_reload="tmux source-file ~/.tmux.conf"
 
 # Arch specific logic
