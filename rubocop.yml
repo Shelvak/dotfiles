@@ -360,7 +360,7 @@ Style/ClassAndModuleCamelCase:
   StyleGuide: "https://github.com/bbatsov/ruby-style-guide#camelcase-classes"
 Style/ClassAndModuleChildren:
   Description: "Checks style of children classes and modules."
-  Enabled: true
+  Enabled: false
 Style/ClassCheck:
   Description: "Enforces consistent use of `Object#is_a?` or `Object#kind_of?`."
   Enabled: true

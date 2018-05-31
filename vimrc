@@ -131,8 +131,10 @@ nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gc :Gcommit<CR>
 
 " Navigate through quickfix
-map <F2> :cprev<CR>
-map <F1> :cnext<CR>
+" map <F2> :cprev<CR>
+" map <F1> :cnext<CR>
+map <F2> :bn<CR>
+map <F1> :bp<CR>
 
 " ========================================
 " Clipboard / Copy selected|entire file to systemclipboard
