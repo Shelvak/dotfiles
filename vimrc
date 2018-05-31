@@ -77,8 +77,8 @@ if has("autocmd")
   augroup END
 endif
 
-autocmd Filetype javascript,python setlocal tabstop=4 shiftwidth=4 expandtab
-autocmd BufEnter *.handlebars setlocal tabstop=4 shiftwidth=4 expandtab
+autocmd Filetype python setlocal tabstop=4 shiftwidth=4 expandtab
+" autocmd BufEnter *.handlebars setlocal tabstop=4 shiftwidth=4 expandtab
 autocmd BufWritePre * if index(['gitcommit'], &ft) < 0 | %s/\t/  /ge  " Replace tabs except in gitcommit msg
 
 " Set colors

@@ -683,7 +683,7 @@ Style/RescueEnsureAlignment:
   Enabled: true
 Style/RescueModifier:
   Description: "Avoid using rescue in its modifier form."
-  Enabled: true
+  Enabled: false
   StyleGuide: "https://github.com/bbatsov/ruby-style-guide#no-rescue-modifiers"
 Style/SelfAssignment:
   Description: "Checks for places where self-assignment shorthand should have been used."
