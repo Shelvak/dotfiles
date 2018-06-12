@@ -78,7 +78,6 @@ if has("autocmd")
 endif
 
 autocmd Filetype python setlocal tabstop=4 shiftwidth=4 expandtab
-" autocmd BufEnter *.handlebars setlocal tabstop=4 shiftwidth=4 expandtab
 autocmd BufWritePre * if index(['gitcommit'], &ft) < 0 | %s/\t/  /ge  " Replace tabs except in gitcommit msg
 
 " Set colors
@@ -102,8 +101,8 @@ let g:gist_detect_filetype = 1
 let g:gist_clip_command = 'xclip -selection clipboard'
 
 " SmartColumns
-let g:smart_display_opts = {'guibg': 'Blue', 'column': '81' }
-let g:smart_display_alternative_opts = {'guibg': 'Red' , 'column': 121}
+let g:smart_display_opts = {'guibg': 'Blue', 'column': '81'}
+let g:smart_display_alternative_opts = {'guibg': 'Red', 'column': '121'}
 
 " Short Cuts
 map <Leader>n :set number!<CR>:GitGutterToggle<CR>
@@ -131,10 +130,10 @@ nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gc :Gcommit<CR>
 
 " Navigate through quickfix
-" map <F2> :cprev<CR>
-" map <F1> :cnext<CR>
-map <F2> :bn<CR>
-map <F1> :bp<CR>
+map <F2> :cprev<CR>
+map <F1> :cnext<CR>
+" map <F2> :bn<CR>
+" map <F1> :bp<CR>
 
 " ========================================
 " Clipboard / Copy selected|entire file to systemclipboard
@@ -240,3 +239,5 @@ endfunction
 let g:ale_ruby_rubocop_executable='/home/rotsen/.gem/ruby/2.4.2/bin/rubocop'
 let g:ale_ruby_ruby_executable='/home/rotsen/.rubies/ruby-2.4.2/bin/ruby'
 let g:ale_set_highlights = 0
+
+" set shell=$SHELL\ -i
