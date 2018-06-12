@@ -102,8 +102,8 @@ let g:gist_detect_filetype = 1
 let g:gist_clip_command = 'xclip -selection clipboard'
 
 " SmartColumns
-let g:smart_display_opts = {'guibg': 'Blue' }
-autocmd Filetype python let g:smart_display_opts = {'guibg': 'Blue', 'column': '120' }
+let g:smart_display_opts = {'guibg': 'Blue', 'column': '81' }
+let g:smart_display_alternative_opts = {'guibg': 'Red' , 'column': 121}
 
 " Short Cuts
 map <Leader>n :set number!<CR>:GitGutterToggle<CR>
