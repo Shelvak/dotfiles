@@ -863,3 +863,5 @@ Style/RescueStandardError:
   Enabled: false
 Layout/EmptyLineAfterMagicComment:
   Enabled: false
+Style/EmptyCaseCondition:
+  Enabled: false
