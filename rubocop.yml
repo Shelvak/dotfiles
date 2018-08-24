@@ -194,12 +194,12 @@ Metrics/LineLength:
   StyleGuide: "https://github.com/bbatsov/ruby-style-guide#80-character-limits"
 Metrics/MethodLength:
   Description: "Avoid methods longer than 10 lines of code."
-  Enabled: true
+  Enabled: false
   StyleGuide: "https://github.com/bbatsov/ruby-style-guide#short-methods"
   Max: 30
 Metrics/ModuleLength:
   Description: "Avoid modules longer than 100 lines of code."
-  Enabled: true
+  Enabled: false
   Max: 300
 Metrics/ParameterLists:
   Description: "Avoid parameter lists longer than three or four parameters."
