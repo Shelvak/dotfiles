@@ -571,7 +571,7 @@ Style/MissingElse:
     - both
 Style/ModuleFunction:
   Description: "Checks for usage of `extend self` in modules."
-  Enabled: true
+  Enabled: false
   StyleGuide: "https://github.com/bbatsov/ruby-style-guide#module-function"
 Style/MultilineBlockChain:
   Description: "Avoid multi-line chains of blocks."
