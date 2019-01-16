@@ -15,7 +15,7 @@ DISABLE_CORRECTION="true"
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(git rotsen bundler rails autoenv tmux docker docker-compose)
+plugins=(git rotsen bundler rails autoenv tmux docker docker-compose kubectl)
 safe_source $ZSH/oh-my-zsh.sh
 
 # Completion
@@ -58,7 +58,7 @@ alias gpl="git pull --no-rebase origin master"
 alias ..='cd ..'
 alias ..2='cd ../..'
 alias ..3='cd ../../..'
-alias minar="cd /Secundario/rotsen/crypto/xmrig-nvidia-2.6.0-beta1/build; sudo ./xmrig-nvidia"
+alias minar="cd /Secundario/rotsen/crypto/xmrig-nvidia-2.8.3/build; sudo ./xmrig-nvidia"
 alias tmux_reload="tmux source-file ~/.tmux.conf"
 
 # Arch specific logic
@@ -74,7 +74,7 @@ alias pacaur_apps="pac -Qm"
 
 # Ruby logic
 safe_source /usr/share/chruby/chruby.sh
-chruby 2.4.3
+chruby 2.5
 safe_source /usr/share/chruby/auto.sh
 
 # No se para que puta es esto pero estaba bueno
@@ -93,3 +93,6 @@ export FZF_DEFAULT_COMMAND='rg --files --follow --glob "!.git/*"'
 
 # GO logic
 export GOPATH=/opt/go
+
+# RXVT
+[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
