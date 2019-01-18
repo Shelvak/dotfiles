@@ -138,7 +138,7 @@ map <F1> :cnext<CR>
 " ========================================
 " Clipboard / Copy selected|entire file to systemclipboard
 " ========================================
-" set clipboard=unnamedplus
+set clipboard=unnamed " plus
 map <C-C> :%y+<CR>
 " Copy the current file path
 nnoremap <leader>C :let @+=expand("%")<CR>

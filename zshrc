@@ -15,7 +15,7 @@ DISABLE_CORRECTION="true"
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(git rotsen bundler rails autoenv tmux docker docker-compose kubectl)
+plugins=(git rotsen bundler rails autoenv tmux docker docker-compose kubectl you-should-use)
 safe_source $ZSH/oh-my-zsh.sh
 
 # Completion
@@ -96,3 +96,5 @@ export GOPATH=/opt/go
 
 # RXVT
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
