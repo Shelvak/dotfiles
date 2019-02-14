@@ -60,6 +60,7 @@ alias ..2='cd ../..'
 alias ..3='cd ../../..'
 alias minar="cd /Secundario/rotsen/crypto/xmrig-nvidia-2.8.3/build; sudo ./xmrig-nvidia"
 alias tmux_reload="tmux source-file ~/.tmux.conf"
+alias vr="v /tmp/$(date -u '+%Y'.'%m'.'%d'_'%H'.'%M'.'%S').rb"
 
 # Arch specific logic
 export PATH="/home/rotsen/bins/:$PATH"
