@@ -13,7 +13,7 @@
 ######################
 *.log
 *.log.*
-*.sql
+*.sql*
 *.sqlite3
 
 # Editor temporal files #

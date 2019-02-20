@@ -831,7 +831,7 @@ Style/UnneededCapitalW:
   Enabled: true
 Style/UnneededPercentQ:
   Description: "Checks for %q/%Q when single quotes or double quotes would do."
-  Enabled: true
+  Enabled: false
   StyleGuide: "https://github.com/bbatsov/ruby-style-guide#percent-q"
 Style/VariableInterpolation:
   Description: 'Don"t interpolate global, instance and class variables directly in strings.'
