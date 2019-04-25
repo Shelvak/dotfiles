@@ -10,7 +10,7 @@ IRB.conf[:AUTO_INDENT]   = true
 ['interactive_editor', 'awesome_print'].each do |gem_name|
   begin
     require gem_name
-    # AwesomePrint.irb! if gem_name == 'awesome_print'
+    AwesomePrint.irb! if gem_name == 'awesome_print'
   rescue
     puts "Install #{gem_name}"
   end

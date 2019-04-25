@@ -867,3 +867,6 @@ Style/EmptyCaseCondition:
   Enabled: false
 Bundler/OrderedGems:
   Enabled: false
+Metrics/BlockLength:
+  Enabled: true
+  Max: 60

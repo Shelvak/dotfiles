@@ -75,7 +75,7 @@ alias pacaur_apps="pac -Qm"
 
 # Ruby logic
 safe_source /usr/share/chruby/chruby.sh
-chruby 2.5
+chruby 2.6
 safe_source /usr/share/chruby/auto.sh
 
 # No se para que puta es esto pero estaba bueno
