@@ -16,7 +16,13 @@ Xft.hintstyle:              hintslight
 ! More info at:
 ! http://pod.tst.eu/http://cvs.schmorp.de/rxvt-unicode/doc/rxvt.1.pod
 !-------------------------------------------------------------------------------
+XTerm*termName: screen-256color
+URxvt.keysym.Home: \033[1~
+URxvt.keysym.End: \033[4~
+URxvt.keysym.KP_Home: \033[1~
+URxvt.keysym.KP_End:  \033[4~
 
+URxvt*termName:             rxvt-unicode
 URxvt.depth:                32
 URxvt.geometry:             150x50
 URxvt.transparent:          false
@@ -44,9 +50,12 @@ URxvt.scrollStyle:          rxvt
 URxvt.scrollBar:            false
 
 ! Perl extensions
+URxvt*perl-lib:            /usr/bin/perl
 URxvt.perl-ext-common:      default,matcher
 URxvt.matcher.button:       1
 URxvt.urlLauncher:          google-chrome-stable
+URxvt.underlineURLs:        true
+URxvt*matcher.Button: 1
 
 ! Cursor
 URxvt.cursorBlink:          true

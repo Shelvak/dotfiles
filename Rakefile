@@ -50,6 +50,10 @@ task :install do
     sym_link "$PWD/#{file}", "$HOME/.#{file}"
   end
 
+  # Urxvt
+  sym_link "$PWD/Xresources", "$HOME/.Xresources"
+  sym_link "$PWD/Xresources", "$HOME/.Xdefaults"
+
   puts 'linking custom-dir files'
   %x{mkdir -p $HOME/.bundle}
   sym_link '$PWD/bundle-config', '$HOME/.bundle/config'
