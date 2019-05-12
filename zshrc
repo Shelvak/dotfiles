@@ -3,6 +3,9 @@ source ~/.zsh-functions
 
 # Autostart tmux
 export TERM=screen-256color
+export ZSH_TMUX_TERM=screen-256color
+set -g default-terminal "screen-256color"
+
 ZSH_TMUX_AUTOSTART="true"
 stty stop undef  # Ctrol-S stop freezing
 setopt no_flowcontrol
