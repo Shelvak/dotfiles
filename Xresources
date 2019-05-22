@@ -5,30 +5,49 @@
 URxvt.title:                Tanga
 
 Xft.dpi:                    96
-Xft.antialias:              false
+Xft.antialias:              true
 Xft.rgba:                   rgb
 Xft.hinting:                true
 Xft.hintstyle:              hintslight
 
+! Special keys map
+URxvt*keysym.Home    : \033[1~
+URxvt*keysym.End     : \033[4~
+URxvt*keysym.KP_Home : \033[1~
+URxvt*keysym.KP_End  : \033[4~
+URxvt*keysym.F1      : \033[11~
+URxvt*keysym.F2      : \033[12~
+URxvt*keysym.F3      : \033[13~
+URxvt*keysym.F4      : \033[14~
+URxvt*keysym.F5      : \033[15~
+URxvt*keysym.F6      : \033[17~
+URxvt*keysym.F7      : \033[18~
+URxvt*keysym.F8      : \033[19~
+URxvt*keysym.F9      : \033[20~
+URxvt*keysym.F10     : \033[21~
+URxvt*keysym.F11     : \033[23~
+URxvt*keysym.F12     : \033[24~
+URxvt*keysym.S-F1    : \033[11;2~
+URxvt*keysym.S-F2    : \033[12;2~
+URxvt*keysym.S-F3    : \033[13;2~
+URxvt*keysym.S-F4    : \033[14;2~
+URxvt*keysym.S-F5    : \033[15;2~
+URxvt*keysym.S-F6    : \033[17;2~
+URxvt*keysym.S-F7    : \033[18;2~
+URxvt*keysym.S-F8    : \033[19;2~
+URxvt*keysym.S-F9    : \033[20;2~
+URxvt*keysym.S-F10   : \033[21;2~
+URxvt*keysym.S-F11   : \033[23;2~
+URxvt*keysym.S-F12   : \033[24;2~
+
 !-------------------------------------------------------------------------------
 ! URxvt settings
-! Colours lifted from Solarized (http://ethanschoonover.com/solarized)
-! More info at:
-! http://pod.tst.eu/http://cvs.schmorp.de/rxvt-unicode/doc/rxvt.1.pod
 !-------------------------------------------------------------------------------
-! URxvt.keysym.Home: \033[1~
-! URxvt.keysym.End: \033[4~
-! URxvt.keysym.KP_Home: \033[1~
-! URxvt.keysym.KP_End:  \033[4~
-
-XTerm*termName:       screen-256color
 URxvt*termName:       screen-256color
 URxvt.depth:          32
 URxvt.geometry:       150x50
 URxvt.transparent:    false
 URxvt.fading:         0
-! URxvt.urgentOnBell:   true
-! URxvt.visualBell:     true
 URxvt.loginShell:     true
 URxvt.saveLines:      50
 URxvt.internalBorder: 3
@@ -36,9 +55,6 @@ URxvt.lineSpace:      0
 
 ! Fonts
 URxvt.allow_bold:           true
-/* URxvt.font:                 -*-terminus-medium-r-normal-*-12-120-72-72-c-60-iso8859-1 */
-/* URxvt*font: xft:Monospace:pixelsize=14 */
-/* URxvt*boldFont: xft:Monospace:pixelsize=14 */
 URxvt.font: xft:DejaVu Sans Mono:antialias=true:pixelsize=19
 URxvt.boldFont: xft:DejaVu Sans Mono:style=bold:antialias=true:pixelsize=19
 
@@ -49,11 +65,11 @@ URxvt*letterSpace: -1
 URxvt.scrollStyle:          rxvt
 URxvt.scrollBar:            false
 
-! Perl extensions
-URxvt*perl-lib:            /usr/bin/perl
+! Perl extensions (click on url)
+URxvt*perl-lib:             /usr/bin/perl
 URxvt.perl-ext-common:      default,matcher
 URxvt.matcher.button:       1
-URxvt.urlLauncher:          google-chrome-stable
+URxvt.url-launcher:         /usr/bin/google-chrome-stable
 URxvt.underlineURLs:        true
 URxvt*matcher.Button: 1
 
