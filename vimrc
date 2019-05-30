@@ -134,6 +134,8 @@ map <F2> :cprev<CR>
 map <F1> :cnext<CR>
 " map <F2> :bn<CR>
 " map <F1> :bp<CR>
+map <ESC>[1;5D <C-Left>
+map <ESC>[1;5C <C-Right>
 
 " ========================================
 " Clipboard / Copy selected|entire file to systemclipboard
