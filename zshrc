@@ -113,12 +113,9 @@ export FZF_DEFAULT_COMMAND='rg --files --follow --glob "!.git/*"'
 # GO logic
 export GOPATH=/opt/go
 
-<<<<<<< HEAD
 # RXVT
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
-=======
->>>>>>> ANose
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # added by travis gem
