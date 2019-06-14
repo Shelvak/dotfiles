@@ -42,6 +42,7 @@ tmp/*
 .ruby-version
 .bundle/
 .byebug_history
+.pry_history
 
 # Customs
 #########
