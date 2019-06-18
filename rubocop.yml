@@ -181,7 +181,7 @@ Metrics/BlockNesting:
   StyleGuide: "https://github.com/bbatsov/ruby-style-guide#three-is-the-number-thou-shalt-count"
 Metrics/ClassLength:
   Description: "Avoid classes longer than 100 lines of code."
-  Enabled: true
+  Enabled: false
   Max: 300
 Metrics/CyclomaticComplexity:
   Description: "A complexity metric that is strongly correlated to the number of test cases needed to validate a method."
