@@ -292,7 +292,9 @@ Style/AlignArray:
   StyleGuide: "https://github.com/bbatsov/ruby-style-guide#align-multiline-arrays"
 Style/AlignHash:
   Description: "Align the elements of a hash literal if they span more than one line."
-  Enabled: false
+  Enabled: true
+  EnforcedHashRocketStyle: table
+  EnforcedColonStyle: table
 Style/AlignParameters:
   Description: "Align the parameters of a method call if they span more than one line."
   Enabled: false
