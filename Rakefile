@@ -43,6 +43,7 @@ task :install do
     screenrc
     tmux.conf
     vim-plugins-rc
+    vim-plugins
     vimrc
     zshrc
     zsh-functions

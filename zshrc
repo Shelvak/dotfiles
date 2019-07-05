@@ -48,6 +48,8 @@ export VISUAL=$EDITOR
 
 # Aliases
 alias v=$EDITOR
+alias vv=v
+alias :w=v
 alias zc="v ~/.zshrc"
 alias vc="v ~/.vimrc"
 alias sv="sudo vim"

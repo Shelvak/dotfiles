@@ -1,7 +1,7 @@
 " Running SO...
-if filereadable(expand("~/.vim-plugins-rc"))
+if filereadable(expand("~/.vim-plugins"))
   call plug#begin('~/.vim/plugs')
-  source ~/.vim-plugins-rc
+  source ~/.vim-plugins
   call plug#end()
 endif
 
@@ -140,3 +140,6 @@ nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>. :Lines<CR>
 nnoremap <silent> · :call SearchDefWithRg()<CR>
 vnoremap <silent> · :call SearchVisualSelectionWithRg()<CR>
+
+" Plugins configs
+source ~/.vim-plugins-rc
