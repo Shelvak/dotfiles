@@ -8,6 +8,11 @@ def sym_link_dir(origin, destiny)
   puts %x{ln -fvsT #{origin} #{destiny}}
 end
 
+def puts_and_install(command)
+  puts command
+  puts %x{#{command}}
+end
+
 desc "install the dot files into user's home directory"
 task :install do
   puts 'Install all submodules oh-my-zsh'
@@ -33,6 +38,7 @@ task :install do
   %w(
     ackrc
     agignore
+    eslintrc
     gemrc
     gitconfig
     gitignore_global
@@ -43,11 +49,11 @@ task :install do
     screenrc
     tmux.conf
     vim-plugins
-    vim-plugins-rc
     vim-plugins
+    vim-plugins-rc
     vimrc
-    zshrc
     zsh-functions
+    zshrc
   ).each do |file|
     sym_link "$PWD/#{file}", "$HOME/.#{file}"
   end
@@ -111,6 +117,7 @@ task :arch_install do
     redis-desktop-manager ripgrep
     slack-desktop smplayer spotify sshfs
     telegram-desktop-bin tmux
+    rxvt-unicode
     whatsapp-desktop wine
     xclip
     yajl
@@ -146,14 +153,13 @@ task :arch_install do
     puts "No se encontraron: #{unavailable.join(', ')}"
   end
 
-
-  puts "Configs:"
-  puts 'Run this to install the terminal bk'
-  puts 'dconf load /org/gnome/terminal/ < gnome_terminal.bk'
-
-  puts 'smplayer...'
-  puts `mkdir -p ~/.config/smplayer/; cp -vf smplayer.ini ~/.config/smplayer/smplayer.ini`
+  # puts 'smplayer...'
+  # puts `mkdir -p ~/.config/smplayer/; cp -vf smplayer.ini ~/.config/smplayer/smplayer.ini`
 
   puts "Adding user to docker group"
   puts `sudo gpasswd -a $USER docker`
+
+  puts 'Installing extra plugins:'
+  puts_and_install 'gem install bundler rubocop'
+  puts_and_install 'npm install -g eslint'
 end
