@@ -2,14 +2,15 @@
 " ========================================
 " ALE linter
 " ========================================
-" let b:ale_linters=['erb']
 " let g:ale_lint_on_save=0
 " let g:ale_lint_on_text_changed=0
 " let g:ale_lint_on_enter=0
 " let g:ale_lint_on_insert_leave=0
+let b:ale_linters=['erb', 'jq', 'eslint']
 let g:ale_ruby_rubocop_executable='/home/rotsen/.gem/ruby/2.6.3/bin/rubocop'
 let g:ale_ruby_ruby_executable='/home/rotsen/.rubies/ruby-2.6.3/bin/ruby'
 let g:ale_set_highlights = 0
+let g:ale_linters_explicit = 0
 
 " ========================================
 " FZF setup
@@ -50,6 +51,15 @@ function! SearchVisualSelectionWithRg() range
 endfunction
 
 " ========================================
+" FZF - shortcuts
+" ========================================
+nnoremap <silent> <leader>t :Files<CR>
+nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <leader>. :Lines<CR>
+nnoremap <silent> · :call SearchDefWithRg()<CR>
+vnoremap <silent> · :call SearchVisualSelectionWithRg()<CR>
+
+" ========================================
 " SmartColumns
 " ========================================
 let g:smart_display_opts = {'guibg': 'Blue', 'column': '81'}
@@ -72,3 +82,18 @@ hi SignColumn ctermbg=none
 " ========================================
 " Highlight any custom method starting with assert_
 syn match rubyTestMacro 'assert_\w\+'
+
+" ========================================
+" Vim Rails - shortcuts
+" ========================================
+nnoremap <Leader>m :Emodel
+nnoremap <Leader>c :Econtroller
+nnoremap <Leader>v :Eview
+nnoremap <Leader>u :Eunittest
+nnoremap <Leader>f :Efunctionaltest
+
+" ========================================
+" Vim Fugitive - shortcuts
+" ========================================
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gc :Gcommit<CR>

@@ -42,6 +42,7 @@ task :install do
     rubocop.yml
     screenrc
     tmux.conf
+    vim-plugins
     vim-plugins-rc
     vim-plugins
     vimrc

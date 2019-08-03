@@ -80,7 +80,6 @@ if has("autocmd")
   augroup END
 endif
 
-
 " Set colors
 hi CursorLine term=bold cterm=bold ctermbg=none
 hi Search ctermfg=black ctermbg=green
@@ -99,26 +98,9 @@ nmap <Leader>l :set list!<CR>
 " Clean search highlight
 nnoremap <Leader><Leader> :nohlsearch<CR>
 
-" ========================================
-" Vim Rails - shortcuts
-" ========================================
-nnoremap <Leader>m :Emodel
-nnoremap <Leader>c :Econtroller
-nnoremap <Leader>v :Eview
-nnoremap <Leader>u :Eunittest
-nnoremap <Leader>f :Efunctionaltest
-
-" ========================================
-" Vim Fugitive - shortcuts
-" ========================================
-nnoremap <Leader>gs :Gstatus<CR>
-nnoremap <Leader>gc :Gcommit<CR>
-
 " Navigate through quickfix
 map <F2> :cprev<CR>
 map <F1> :cnext<CR>
-" map <F2> :bn<CR>
-" map <F1> :bp<CR>
 map <ESC>[1;5D <C-Left>
 map <ESC>[1;5C <C-Right>
 
@@ -131,15 +113,6 @@ map <C-C> :%y+<CR>
 " Copy the current file path
 nnoremap <leader>C :let @+=expand("%")<CR>
 
-
-" ========================================
-" FZF - shortcuts
-" ========================================
-nnoremap <silent> <leader>t :Files<CR>
-nnoremap <silent> <leader>b :Buffers<CR>
-nnoremap <silent> <leader>. :Lines<CR>
-nnoremap <silent> · :call SearchDefWithRg()<CR>
-vnoremap <silent> · :call SearchVisualSelectionWithRg()<CR>
-
-" Plugins configs
-source ~/.vim-plugins-rc
+if filereadable(expand("~/.vim-plugins-rc"))
+  source ~/.vim-plugins-rc
+endif
