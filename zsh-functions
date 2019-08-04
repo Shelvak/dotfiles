@@ -20,3 +20,11 @@ sustituir() {
 clean_vim_temps() {
   find . -name "*.sw[o|p]" | xargs rm
 }
+
+cclimate() {
+  docker run --interactive --tty --rm --env CODECLIMATE_CODE="$PWD" \
+    -v $PWD:/code \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v /tmp/cc:/tmp/cc \
+    codeclimate/codeclimate analyze $1
+}
