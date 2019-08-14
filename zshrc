@@ -2,15 +2,21 @@
 source ~/.zsh-functions
 
 # Autostart tmux
-export TERM=screen-256color
-export ZSH_TMUX_TERM=screen-256color
-set -g default-terminal "screen-256color"
+TMUX_ENABLED=$(which tmux >> /dev/null 2>&1)
+if [[ "$TMUX_ENABLED" != "" ]]; then
+  export ZSH_TMUX_TERM=screen-256color
+  ZSH_TMUX_AUTOSTART="true"
 
-ZSH_TMUX_AUTOSTART="true"
-stty stop undef  # Ctrol-S stop freezing
-setopt no_flowcontrol
+  # Ctrol-S stop freezing
+  stty stop undef
+  setopt no_flowcontrol
+
+  alias tmux_reload="tmux source-file ~/.tmux.conf"
+fi
 
 # ZSH Configs
+export TERM=screen-256color
+set -g default-terminal "screen-256color"
 ZSH="$HOME/.oh-my-zsh"
 ZSH_CUSTOM="$ZSH/custom"
 ZSH_THEME='Shelvak'
@@ -64,7 +70,6 @@ alias ..='cd ..'
 alias ..2='cd ../..'
 alias ..3='cd ../../..'
 alias minar="cd /Secundario/rotsen/crypto/xmrig-nvidia-2.8.3/build; sudo ./xmrig-nvidia"
-alias tmux_reload="tmux source-file ~/.tmux.conf"
 alias vr="v /tmp/$(date -u '+%Y'.'%m'.'%d'_'%H'.'%M'.'%S').rb"
 
 # Arch specific logic
@@ -80,7 +85,7 @@ alias pacaur_apps="pac -Qm"
 
 # Ruby logic
 safe_source /usr/share/chruby/chruby.sh
-chruby 2.6
+chruby 2.6 >> /dev/null 2>&1
 safe_source /usr/share/chruby/auto.sh
 
 # No se para que puta es esto pero estaba bueno

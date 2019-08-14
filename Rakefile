@@ -13,15 +13,8 @@ def puts_and_install(command)
   puts %x{#{command}}
 end
 
-desc "install the dot files into user's home directory"
-task :install do
-  puts 'Install all submodules oh-my-zsh'
-  puts %x{git submodule init}
-  puts %x{git submodule update}
-
-  puts 'Doing zsh the default'
-  puts %x{chsh -s `which zsh`}
-
+desc "Link files into user's home directory"
+task :link_files do
   puts 'Linking folders...'
   ['vim', 'oh-my-zsh'].each do |folder|
     puts "Linking #{folder}"
@@ -29,7 +22,7 @@ task :install do
   end
 
   puts 'Linking zsh customs...'
-  sym_link_dir '$PWD/zsh-themes',  '$PWD/oh-my-zsh/custom/themes'
+  sym_link_dir '$PWD/zsh-themes/Shelvak.zsh-theme',  '$PWD/oh-my-zsh/custom/themes/Shelvak.zsh-theme'
   `ls $PWD/zsh-plugins`.split("\n").each do |dir|
     sym_link_dir "$PWD/zsh-plugins/#{dir}", "$PWD/oh-my-zsh/custom/plugins/#{dir}"
   end
@@ -58,9 +51,11 @@ task :install do
     sym_link "$PWD/#{file}", "$HOME/.#{file}"
   end
 
-  # Urxvt
-  sym_link "$PWD/Xresources", "$HOME/.Xresources"
-  sym_link "$PWD/Xresources", "$HOME/.Xdefaults"
+  if system("which urxvt >> /dev/null 2>&1")
+    # Urxvt
+    sym_link "$PWD/Xresources", "$HOME/.Xresources"
+    sym_link "$PWD/Xresources", "$HOME/.Xdefaults"
+  end
 
   puts 'linking custom-dir files'
   %x{mkdir -p $HOME/.bundle}
@@ -68,6 +63,21 @@ task :install do
 
   puts 'Installing vim plugins'
   puts %x{vim +PlugUpgrade! +PlugInstall! +qall}
+
+end
+
+desc "install the dot files into user's home directory"
+task :install do
+  puts 'Install all submodules oh-my-zsh'
+  puts %x{git submodule init}
+  puts %x{git submodule update}
+
+  unless ENV['SHELL'].match(/\/zsh/)
+    puts 'Doing zsh the default'
+    puts %x{chsh -s `which zsh`}
+  end
+
+  Rake::Task['link_files'].invoke
 
   puts 'Ready ^^'
 end
