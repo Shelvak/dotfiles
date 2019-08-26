@@ -2,7 +2,7 @@
 source ~/.zsh-functions
 
 # Autostart tmux
-TMUX_ENABLED=$(which tmux >> /dev/null 2>&1)
+TMUX_ENABLED=$(which tmux 2>&1)
 if [[ "$TMUX_ENABLED" != "" ]]; then
   export ZSH_TMUX_TERM=screen-256color
   ZSH_TMUX_AUTOSTART="true"
