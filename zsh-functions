@@ -16,6 +16,10 @@ sustituir() {
   egrep -rl "$1" * | xargs sed -i "s/$1/$2/g"
 }
 
+sustituir_en() {
+  egrep -rl "$1" $3 | xargs sed -i "s/$1/$2/g"
+}
+
 # Limpiar temporales de vim
 clean_vim_temps() {
   find . -name "*.sw[o|p]" | xargs rm

@@ -116,3 +116,8 @@ nnoremap <leader>C :let @+=expand("%")<CR>
 if filereadable(expand("~/.vim-plugins-rc"))
   source ~/.vim-plugins-rc
 endif
+
+" ========================================
+" Save file with sudo (extreme!!!)
+" ========================================
+" cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!

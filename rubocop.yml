@@ -872,3 +872,5 @@ Bundler/OrderedGems:
 Metrics/BlockLength:
   Enabled: true
   Max: 60
+Style/EmptyMethod:
+  Enabled: false
