@@ -1,1 +1,1 @@
--d postgresql --skip-bundle
+-d postgresql --skip-bundle --skip-webpack-install

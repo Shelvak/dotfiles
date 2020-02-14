@@ -1,6 +1,7 @@
 [user]
   name = Néstor Coppi
   email = nestorcoppi@gmail.com
+	signingkey = C6E214E060B591EC
 [color]
   diff = auto
   status = auto
@@ -44,3 +45,5 @@
   required = true
 [pager]
   branch = false
+[commit]
+	gpgsign = true

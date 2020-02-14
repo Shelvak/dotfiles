@@ -66,6 +66,7 @@ if has("autocmd")
   autocmd! BufRead,BufNewFile Gemfile setfiletype ruby
   autocmd! BufRead,BufNewFile Vagrantfile setfiletype ruby
   autocmd! BufRead,BufNewFile *.cap setfiletype ruby
+  autocmd! BufRead,BufNewFile *.pdf.erb setfiletype html.eruby
   autocmd Filetype python setlocal tabstop=4 shiftwidth=4 expandtab
   autocmd BufWritePre * if index(['gitcommit'], &ft) < 0 | %s/\t/  /ge  " Replace tabs except in gitcommit msg
 

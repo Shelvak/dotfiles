@@ -209,9 +209,6 @@ Metrics/PerceivedComplexity:
   Description: "A complexity metric geared towards measuring complexity for a human reader."
   Enabled: true
   Max: 30
-#Performance/CaseWhenSplat:
-#  Description: "Place `when` conditions that use splat at the end of the list of `when` branches."
-#  Enabled: true
 Performance/Count:
   Description: "Use `count` instead of `select...size`, `reject...size`, `select...count`, `reject...count`, `select...length`, and `reject...length`."
   Enabled: true
@@ -507,7 +504,7 @@ Style/HashSyntax:
   StyleGuide: "https://github.com/bbatsov/ruby-style-guide#hash-literals"
 Style/IfUnlessModifier:
   Description: "Favor modifier if/unless usage when you have a single-line body."
-  Enabled: true
+  Enabled: false
   StyleGuide: "https://github.com/bbatsov/ruby-style-guide#if-as-a-modifier"
 Style/IfWithSemicolon:
   Description: "Do not use if x; .... Use the ternary operator instead."
@@ -872,5 +869,7 @@ Bundler/OrderedGems:
 Metrics/BlockLength:
   Enabled: true
   Max: 60
+Layout/AlignArguments:
+  Enabled: false
 Style/EmptyMethod:
   Enabled: false

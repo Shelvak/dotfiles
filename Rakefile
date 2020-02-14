@@ -31,6 +31,7 @@ task :link_files do
   %w(
     ackrc
     agignore
+    alacritty.yml
     eslintrc
     gemrc
     gitconfig
@@ -111,26 +112,29 @@ task :arch_install do
   `mkdir -p ~/tmp/cache`
 
   all = %w(
+    alacritty
     binutils
-    chrome-gnome-shell clementine clang
+    chruby chrome-gnome-shell clang
     direnv docker docker-compose
     expac
     ffmpeg fzf fakeroot
+    google-chrome gstreamer gstreamer-vaapi git gcc gvim
     gst-libav gst-plugins-bad gst-plugins-base gst-plugins-good gst-plugins-ugly
-    gstreamer gstreamer gstreamer-vaapi git gcc gvim
     htop
     icu iotop
+    kubectl-bin
     lib32-icu
     mlocate mtr make
     nmap nodejs npm
-    pgadmin3 postgresql-libs pkg-config
-    redis-desktop-manager ripgrep
+    pgadmin4 postgresql-libs pkg-config
+    rambox-bin redis-desktop-manager ripgrep ruby-install
+    rxvt-unicode
     slack-desktop smplayer spotify sshfs
     telegram-desktop-bin tmux
-    rxvt-unicode
-    whatsapp-desktop wine
+    wine
     xclip
     yajl
+    zstd
   )
 
   puts 'Checking packages against official repos'

@@ -71,13 +71,15 @@ alias ..2='cd ../..'
 alias ..3='cd ../../..'
 alias minar="cd /Secundario/rotsen/crypto/xmrig-nvidia-2.8.3/build; sudo ./xmrig-nvidia"
 alias vr="v /tmp/$(date -u '+%Y'.'%m'.'%d'_'%H'.'%M'.'%S').rb"
+alias refresh="gpr; bi --jobs 8; rdm"
+alias full_test="RAILS_ENV=test rails db:drop db:create db:migrate; PARALLEL_WORKERS=4 rails test"
 
 # Arch specific logic
 export PATH="/home/rotsen/bins/:$PATH"
 export PKGDEST=/home/rotsen/tmp/cache  # AUR cache
 alias pac="sudo pacman"
 alias install="pac -S"
-alias power="sudo powerpill"
+alias power="sudo pacman-mirrors --fasttrack 10; sudo powerpill"
 alias qinstall="power -S"
 alias update_system="pac -Syy && power -Suu && pacaur -Syua"
 alias clear_arch="pac -Rsn $(pacman -Qdtq)"
@@ -109,3 +111,6 @@ export GOPATH=/opt/go
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# added by travis gem
+[ -f /home/rotsen/.travis/travis.sh ] && source /home/rotsen/.travis/travis.sh
