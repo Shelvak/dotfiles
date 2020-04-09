@@ -73,6 +73,7 @@ alias minar="cd /Secundario/rotsen/crypto/xmrig-nvidia-2.8.3/build; sudo ./xmrig
 alias vr="v /tmp/$(date -u '+%Y'.'%m'.'%d'_'%H'.'%M'.'%S').rb"
 alias refresh="gpr; bi --jobs 8; rdm"
 alias full_test="RAILS_ENV=test rails db:drop db:create db:migrate; PARALLEL_WORKERS=4 rails test"
+alias ll="exa -lah"
 
 # Arch specific logic
 export PATH="/home/rotsen/bins/:$PATH"

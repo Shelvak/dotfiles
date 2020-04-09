@@ -116,7 +116,7 @@ task :arch_install do
     binutils
     chruby chrome-gnome-shell clang
     direnv docker docker-compose
-    expac
+    exa expac
     ffmpeg fzf fakeroot
     google-chrome gstreamer gstreamer-vaapi git gcc gvim
     gst-libav gst-plugins-bad gst-plugins-base gst-plugins-good gst-plugins-ugly
