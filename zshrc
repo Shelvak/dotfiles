@@ -36,11 +36,11 @@ unsetopt correct
 # Configuring history
 # setopt inc_append_history # Already implemented on oh-my-zsh
 # setopt hist_ignore_dups   # Already implemented on oh-my-zsh
-setopt hist_find_no_dups
-setopt hist_reduce_blanks
-setopt hist_no_store
+setopt HIST_FIND_NO_DUPS
+setopt HIST_REDUCE_BLANKS
+setopt HIST_NO_STORE
 unsetopt share_history
-export HISTSIZE=10000
+export HISTSIZE=20000
 export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
 
@@ -75,6 +75,8 @@ alias refresh="gpr; bi --jobs 8; rdm"
 alias full_test="RAILS_ENV=test rails db:drop db:create db:migrate; PARALLEL_WORKERS=4 rails test"
 alias ll="exa -lah"
 
+alias ktanga="k exec -it tanga -- bash"
+
 # Arch specific logic
 export PATH="/home/rotsen/bins/:$PATH"
 export PKGDEST=/home/rotsen/tmp/cache  # AUR cache
@@ -88,8 +90,8 @@ alias pacaur_apps="pac -Qm"
 
 # Ruby logic
 safe_source /usr/share/chruby/chruby.sh
-chruby 2.6 >> /dev/null 2>&1
 safe_source /usr/share/chruby/auto.sh
+chruby 2.6 >> /dev/null 2>&1
 
 # No se para que puta es esto pero estaba bueno
 safe_source /etc/profile.d/vte.sh

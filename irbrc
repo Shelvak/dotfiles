@@ -13,6 +13,7 @@ IRB.conf[:IRB_RC] = Proc.new do
     account.switch!
     puts "Switched to #{account.name}"
   end
+rescue
 end
 
 ['interactive_editor', 'awesome_print'].each do |gem_name|

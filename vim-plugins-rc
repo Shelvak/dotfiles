@@ -7,8 +7,8 @@
 " let g:ale_lint_on_enter=0
 " let g:ale_lint_on_insert_leave=0
 let b:ale_linters=['erb', 'jq', 'eslint']
-let g:ale_ruby_rubocop_executable='/home/rotsen/.gem/ruby/2.6.3/bin/rubocop'
-let g:ale_ruby_ruby_executable='/home/rotsen/.rubies/ruby-2.6.3/bin/ruby'
+let g:ale_ruby_rubocop_executable='/home/rotsen/.gem/ruby/2.6.6/bin/rubocop'
+let g:ale_ruby_ruby_executable='/home/rotsen/.rubies/ruby-2.6.6/bin/ruby'
 let g:ale_set_highlights = 0
 let g:ale_linters_explicit = 0
 
@@ -17,6 +17,7 @@ let g:ale_linters_explicit = 0
 " ========================================
 let g:grep_operator = 'rg'
 let g:fzf_nvim_statusline=0
+let g:fzf_preview_window = ''
 set grepprg=rg\ —vimgrep
 
 command! -bang -nargs=* Rg
