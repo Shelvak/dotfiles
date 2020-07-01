@@ -72,7 +72,7 @@ alias ..3='cd ../../..'
 alias minar="cd /Secundario/rotsen/crypto/xmrig-nvidia-2.8.3/build; sudo ./xmrig-nvidia"
 alias vr="v /tmp/$(date -u '+%Y'.'%m'.'%d'_'%H'.'%M'.'%S').rb"
 alias refresh="gpr; bi --jobs 8; rdm"
-alias full_test="RAILS_ENV=test rails db:drop db:create db:migrate; PARALLEL_WORKERS=4 rails test"
+alias full_test="RAILS_ENV=test rails db:drop db:create db:migrate; rails test"
 alias ll="exa -lah"
 
 alias ktanga="k exec -it tanga -- bash"
@@ -90,8 +90,8 @@ alias pacaur_apps="pac -Qm"
 
 # Ruby logic
 safe_source /usr/share/chruby/chruby.sh
+chruby 2.6  #>> /dev/null 2>&1
 safe_source /usr/share/chruby/auto.sh
-chruby 2.6 >> /dev/null 2>&1
 
 # No se para que puta es esto pero estaba bueno
 safe_source /etc/profile.d/vte.sh

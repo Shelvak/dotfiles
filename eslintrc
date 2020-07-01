@@ -1,5 +1,5 @@
 # vim:set ft=yaml:
-
+root: true
 env:
   browser: true
   jquery: true

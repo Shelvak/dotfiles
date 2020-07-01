@@ -55,8 +55,6 @@ endfunction
 " FZF - shortcuts
 " ========================================
 nnoremap <silent> <leader>t :Files<CR>
-nnoremap <silent> <leader>b :Buffers<CR>
-nnoremap <silent> <leader>. :Lines<CR>
 nnoremap <silent> · :call SearchDefWithRg()<CR>
 vnoremap <silent> · :call SearchVisualSelectionWithRg()<CR>
 
