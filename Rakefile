@@ -86,7 +86,7 @@ end
 desc 'Update all the _updatable_ things =)'
 task :update do
   puts 'Updating...'
-  puts %x{git pull}
+  puts %x{git pull origin master}
   puts %x{git submodule init}
   puts %x{git submodule update}
   puts %x{git submodule foreach "git pull origin master"}
