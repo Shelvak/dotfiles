@@ -24,7 +24,7 @@ DISABLE_CORRECTION="true"
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(git rotsen bundler rails autoenv tmux docker docker-compose kubectl you-should-use)
+plugins=(git rotsen bundler rails autoenv tmux docker docker-compose kubectl)
 safe_source $ZSH/oh-my-zsh.sh
 
 # Completion
@@ -34,9 +34,10 @@ autoload -U zmv
 unsetopt correct
 
 # Configuring history
-# setopt inc_append_history # Already implemented on oh-my-zsh
+setopt inc_append_history # Already implemented on oh-my-zsh
 # setopt hist_ignore_dups   # Already implemented on oh-my-zsh
 setopt HIST_FIND_NO_DUPS
+setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_REDUCE_BLANKS
 setopt HIST_NO_STORE
 unsetopt share_history
@@ -75,7 +76,9 @@ alias refresh="gpr; bi --jobs 8; rdm"
 alias full_test="RAILS_ENV=test rails db:drop db:create db:migrate; rails test"
 alias ll="exa -lah"
 
+# Clusters
 alias ktanga="k exec -it tanga -- bash"
+alias kteiqui="k --kubeconfig=/home/rotsen/.kube/teiqui-config --namespace production"
 
 # Arch specific logic
 export PATH="/home/rotsen/bins/:$PATH"

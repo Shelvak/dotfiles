@@ -96,3 +96,8 @@ nnoremap <Leader>f :Efunctionaltest
 " ========================================
 nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gc :Gcommit<CR>
+
+" ========================================
+" StripWhiteSpaces
+" ========================================
+let g:strip_trailing_lines = 1
