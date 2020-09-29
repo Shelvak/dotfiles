@@ -7,11 +7,8 @@ endif
 
 source ~/.vim/color-reference.txt
 
-" VimInfo
-set viminfo='100,\"5,:50,%,n~/.viminfo'
-set term=screen-256color
-
 " Config
+set term=screen-256color
 set nocompatible
 set timeout
 "set timeoutlen=1000
@@ -122,3 +119,15 @@ endif
 " Save file with sudo (extreme!!!)
 " ========================================
 " cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
+
+" ========================================
+" Command history per git project or global
+" ========================================
+let projects=$HOME."/git/"
+let current_dir=getcwd()
+if stridx(current_dir, projects) == 0
+  let project_name=split(strpart(current_dir, len(projects)), '/')[0]
+  exe "set viminfo=%,'100,<5,/50,:100,n~/.viminfo-".project_name
+else
+  set viminfo=%,'100,<5,/50,:100,n~/.viminfo
+endif

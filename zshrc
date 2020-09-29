@@ -78,7 +78,7 @@ alias ll="exa -lah"
 
 # Clusters
 alias ktanga="k exec -it tanga -- bash"
-alias kteiqui="k --kubeconfig=/home/rotsen/.kube/teiqui-config --namespace production"
+alias kteiqui="k --kubeconfig=/home/rotsen/.kube/teiqui --namespace production"
 
 # Arch specific logic
 export PATH="/home/rotsen/bins/:$PATH"
