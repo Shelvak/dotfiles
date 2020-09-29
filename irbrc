@@ -3,15 +3,26 @@ require 'irb/ext/save-history'
 require 'irb/completion'
 
 IRB.conf[:AUTO_INDENT]   = true
-IRB.conf[:HISTORY_FILE]  = "#{ENV['HOME']}/.irb-history"
 IRB.conf[:SAVE_HISTORY]  = 10000
 IRB.conf[:USE_MULTILINE] = true
 
+projects_dir = "#{ENV['HOME']}/git/"
+history_dir  = if ENV['PWD'].include?(projects_dir)
+                 proj_dir = ENV['PWD'].sub(projects_dir, '').split('/').first
+
+                 "#{projects_dir}#{proj_dir}"
+               else
+                 ENV['HOME']
+               end
+
+IRB.conf[:HISTORY_FILE] = "#{history_dir}/.irb-history"
+
 IRB.conf[:IRB_RC] = Proc.new do
   if defined?(Apartment::Tenant)
-    # account = Account.first
-    # account.switch!
-    puts "Switched to #{account&.name}"
+    if account = Account.find_by(tenant_name: 'arg')
+      account.switch!
+      puts "Switched to #{account&.name}"
+    end
   end
 rescue
 end

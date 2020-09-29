@@ -127,7 +127,7 @@ let projects=$HOME."/git/"
 let current_dir=getcwd()
 if stridx(current_dir, projects) == 0
   let project_name=split(strpart(current_dir, len(projects)), '/')[0]
-  exe "set viminfo=%,'100,<5,/50,:100,n~/.viminfo-".project_name
+  exe "set viminfo=%,'100,<5,/50,:100,n" . projects . project_name . "/.viminfo"
 else
   set viminfo=%,'100,<5,/50,:100,n~/.viminfo
 endif

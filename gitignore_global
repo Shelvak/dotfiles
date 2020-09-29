@@ -43,6 +43,7 @@ tmp/*
 .bundle/
 .byebug_history
 .pry_history
+.irb-history
 
 # Customs
 #########
@@ -71,9 +72,10 @@ node_modules/
 # Helpers and others #
 ######
 rotsen_ignore_me*
+ignore_me*
 mysqlbinlog/
 .vagrant
 .envrc
 .env
-
+.viminfo
 .gitignore
