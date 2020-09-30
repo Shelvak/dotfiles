@@ -18,6 +18,7 @@ let g:ale_linters_explicit = 0
 let g:grep_operator = 'rg'
 let g:fzf_nvim_statusline=0
 let g:fzf_preview_window = ''
+let g:fzf_layout = { 'down': '30%' }
 set grepprg=rg\ —vimgrep
 
 command! -bang -nargs=* Rg
