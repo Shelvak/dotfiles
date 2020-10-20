@@ -34,6 +34,7 @@ task :link_files do
     alacritty.yml
     eslintrc
     gemrc
+    gitattributes
     gitconfig
     gitignore_global
     irbrc

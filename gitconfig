@@ -1,7 +1,7 @@
 [user]
   name = Néstor Coppi
   email = nestorcoppi@gmail.com
-	signingkey = C6E214E060B591EC
+  signingkey = C6E214E060B591EC
 [color]
   diff = auto
   status = auto
@@ -20,6 +20,7 @@
 [core]
   editor = vim
   excludesfile = ~/.gitignore_global
+  attributesfile = ~/.gitattributes
 [diff]
   tool = vimdiff
 [format]
@@ -46,4 +47,4 @@
 [pager]
   branch = false
 [commit]
-	gpgsign = true
+  gpgsign = true
