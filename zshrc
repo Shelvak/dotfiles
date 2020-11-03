@@ -24,7 +24,7 @@ DISABLE_CORRECTION="true"
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(git rotsen bundler rails autoenv tmux docker docker-compose kubectl)
+plugins=(git rotsen bundler rails autoenv tmux docker docker-compose kubectl mix)
 safe_source $ZSH/oh-my-zsh.sh
 
 # Completion
@@ -114,9 +114,13 @@ export FZF_DEFAULT_COMMAND='rg --files --follow --glob "!.git/*"'
 export GOPATH=/opt/go
 
 # RXVT
-[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+# [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
+# Yarn NPM bins
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # added by travis gem
-[ -f /home/rotsen/.travis/travis.sh ] && source /home/rotsen/.travis/travis.sh
+# [ -f /home/rotsen/.travis/travis.sh ] && source /home/rotsen/.travis/travis.sh
+
+# Elixir
+export ERL_AFLAGS="-kernel shell_history enabled  -kernel shell_history_file_bytes 2097152"

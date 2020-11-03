@@ -79,3 +79,9 @@ mysqlbinlog/
 .env
 .viminfo
 .gitignore
+.eslint*
+
+# Elixir #
+#####
+_build/
+*.beam

@@ -21,6 +21,7 @@
   editor = vim
   excludesfile = ~/.gitignore_global
   attributesfile = ~/.gitattributes
+  pager = delta --line-numbers
 [diff]
   tool = vimdiff
 [format]
@@ -48,3 +49,5 @@
   branch = false
 [commit]
   gpgsign = true
+[delta]
+  side-by-side = true

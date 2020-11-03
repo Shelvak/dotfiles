@@ -6,7 +6,7 @@
 " let g:ale_lint_on_text_changed=0
 " let g:ale_lint_on_enter=0
 " let g:ale_lint_on_insert_leave=0
-let b:ale_linters=['erb', 'jq', 'eslint']
+let b:ale_linters={ 'eruby': 'erb', 'fixers': 'jq', 'javascript': ['eslint'], 'jsx': ['eslint']}
 let g:ale_ruby_rubocop_executable='/home/rotsen/.gem/ruby/2.6.6/bin/rubocop'
 let g:ale_ruby_ruby_executable='/home/rotsen/.rubies/ruby-2.6.6/bin/ruby'
 let g:ale_set_highlights = 0

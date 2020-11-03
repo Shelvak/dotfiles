@@ -60,11 +60,13 @@ filetype plugin indent on
 if has("autocmd")
   " Ruby surround
   autocmd FileType ruby let b:surround_35 = "#{\r}"
+  autocmd Filetype elixir setlocal formatprg=mix\ format\ -
+  autocmd Filetype python setlocal tabstop=4 shiftwidth=4 expandtab
   autocmd! BufRead,BufNewFile Gemfile setfiletype ruby
   autocmd! BufRead,BufNewFile Vagrantfile setfiletype ruby
   autocmd! BufRead,BufNewFile *.cap setfiletype ruby
   autocmd! BufRead,BufNewFile *.pdf.erb setfiletype html.eruby
-  autocmd Filetype python setlocal tabstop=4 shiftwidth=4 expandtab
+  autocmd! BufRead,BufNewFile *.jsx setfiletype javascript.jsx
   autocmd BufWritePre * if index(['gitcommit'], &ft) < 0 | %s/\t/  /ge  " Replace tabs except in gitcommit msg
 
   " Restore cursor last position

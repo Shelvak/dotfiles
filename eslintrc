@@ -1,208 +1,345 @@
-# vim:set ft=yaml:
-root: true
-env:
-  browser: true
-  jquery: true
-  commonjs: true
-rules:
-  no-cond-assign         : 1 # no if(c='f')
-  no-console             : 1 # use logger instead
-  no-constant-condition  : 1 # no if(true)
-  no-control-regex       : 1 # no control char in regex :/\\x1f/
-  no-debugger            : 1 # no debugger;
-  no-dupe-args           : 1 # no duplicate args in functions
-  no-dupe-keys           : 1 # no duplicate key in object
-  no-duplicate-case      : 1 # no duplicate case label
-  no-empty               : 1 # no empty block statement
-  no-empty-character-class : 1 # no empty character classes in regexp
-  no-ex-assign           : 1 # no overwirte exception in catch
-  no-extra-boolean-cast  : 1 # no unnecessary cast to bool :if(!!foo), !!!foo
-  no-extra-parens        : 0 # no unnecessary parens :(a*b) + c
-  no-extra-semi          : 1 # no semi at var x = 5;; or function foo(){};
-  no-func-assign         : 1 # no overwrite fuction declaration
-  no-inner-declarations  : [1, 'functions'] # no declare func in block
-  no-invalid-regexp      : 1 # no invalid regexp
-  no-irregular-whitespace: 1 # no irregular whitespace like NBSP
-  no-negated-in-lhs      : 1 # no negeted left operand of in
-  no-obj-calls           : 1 # no global object call as function :Math()
-  no-regex-spaces        : 1 # no multi space in regexp: /foo  bar/ => /foo {1}bar/
-  no-sparse-arrays       : 1 # no sparse array: [,,] or [a,,b]
-  no-unexpected-multiline: 1 # separate two expressions with semi
-  no-unreachable         : 1 # no unreachable code
-  use-isnan              : 1 # use isNaN(n) not n == NaN
-  valid-jsdoc            : 1 # validate JSDoc
-  valid-typeof           : 1 # validate typeof misspell: typeof a == strning
-
-
-  # Best Practices
-  accessor-pairs         : 0 # get/setter in objects
-  array-callback-return  : 1 # always return at array methods callback
-  block-scoped-var       : 0 # allow var in block
-  complexity             : [1, 10] # cyclomatic complexity
-  default-case           : 1 # always use default in switch (or write # no default instead)
-  # dot-notation           : 1 # use dot notation like foo.bar instead of foo['bar']
-  dot-location           : [1, 'property'] # enforces consistent newlines before or after dots
-  guard-for-in           : 1 # no use for in (or use it with hasOwnProperty)
-  no-alert               : 1 # allow use of alert, prompt, confirm
-  no-caller              : 1 # no use caller, callee
-  # no-case-declarations   : 0 # disallow lexical declarations in case clauses
-  no-div-regex           : 0 # escape division operator in regexp
-  no-else-return         : 1 # no return in else. use if as guard.
-  # no-empty-function      : 0 # no empty function
-  # no-empty-pattern       : 0 # no empty pattern
-  no-eq-null             : 1 # always use === or !== for compare null: foo === null
-  no-eval                : 1 # no eval, setTimeout, setTimeout for eval func string
-  no-extend-native       : 1 # no extend native object
-  no-extra-bind          : 1 # no unnecessary function binding
-  no-extra-label         : 1 # no unnecessary label
-  no-fallthrough         : 1 # always use break in each case of swich (or write # falls through)
-  no-floating-decimal    : 1 # no floating decimals: no .5 use 0.5
-  no-implicit-coercion   : [1, {boolean: false, number: false, string: false}] # disallow the type conversions with shorter notations
-  # no-implicit-globals    : 0 # no var and named function
-  no-implied-eval        : 1 # no setTimeout, setInterval with function string
-  no-invalid-this        : 1 # disallow this keywords outside of classes or class-like objects
-  no-iterator            : 1 # no __iterator__
-  no-labels              : 1 # no labels for break and continue
-  no-lone-blocks         : 1 # no unnecessary nested blocks
-  no-loop-func           : 1 # no writing function in loop
-  # no-magic-numbers
-  no-multi-str           : 1 # no multi string
-  no-native-reassign     : 1 # no overwrite native objects
-  no-new                 : 1 # no calling new constructor withou assign
-  no-new-func            : 1 # no new Function constructor for create function
-  no-new-wrappers        : 1 # no use primitive wrapper constructor: new String('a')
-  no-octal               : 1 # no octal literals: 071 (same as 57)
-  no-octal-escape        : 1 # no octal escape: \151 use \u00A9 or \xA9
-  no-param-reassign      : [1, {"props": false}] # disallow reassignment of function parameters
-  no-process-env         : 1 # no process.env
-  no-proto               : 1 # no __proto__ use Object.getPrototypeOf()
-  no-redeclare           : 1 # no redeclare: var a = 3; var a = 4;
-  no-return-assign       : 1 # no assign in return: return foo = bar;
-  no-script-url          : 1 # no script url: location.href = 'javascript:void(0)'
-  no-self-assign         : 1 # no self assing
-  no-self-compare        : 1 # no self compare: if (x === x)
-  no-sequences           : 1 # no comma operator: var a = (3, 5); # a = 5
-  no-throw-literal       : 1 # restrict what can be thrown as an exception
-  no-unmodified-loop-condition: 1 # no unmodified condition of loops
-  no-unused-labels       : 1 # no unused label
-  no-useless-call        : 0 # disallow unnecessary .call() and .apply()
-  no-useless-concat      : 1 # no useless concat like 'a'+'b', but 'ab'.
-  no-void                : 1 # no void operator
-  no-warning-comments    : [0, {terms: ['todo', 'fixme'], location: 'start'}] # allow TODO: FIXME: coments
-  no-with                : 1 # no with
-  radix                  : 1 # require radix at parseInt(): no parseInt(071) use parseInt(071, 10)
-  vars-on-top            : 0 # allow vars on not only top
-  wrap-iife              : [0, 'inside'] # wrap immediate invocation function expression outside: (function() { })();
-  yoda                   : [1, 'never'] # never use yoda condition
-
-
-  # Variables
-  init-declarations      : 0 # enforce or disallow variable initializations at definition
-  no-catch-shadow        : 1 # no overwrite cought error
-  no-delete-var          : 1 # no delete var: var x; delete x;
-  no-label-var           : 1 # no label with variable name no-shadow
-  # no-restricted-globals  : 0 # restrict usage of specified global variables
-  no-shadow              : 1 # no shadowing
-  no-shadow-restricted-names: 1 # no shadowing Global props
-  no-undef-init          : 1 # no initialize with undefined: var a = undefined;
-  no-undef               : 1 # no use undeclared vars
-  no-undefined           : 0 # allow using if (a === undefined) because undefined is const in strict mode and undef-init save us
-  no-unused-vars         : [1, {vars: 'all', args: 'after-used', argsIgnorePattern: "^_"}] # no unused vars
-  no-use-before-define   : 1 # no use before define
-
-
-  # Node.js
-  callback-return        : 0 # enforce return after a callback
-  global-require         : 1 # enforce require() on the top-level module scope.
-  handle-callback-err    : 1 # no ignore error arg in callback
-  no-mixed-requires      : [1, false] # no mixed require module
-  no-new-require         : 1 # no new for require: new require('app')
-  no-path-concat         : 1 # no concat for __dirname, __filename use path.join() or path.resolve()
-  no-process-exit        : 0 # no process.extit()
-  # no-restricted-imports : 0 # restrict usage of specified node imports
-  # no-restricted-modules : [0, null] # allow use of node modules
-  no-sync                : 1 # no use of xxxSync()
-
-
-  # Stylistic Issues
-  array-bracket-spacing  : [1, 'never'] # enforce spacing inside array brackets
-  block-spacing          : 1 # disallow or enforce spaces inside of single line blocks.
-  # brace-style            : [1, '1tbs', {allowSingleLine: true }] # require brace style
-  camelcase              : 0 # force using camelcase
-  comma-spacing          : [1, {before: false, after: true}] # space after comma: (a, b)
-  comma-style            : [1, 'first', {exceptions: {ArrayExpression: true, ObjectExpression: true} }] # comma first
-  computed-property-spacing : [1, 'never'] # require or disallow padding inside computed properties
-  consistent-this        : [1, 'thisArg'] # use var thisArg = this;
-  eol-last               : 1 # eol at last line
-  func-names             : 0 # require function name for debugging: Foo.prototype.bar = function bar(){}
-  func-style             : 1 # use function expression
-  # id-blacklist           : 0 # black list for id
-  # id-length              : 0 # this option enforces minimum and maximum identifier lengths (variable names, property names etc.) (off by default)
-  # id-match               : 0 # checking id name match with pattern
-  indent                 : [1, 2, {SwitchCase: 2}] # specify tab or space width for your code
-  jsx-quotes             : 1 # enforce JSX quote style
-  key-spacing            : [1, {
-    singleLine: {
-      beforeColon: false,
-      afterColon: true
-    },
-    multiLine: {
-      beforeColon: false,
-      afterColon: true,
-      align: 'value'
+{
+  "root": true,
+  "env":  {
+    "browser":  true,
+    "jquery":   true,
+    "commonjs": true
+  },
+  "plugins": ["react"],
+  "parserOptions":{
+    "ecmaVersion":  6,
+    "sourceType":   "module",
+    "ecmaFeatures": {
+      "jsx": true
     }
-  }]
-  keyword-spacing        : [1, {before: true, after: true}] # add space before/after keyword
-  linebreak-style        : 1 # disallow mixed 'LF' and 'CRLF' as linebreaks
-  lines-around-comment   : 1 # enforce empty lines around comments
-  max-depth              : [1, {maximum: 5}] # max depth of block
-  max-len                : [1, {
-    code: 100,
-    tabWidth: 1,
-    ignoreUrls: true
-  }] # max length of code
-  max-nested-callbacks   : [1, {maximum: 4}] # max callback nest
-  max-params             : [1, {maximum: 4}] # max parameters of function
-  max-statements         : [1, {maximum: 100}] # max statement of function
-  new-cap                : [1, {newIsCap: true, capIsNew: false}] # use UpperCap for Constructor and always call with new
-  new-parens             : 1 # use parens for new: no new Person; use new Person();
-  # newline-after-var      : [1, 'always'] # require or disallow an empty newline after variable declarations
-  # newline-before-return  : require newline before return statement
-  newline-per-chained-call: [1, {ignoreChainWithDepth: 3}] # newline after each chaining calls
-  no-array-constructor   : 1 # no use new Array() or Array()
-  # no-bitwise
-  # no-continue            : 0 # disallow use of the continue statement
-  no-inline-comments     : 0 # allow inline comments
-  no-lonely-if           : 1 # no lonely if: if() {} else { if() {} } => if() {} else if() {}
-  no-mixed-spaces-and-tabs: [1, false] # no mix space and tab, no smart tab
-  no-multiple-empty-lines: [1, {max: 3}] # no extra blank line over 3
-  no-negated-condition   : 1 # disallow negated conditions
-  no-nested-ternary      : 1 # no : a? b:c === d?e:f; use if-else
-  no-new-object          : 1 # no use new Object() or Object
-  # no-plusplus
-  # no-restricted-syntax   : 1 # disallow certain syntax
-  no-spaced-func         : 1 # space in function call: fn ()
-  no-ternary             : 0 # no ternary
-  no-trailing-spaces     : 1 # no space at end of line
-  no-unneeded-ternary    : 1 # disallow the use of Boolean literals in conditional expressions
-  no-whitespace-before-property: 1 # no whitespace before property
-  object-curly-spacing   : [1, 'always', {
-    objectsInObjects: false,
-    arraysInObjects:  false
-  }]
-  one-var                : 0 # one ver per scope
-  # one-var-declaration-per-line
-  operator-assignment    : 0 # x = x + 1 or x ++ is case by case
-  operator-linebreak     : [1, 'before'] # enforce operators to be placed before or after line breaks
-  padded-blocks          : [1, 'never'] # no surround blank line in block
-  quote-props            : [1, 'consistent-as-needed'] # quote props in object
-  quotes                 : [1, 'single', 'avoid-escape'] # use single quote without string: var s = 'a b';
-  id-match               : 0 # require identifiers to match the provided regular expression
-  sort-vars              : 0 # sort var: var a,b,c,d;
-  space-before-blocks    : [1, 'always'] # always space before block
-  space-before-function-paren : [1, 'always'] # require or disallow a space before function opening parenthesis
-  space-in-parens        : [1, 'never'] # always no space on parens
-  space-infix-ops        : 1 # always space in infix ops
-  space-unary-ops        : 1 # always space in unary words
-  spaced-comment         : [1, 'always'] # alwasy space before comment
-  wrap-regex             : 0 # wrap regexp: (/foo/).test('bar')
+  },
+  "rules":{
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "no-cond-assign":1,
+    "no-console":1,
+    "no-constant-condition":1,
+    "no-control-regex":1,
+    "no-debugger":1,
+    "no-dupe-args":1,
+    "no-dupe-keys":1,
+    "no-duplicate-case":1,
+    "no-empty":1,
+    "no-empty-character-class":1,
+    "no-ex-assign":1,
+    "no-extra-boolean-cast":1,
+    "no-extra-parens":0,
+    "no-extra-semi":1,
+    "no-func-assign":1,
+    "no-inner-declarations":[
+      1,
+      "functions"
+    ],
+    "no-invalid-regexp":1,
+    "no-irregular-whitespace":1,
+    "no-negated-in-lhs":1,
+    "no-obj-calls":1,
+    "no-regex-spaces":1,
+    "no-sparse-arrays":1,
+    "no-unexpected-multiline":1,
+    "no-unreachable":1,
+    "use-isnan":1,
+    "valid-jsdoc":1,
+    "valid-typeof":1,
+    "accessor-pairs":0,
+    "array-callback-return":1,
+    "block-scoped-var":0,
+    "complexity":[
+      1,
+      10
+    ],
+    "default-case":1,
+    "dot-location":[
+      1,
+      "property"
+    ],
+    "guard-for-in":1,
+    "no-alert":1,
+    "no-caller":1,
+    "no-div-regex":0,
+    "no-else-return":1,
+    "no-eq-null":1,
+    "no-eval":1,
+    "no-extend-native":1,
+    "no-extra-bind":1,
+    "no-extra-label":1,
+    "no-fallthrough":1,
+    "no-floating-decimal":1,
+    "no-implicit-coercion":[
+      1,
+      {
+        "boolean":false,
+        "number":false,
+        "string":false
+      }
+    ],
+    "no-implied-eval":1,
+    "no-invalid-this":1,
+    "no-iterator":1,
+    "no-labels":1,
+    "no-lone-blocks":1,
+    "no-loop-func":1,
+    "no-multi-str":1,
+    "no-native-reassign":1,
+    "no-new":1,
+    "no-new-func":1,
+    "no-new-wrappers":1,
+    "no-octal":1,
+    "no-octal-escape":1,
+    "no-param-reassign":[
+      1,
+      {
+        "props":false
+      }
+    ],
+    "no-process-env":1,
+    "no-proto":1,
+    "no-redeclare":1,
+    "no-return-assign":1,
+    "no-script-url":1,
+    "no-self-assign":1,
+    "no-self-compare":1,
+    "no-sequences":1,
+    "no-throw-literal":1,
+    "no-unmodified-loop-condition":1,
+    "no-unused-labels":1,
+    "no-useless-call":0,
+    "no-useless-concat":1,
+    "no-void":1,
+    "no-warning-comments":[
+      0,
+      {
+        "terms":[
+          "todo",
+          "fixme"
+        ],
+        "location":"start"
+      }
+    ],
+    "no-with":1,
+    "radix":1,
+    "vars-on-top":0,
+    "wrap-iife":[
+      0,
+      "inside"
+    ],
+    "yoda":[
+      1,
+      "never"
+    ],
+    "init-declarations":0,
+    "no-catch-shadow":1,
+    "no-delete-var":1,
+    "no-label-var":1,
+    "no-shadow":1,
+    "no-shadow-restricted-names":1,
+    "no-undef-init":1,
+    "no-undef":1,
+    "no-undefined":0,
+    "no-unused-vars":[
+      1,
+      {
+        "vars":"all",
+        "args":"after-used",
+        "argsIgnorePattern":"^_"
+      }
+    ],
+    "no-use-before-define":1,
+    "callback-return":0,
+    "global-require":1,
+    "handle-callback-err":1,
+    "no-mixed-requires":[
+      1,
+      false
+    ],
+    "no-new-require":1,
+    "no-path-concat":1,
+    "no-process-exit":0,
+    "no-sync":1,
+    "array-bracket-spacing":[
+      1,
+      "never"
+    ],
+    "block-spacing":1,
+    "camelcase":0,
+    "comma-spacing":[
+      1,
+      {
+        "before":false,
+        "after":true
+      }
+    ],
+    "comma-style":[
+      1,
+      "first",
+      {
+        "exceptions":{
+          "ArrayExpression":true,
+          "ObjectExpression":true
+        }
+      }
+    ],
+    "computed-property-spacing":[
+      1,
+      "never"
+    ],
+    "consistent-this":[
+      1,
+      "thisArg"
+    ],
+    "eol-last":1,
+    "func-names":0,
+    "func-style":1,
+    "indent":[
+      1,
+      2,
+      {
+        "SwitchCase":2
+      }
+    ],
+    "jsx-quotes":1,
+    "key-spacing":[
+      1,
+      {
+        "singleLine":{
+          "beforeColon":false,
+          "afterColon":true
+        },
+        "multiLine":{
+          "beforeColon":false,
+          "afterColon":true,
+          "align":"value"
+        }
+      }
+    ],
+    "keyword-spacing":[
+      1,
+      {
+        "before":true,
+        "after":true
+      }
+    ],
+    "linebreak-style":1,
+    "lines-around-comment":1,
+    "max-depth":[
+      1,
+      {
+        "maximum":5
+      }
+    ],
+    "max-len":[
+      1,
+      {
+        "code":100,
+        "tabWidth":1,
+        "ignoreUrls":true
+      }
+    ],
+    "max-nested-callbacks":[
+      1,
+      {
+        "maximum":4
+      }
+    ],
+    "max-params":[
+      1,
+      {
+        "maximum":4
+      }
+    ],
+    "max-statements":[
+      1,
+      {
+        "maximum":100
+      }
+    ],
+    "new-cap":[
+      1,
+      {
+        "newIsCap":true,
+        "capIsNew":false
+      }
+    ],
+    "new-parens":1,
+    "newline-per-chained-call":[
+      1,
+      {
+        "ignoreChainWithDepth":3
+      }
+    ],
+    "no-array-constructor":1,
+    "no-inline-comments":0,
+    "no-lonely-if":1,
+    "no-mixed-spaces-and-tabs":[
+      1,
+      false
+    ],
+    "no-multiple-empty-lines":[
+      1,
+      {
+        "max":3
+      }
+    ],
+    "no-negated-condition":1,
+    "no-nested-ternary":1,
+    "no-new-object":1,
+    "no-spaced-func":1,
+    "no-ternary":0,
+    "no-trailing-spaces":1,
+    "no-unneeded-ternary":1,
+    "no-whitespace-before-property":1,
+    "object-curly-spacing":[
+      1,
+      "always",
+      {
+        "objectsInObjects":false,
+        "arraysInObjects":false
+      }
+    ],
+    "one-var":0,
+    "operator-assignment":0,
+    "operator-linebreak":[
+      1,
+      "before"
+    ],
+    "padded-blocks":[
+      1,
+      "never"
+    ],
+    "quote-props":[
+      1,
+      "consistent-as-needed"
+    ],
+    "quotes":[
+      1,
+      "single",
+      "avoid-escape"
+    ],
+    "id-match":0,
+    "sort-vars":0,
+    "space-before-blocks":[
+      1,
+      "always"
+    ],
+    "space-before-function-paren":[
+      1,
+      "always"
+    ],
+    "space-in-parens":[
+      1,
+      "never"
+    ],
+    "space-infix-ops":1,
+    "space-unary-ops":1,
+    "spaced-comment":[
+      1,
+      "always"
+    ],
+    "wrap-regex":0
+  }
+}
