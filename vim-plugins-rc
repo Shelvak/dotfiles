@@ -6,11 +6,16 @@
 " let g:ale_lint_on_text_changed=0
 " let g:ale_lint_on_enter=0
 " let g:ale_lint_on_insert_leave=0
-let b:ale_linters={ 'eruby': 'erb', 'fixers': 'jq', 'javascript': ['eslint'], 'jsx': ['eslint']}
+let g:ale_linters={ 'eruby': ['erb'], 'javascript': ['eslint'], 'jsx': ['eslint'], 'elixir': ['elixir-ls'] }
+let g:ale_fixers={ 'elixir': ['mix_format'] }
+let g:ale_elixir_elixir_ls_release='/home/rotsen/tmp/elixir-ls'
+let g:ale_elixir_elixir_ls_config = { 'elixirLS': { 'dialyzerEnabled': v:false } }
 let g:ale_ruby_rubocop_executable='/home/rotsen/.gem/ruby/2.6.6/bin/rubocop'
 let g:ale_ruby_ruby_executable='/home/rotsen/.rubies/ruby-2.6.6/bin/ruby'
 let g:ale_set_highlights = 0
 let g:ale_linters_explicit = 0
+let g:ale_fix_on_save = 0
+nnoremap <F8> :ALEFix<CR>
 
 " ========================================
 " FZF setup
