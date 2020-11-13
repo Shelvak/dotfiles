@@ -8,3 +8,11 @@ h3. Install
 @rake install@
 
 h4. Enjoy
+
+h2. Notes:
+
+h3. Smplayer:
+mpv options =>
+`--hr-seek-framedrop=no --script=/home/rotsen/.config/mpv/scripts/trakt-mpv.lua`
+mpv script =>
+https://github.com/mpv-player/mpv/wiki/User-Scripts  (Search for trakt)
