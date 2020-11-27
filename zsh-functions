@@ -32,3 +32,8 @@ cclimate() {
     -v /tmp/cc:/tmp/cc \
     codeclimate/codeclimate analyze $1
 }
+
+gfco() {
+  git fetch origin $1
+  git checkout $1
+}
