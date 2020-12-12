@@ -1,5 +1,5 @@
-# Load base-custom functions
-source ~/.zsh-functions
+# Safe Require file
+safe_source () { [ -f $1 ] && source $1 }
 
 # Autostart tmux
 TMUX_ENABLED=$(which tmux 2>&1)
@@ -24,7 +24,7 @@ DISABLE_CORRECTION="true"
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(git rotsen bundler rails autoenv tmux docker docker-compose kubectl mix)
+plugins=(git bundler rails autoenv tmux docker docker-compose kubectl mix)
 safe_source $ZSH/oh-my-zsh.sh
 
 # Completion
@@ -52,6 +52,9 @@ export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
 # GNU Screen sets -o vi if EDITOR=vi, so we have to force it back.
 # set -o vi
+
+# Load custom functions
+safe_source ~/.zsh-functions
 
 # Aliases
 alias v=$EDITOR
@@ -90,6 +93,9 @@ alias qinstall="power -S"
 alias update_system="pac -Syy && power -Suu && pacaur -Syua"
 alias clear_arch="pac -Rsn $(pacman -Qdtq)"
 alias pacaur_apps="pac -Qm"
+
+# Elixir alias
+alias dt="iex -S mix test --trace"
 
 # Ruby logic
 safe_source /usr/share/chruby/chruby.sh
