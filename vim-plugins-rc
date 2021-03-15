@@ -107,3 +107,8 @@ nnoremap <Leader>gc :Gcommit<CR>
 " StripWhiteSpaces
 " ========================================
 let g:strip_trailing_lines = 1
+
+" ========================================
+" SnipMate
+" ========================================
+let g:snipMate = { 'snippet_version' : 1 }

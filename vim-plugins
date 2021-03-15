@@ -2,8 +2,11 @@ set nocompatible
 
 filetype off
 
-Plug 'michaelbruce/vim-chruby'
+" Deps
 Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'garbas/vim-snipmate'
+Plug 'mattn/webapi-vim'
+
 Plug 'Shelvak/vim-yaml-flattener', { 'for': 'yaml' }
 Plug 'Shougo/deoplete.nvim'
 " Plug 'Shutnik/jshint2.vim'
@@ -13,13 +16,11 @@ Plug 'airblade/vim-gitgutter'
 Plug 'avakhov/vim-yaml'
 Plug 'Shelvak/SmartColumnColors', { 'branch': 'alternative_column' }
 Plug 'gagoar/StripWhiteSpaces'
-Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'kchmck/vim-coffee-script'
 Plug 'mattn/gist-vim'
-Plug 'mattn/webapi-vim'
 Plug 'othree/html5.vim'
 " Plug 'tmhedberg/matchit'
 Plug 'tomtom/tlib_vim'
@@ -44,5 +45,7 @@ Plug 'vim-ruby/vim-ruby'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+
+Plug 'elixir-editors/vim-elixir'
 
 filetype on

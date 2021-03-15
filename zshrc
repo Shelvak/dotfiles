@@ -74,10 +74,10 @@ alias ..='cd ..'
 alias ..2='cd ../..'
 alias ..3='cd ../../..'
 alias minar="cd /Secundario/rotsen/crypto/xmrig-nvidia-2.8.3/build; sudo ./xmrig-nvidia"
-alias vr="v /tmp/$(date -u '+%Y'.'%m'.'%d'_'%H'.'%M'.'%S').rb"
 alias refresh="gpr; bi --jobs 8; rdm"
 alias full_test="RAILS_ENV=test rails db:drop db:create db:migrate; rails test"
 alias ll="exa -lah"
+alias gcas="mix format; gca -m '[ci skip] Tmp'; ggpush"
 
 # Clusters
 alias ktanga="k exec -it tanga -- bash"

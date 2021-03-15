@@ -50,3 +50,5 @@ compdef _cs cs
 t() { RAILS_ENV=test rails test test/$1; }
 _t() { _files -W $PWD/test -/; }
 compdef _t t
+
+vr() { vim ~/tmp/$(date -u '+%Y'.'%m'.'%d'_'%H'.'%M'.'%S').rb }

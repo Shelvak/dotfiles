@@ -85,3 +85,6 @@ mysqlbinlog/
 #####
 _build/
 *.beam
+
+# Credentials #
+config/credentials.json
