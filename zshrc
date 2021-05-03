@@ -130,3 +130,6 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # Elixir
 export ERL_AFLAGS="-kernel shell_history enabled  -kernel shell_history_file_bytes 2097152"
+
+# Dafac is that...
+if [ -e /home/rotsen/.nix-profile/etc/profile.d/nix.sh ]; then . /home/rotsen/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

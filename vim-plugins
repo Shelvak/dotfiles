@@ -3,49 +3,42 @@ set nocompatible
 filetype off
 
 " Deps
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'garbas/vim-snipmate'
-Plug 'mattn/webapi-vim'
+Plug 'tomtom/tlib_vim' " Needed for snippets
+Plug 'MarcWeber/vim-addon-mw-utils' " Needed for snippets
+Plug 'garbas/vim-snipmate' " Needed for snippets
+Plug 'mattn/webapi-vim' " Needed for gist
 
 Plug 'Shelvak/vim-yaml-flattener', { 'for': 'yaml' }
-Plug 'Shougo/deoplete.nvim'
-" Plug 'Shutnik/jshint2.vim'
-" Plug 'Slava/vim-spacebars'
-Plug 'Townk/vim-autoclose'
-Plug 'airblade/vim-gitgutter'
-Plug 'avakhov/vim-yaml'
+Plug 'Townk/vim-autoclose'  " Auto close ()[]{} etc and let you 'inside'
+Plug 'airblade/vim-gitgutter' " Show +- depending on git
 Plug 'Shelvak/SmartColumnColors', { 'branch': 'alternative_column' }
 Plug 'gagoar/StripWhiteSpaces'
 Plug 'honza/vim-snippets'
 Plug 'itchyny/lightline.vim'
-Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-easy-align' " Align with smart spaces between dictionary key-value
 Plug 'kchmck/vim-coffee-script'
-Plug 'mattn/gist-vim'
-Plug 'othree/html5.vim'
-" Plug 'tmhedberg/matchit'
-Plug 'tomtom/tlib_vim'
-Plug 'scrooloose/nerdtree'
-Plug 'dense-analysis/ale'
-Plug 'sheerun/vim-polyglot'
+Plug 'mattn/gist-vim'  " Create Gist
+Plug 'dense-analysis/ale' " Lints
+Plug 'sheerun/vim-polyglot' " Syntax
 
-Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-projectionist'
-Plug 'tpope/vim-ragtag'
+Plug 'tpope/vim-abolish' " Smart plural/case substitutions
+Plug 'tpope/vim-commentary' " Comment lines
+Plug 'tpope/vim-endwise' " Auto end in ruby blocks
+Plug 'tpope/vim-eunuch'  " Commands like :Move
+Plug 'tpope/vim-fugitive' " :Git commands
+Plug 'tpope/vim-projectionist' " :CustomProjection
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-rhubarb'
-Plug 'tpope/vim-surround'
-Plug 'AndrewRadev/splitjoin.vim'
+Plug 'tpope/vim-rhubarb' " vim-fugitive with github support
+Plug 'tpope/vim-surround' " Smart surround with tags
+Plug 'tpope/vim-repeat' " Smarter . repeat
+Plug 'AndrewRadev/splitjoin.vim' " Split elements in multilines or join
 Plug 'vim-ruby/vim-ruby'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-Plug 'elixir-editors/vim-elixir'
+" Plug 'elixir-editors/vim-elixir'
+Plug 'tomlion/vim-solidity'
 
 filetype on

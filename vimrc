@@ -1,4 +1,9 @@
 " Running SO...
+" Before load plugins config
+if filereadable(expand("~/.vim-plugins-before-load"))
+  source ~/.vim-plugins-before-load
+endif
+" Load plugins
 if filereadable(expand("~/.vim-plugins"))
   call plug#begin('~/.vim/plugs')
   source ~/.vim-plugins
@@ -36,7 +41,7 @@ set backspace=2
 set laststatus=2
 " set colorcolumn=80
 " Some magic... for delay
-set re=1
+" set re=1
 set lazyredraw
 set et   "spaces instead of tabs
 
@@ -62,6 +67,7 @@ if has("autocmd")
   autocmd FileType ruby let b:surround_35 = "#{\r}"
   autocmd Filetype elixir setlocal formatprg=mix\ format\ -
   autocmd Filetype python setlocal tabstop=4 shiftwidth=4 expandtab
+  autocmd Filetype solidity setlocal tabstop=4 shiftwidth=4 expandtab
   autocmd! BufRead,BufNewFile Gemfile setfiletype ruby
   autocmd! BufRead,BufNewFile Vagrantfile setfiletype ruby
   autocmd! BufRead,BufNewFile *.cap setfiletype ruby

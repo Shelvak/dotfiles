@@ -44,8 +44,8 @@ task :link_files do
     screenrc
     tmux.conf
     vim-plugins
-    vim-plugins
     vim-plugins-rc
+    vim-plugins-before-load
     vimrc
     zsh-functions
     zshrc
