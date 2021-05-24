@@ -4,7 +4,7 @@ require 'irb/completion'
 
 IRB.conf[:AUTO_INDENT]   = true
 IRB.conf[:SAVE_HISTORY]  = 10000
-IRB.conf[:USE_MULTILINE] = true
+IRB.conf[:USE_MULTILINE] = false
 
 projects_dir = "#{ENV['HOME']}/git/"
 history_dir  = if ENV['PWD'].include?(projects_dir)

@@ -90,7 +90,7 @@ alias pac="sudo pacman"
 alias install="pac -S"
 alias power="sudo pacman-mirrors --fasttrack 10; sudo powerpill"
 alias qinstall="power -S"
-alias update_system="pac -Syy && power -Suu && pacaur -Syua"
+alias update_system="pac -Syy && sudo powerpill -Suu && pacaur -Sa --noconfirm --noedit --needed google-chrome kubectl-bin slack-desktop spotify redis-desktop-manager heroku-cli teamviewer unetbootin zoom postman-bin phantomjs-bin droidcam ruby-build ttf-ms-fonts v4l2loopback-dc-dkms git-delta-bin powerpill ruby-install"
 alias clear_arch="pac -Rsn $(pacman -Qdtq)"
 alias pacaur_apps="pac -Qm"
 
@@ -133,3 +133,6 @@ export ERL_AFLAGS="-kernel shell_history enabled  -kernel shell_history_file_byt
 
 # Dafac is that...
 if [ -e /home/rotsen/.nix-profile/etc/profile.d/nix.sh ]; then . /home/rotsen/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+# puta verga de node
+export LD_LIBRARY_PATH=/nix/store/hs1zphws1iyddrvfyqs7qj9qw6qqs0mc-icu4c-68.2/lib
