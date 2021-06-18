@@ -1,5 +1,55 @@
 require 'rake'
 
+APPS = %w(
+  alacritty
+  binutils brave
+  chruby chrome-gnome-shell clang
+  direnv docker docker-compose droidcam
+  exa expac
+  ffmpeg fzf fakeroot
+  google-chrome gstreamer gstreamer-vaapi git gcc gvim
+  gst-libav gst-plugins-bad gst-plugins-base gst-plugins-good gst-plugins-ugly git-delta-bin
+  heroku-cli htop
+  icu iotop
+  kubectl-bin
+  lib32-icu
+  mlocate mtr make
+  nmap nodejs npm
+  postman-bin phantomjs-bin pgadmin4 postgresql-libs pkg-config
+  redis-desktop-manager ripgrep ruby-install ruby-build
+  rxvt-unicode
+  smplayer spotify sshfs
+  teamviewer telegram-desktop tmux ttf-ms-fonts
+  unetbootin
+  v4l2loopback-dc-dkms
+  wine
+  xclip
+  yajl
+  zoom zstd
+)
+
+def splitted_apps
+  puts 'Checking packages against official repos'
+  pacman_checks = `pacman -Si #{APPS.join(' ')}  2>/dev/null`
+  official_pkgs = pacman_checks.scan(/(Nombre|Name)\s+: (.+)/i).map do |_key, name|
+    name if name && name.strip != ''
+  end.uniq.compact.sort
+
+  no_official = APPS - official_pkgs
+  aur_pkgs = []
+  if no_official.size > 0
+    puts 'Checking packages against AUR repo'
+    aur_pkgs = no_official.map do |pkg|
+      pkg if `pacaur -sq #{pkg} 2>/dev/null`.strip != ''
+    end.compact.uniq.sort
+  end
+
+  unavailable = no_official - aur_pkgs
+  puts "No se encontraron: #{unavailable.join(', ')}" if unavailable.size > 0
+
+  [official_pkgs, aur_pkgs]
+end
+
 def sym_link(origin, destiny)
   puts %x{ln -fvs #{origin} #{destiny}}
 end
@@ -69,7 +119,7 @@ task :link_files do
 end
 
 desc "install the dot files into user's home directory"
-task :install do
+task :install_dotfiles do
   puts 'Install all submodules oh-my-zsh'
   puts %x{git submodule init}
   puts %x{git submodule update}
@@ -85,7 +135,7 @@ task :install do
 end
 
 desc 'Update all the _updatable_ things =)'
-task :update do
+task :update_dotfiles do
   puts 'Updating...'
   puts %x{git pull origin master}
   puts %x{git submodule init}
@@ -97,8 +147,8 @@ task :update do
   puts 'Done ^^'
 end
 
-desc 'Install all basic shit'
-task :arch_install do
+desc 'Install all basic SO shit'
+task :install_SO do
   if `which powerpill 2>/dev/null`.strip == ''
     puts "Powerpill is needed"
     exit 0
@@ -112,46 +162,7 @@ task :arch_install do
   # crear temporal de AUR
   `mkdir -p ~/tmp/cache`
 
-  all = %w(
-    alacritty
-    binutils
-    chruby chrome-gnome-shell clang
-    direnv docker docker-compose
-    exa expac
-    ffmpeg fzf fakeroot
-    google-chrome gstreamer gstreamer-vaapi git gcc gvim
-    gst-libav gst-plugins-bad gst-plugins-base gst-plugins-good gst-plugins-ugly
-    htop
-    icu iotop
-    kubectl-bin
-    lib32-icu
-    mlocate mtr make
-    nmap nodejs npm
-    pgadmin4 postgresql-libs pkg-config
-    rambox-bin redis-desktop-manager ripgrep ruby-install
-    rxvt-unicode
-    slack-desktop smplayer spotify sshfs
-    telegram-desktop-bin tmux
-    wine
-    xclip
-    yajl
-    zstd
-  )
-
-  puts 'Checking packages against official repos'
-  pacman_checks = `pacman -Si #{all.join(' ')}  2>/dev/null`
-  official_pkgs = pacman_checks.scan(/(Nombre|Name)\s+: (.+)/i).map do |_key, name|
-    name if name && name.strip != ''
-  end.uniq.compact.sort
-
-  no_official = all - official_pkgs
-  aur_pkgs = []
-  if no_official.size > 0
-    puts 'Checking packages against AUR repo'
-    aur_pkgs = no_official.map do |pkg|
-      pkg if `pacaur -sq #{pkg} 2>/dev/null`.strip != ''
-    end.compact.uniq.sort
-  end
+  official_pkgs, aur_pkgs = splitted_apps
 
   puts "Installing official packages: #{official_pkgs.join(', ')}\n"
   system("sudo powerpill -S --needed #{official_pkgs.join(' ')}")
@@ -159,13 +170,7 @@ task :arch_install do
 
   if aur_pkgs.size > 0
     puts "Installing from AUR: #{aur_pkgs.join(', ')}\n"
-    aur_pkgs.each do |pkg|
-      system("pacaur -S --noedit --noconfirm --needed #{pkg}")
-    end
-  end
-
-  if (unavailable = no_official - aur_pkgs).size > 0
-    puts "No se encontraron: #{unavailable.join(', ')}"
+    system("pacaur -S --noedit --noconfirm --needed #{aur_pkgs.join(' ')}")
   end
 
   # puts 'smplayer...'
@@ -177,4 +182,23 @@ task :arch_install do
   puts 'Installing extra plugins:'
   puts_and_install 'gem install bundler rubocop'
   puts_and_install 'npm install -g eslint'
+end
+
+desc 'Update SO'
+task :update_SO do
+  # Update repos
+  system("pac -Syy")
+  # Fast download
+  system("sudo powerpill -Suu")
+  # Update system
+  system("pac -Suu")
+
+  aur_pkgs = splitted_apps.last
+
+  if aur_pkgs.size > 0
+    puts "Installing from AUR: #{aur_pkgs.join(', ')}\n"
+    system("pacaur -S --noedit --noconfirm --needed #{aur_pkgs.join(' ')}")
+  end
+
+  puts "\n"
 end

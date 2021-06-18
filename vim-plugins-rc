@@ -8,9 +8,11 @@ let g:ale_linters={
 \  'jsx': ['eslint'],
 \  'elixir': ['elixir-ls']
 \ }
-let g:ale_fixers={ 'elixir': ['mix_format'] }
+let g:ale_fixers={ 'elixir': ['mix_format'], 'solidity': ['solc']}
 let g:ale_elixir_elixir_ls_release='/home/rotsen/tmp/elixir-ls'
 let g:ale_elixir_elixir_ls_config = { 'elixirLS': { 'dialyzerEnabled': v:false } }
+let g:ale_solidity_solc_executable='/home/rotsen/.cache/hardhat-nodejs/compilers/linux-amd64/solc-linux-amd64-v0.8.4+commit.c7e474f2'
+let g:ale_solidity_solc_options='@openzeppelin/=/home/rotsen/git/2pi_contracts/node_modules/@openzeppelin/ "..interfaces/=/home/rotsen/git/2pi_contracts/interfaces/"'
 let g:ale_ruby_rubocop_executable='/home/rotsen/.gem/ruby/2.6.6/bin/rubocop'
 let g:ale_ruby_ruby_executable='/home/rotsen/.rubies/ruby-2.6.6/bin/ruby'
 let g:ale_fix_on_save = 0
