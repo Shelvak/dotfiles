@@ -1,8 +1,8 @@
 require 'rake'
 
-APPS = %w(
+APPS = %w[
   alacritty
-  binutils brave
+  binutils brave-bin
   chruby chrome-gnome-shell clang
   direnv docker docker-compose droidcam
   exa expac
@@ -26,7 +26,7 @@ APPS = %w(
   xclip
   yajl
   zoom zstd
-)
+]
 
 def splitted_apps
   puts 'Checking packages against official repos'
@@ -60,7 +60,7 @@ end
 
 def puts_and_install(command)
   puts command
-  puts %x{#{command}}
+  system(command)
 end
 
 desc "Link files into user's home directory"
@@ -147,58 +147,25 @@ task :update_dotfiles do
   puts 'Done ^^'
 end
 
-desc 'Install all basic SO shit'
-task :install_SO do
-  if `which powerpill 2>/dev/null`.strip == ''
-    puts "Powerpill is needed"
-    exit 0
-  end
-
-  if `which pacaur 2>/dev/null`.strip == ''
-    puts "pacaur is needed"
-    exit 0
-  end
-
-  # crear temporal de AUR
-  `mkdir -p ~/tmp/cache`
-
+desc 'Update SO'
+task :update_SO do
   official_pkgs, aur_pkgs = splitted_apps
 
-  puts "Installing official packages: #{official_pkgs.join(', ')}\n"
-  system("sudo powerpill -S --needed #{official_pkgs.join(' ')}")
-  puts "\n"
+  # Update repos
+  system("pac -Syyuu --needed #{official_pkgs.join(' ')}")
 
-  if aur_pkgs.size > 0
+  unless aur_pkgs.empty?
+    `mkdir -p ~/tmp/cache`
     puts "Installing from AUR: #{aur_pkgs.join(', ')}\n"
     system("pacaur -S --noedit --noconfirm --needed #{aur_pkgs.join(' ')}")
   end
 
-  # puts 'smplayer...'
-  # puts `mkdir -p ~/.config/smplayer/; cp -vf smplayer.ini ~/.config/smplayer/smplayer.ini`
+  puts "\n"
 
-  puts "Adding user to docker group"
-  puts `sudo gpasswd -a $USER docker`
+  puts 'Adding user to docker group'
+  system('sudo gpasswd -a $USER docker')
 
   puts 'Installing extra plugins:'
   puts_and_install 'gem install bundler rubocop'
-  puts_and_install 'npm install -g eslint'
-end
-
-desc 'Update SO'
-task :update_SO do
-  # Update repos
-  system("pac -Syy")
-  # Fast download
-  system("sudo powerpill -Suu")
-  # Update system
-  system("pac -Suu")
-
-  aur_pkgs = splitted_apps.last
-
-  if aur_pkgs.size > 0
-    puts "Installing from AUR: #{aur_pkgs.join(', ')}\n"
-    system("pacaur -S --noedit --noconfirm --needed #{aur_pkgs.join(' ')}")
-  end
-
-  puts "\n"
+  puts_and_install 'sudo npm install -g eslint npm'
 end

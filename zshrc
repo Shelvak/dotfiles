@@ -88,9 +88,7 @@ export PATH="/home/rotsen/bins/:$PATH"
 export PKGDEST=/home/rotsen/tmp/cache  # AUR cache
 alias pac="sudo pacman"
 alias install="pac -S"
-alias power="sudo pacman-mirrors --fasttrack 10; sudo powerpill"
-alias qinstall="power -S"
-alias update_system="pac -Syy && sudo powerpill -Suu && pacaur -Sa --noconfirm --noedit --needed google-chrome kubectl-bin slack-desktop spotify redis-desktop-manager heroku-cli teamviewer unetbootin zoom postman-bin phantomjs-bin droidcam ruby-build ttf-ms-fonts v4l2loopback-dc-dkms git-delta-bin powerpill ruby-install"
+alias update_system="cd ~/.dotfiles/ && rake update_SO"
 alias clear_arch="pac -Rsn $(pacman -Qdtq)"
 alias pacaur_apps="pac -Qm"
 
