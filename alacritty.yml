@@ -30,9 +30,21 @@ colors:
     white:   '0xEEEEEC'
 
 font:
+  # normal:
+  #   family: Sans Regular
+  # bold:
+  #   family: Cantarell Bold
+  # italic:
+  #   family: Sans Regular
   size: 14
 
 window:
+  padding:
+    x: 0
+    y: 0
+  dynamic_padding: true
+  decorations: none
+  startup_mode: Maximized
   dimensions:
     columns: 250
     lines: 100

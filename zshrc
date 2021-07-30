@@ -88,7 +88,7 @@ export PATH="/home/rotsen/bins/:$PATH"
 export PKGDEST=/home/rotsen/tmp/cache  # AUR cache
 alias pac="sudo pacman"
 alias install="pac -S"
-alias update_system="cd ~/.dotfiles/ && rake update_SO"
+alias update_system="cd ~/.dotfiles/ && rake update_SO; cd -"
 alias clear_arch="pac -Rsn $(pacman -Qdtq)"
 alias pacaur_apps="pac -Qm"
 

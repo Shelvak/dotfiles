@@ -8,7 +8,7 @@ APPS = %w[
   exa expac
   ffmpeg fzf fakeroot
   google-chrome gstreamer gstreamer-vaapi git gcc gvim
-  gst-libav gst-plugins-bad gst-plugins-base gst-plugins-good gst-plugins-ugly git-delta-bin
+  gst-libav gst-plugins-bad gst-plugins-base gst-plugins-good gst-plugins-ugly git-delta-git
   heroku-cli htop
   icu iotop
   kubectl-bin
@@ -152,7 +152,7 @@ task :update_SO do
   official_pkgs, aur_pkgs = splitted_apps
 
   # Update repos
-  system("pac -Syyuu --needed #{official_pkgs.join(' ')}")
+  system("sudo pacman -Syyuu --overwrite '*' --needed #{official_pkgs.join(' ')}")
 
   unless aur_pkgs.empty?
     `mkdir -p ~/tmp/cache`
