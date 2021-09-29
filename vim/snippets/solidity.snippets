@@ -1,4 +1,54 @@
 snippet f
-	function ${1:}() public {
-		${0}
+	function $1() public {
+		${0:${VISUAL}}
+	}
+
+snippet c
+	// SPDX-License-Identifier: MIT
+	pragma solidity ^0.8.4;
+
+	contract $1 {
+		constructor($2) {$3}
+	}
+
+snippet c20
+	// SPDX-License-Identifier: MIT
+	pragma solidity ^0.8.4;
+
+	import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+
+	contract ${1:} is ERC20 {
+		constructor(${2}) ERC20(
+			string(abi.encodePacked("${3}")),
+			string(abi.encodePacked("${4}"))
+		) {${5}}
+	}
+
+snippet ozi
+	import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+	import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
+	import "@openzeppelin/contracts/access/Ownable.sol";
+	import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+
+snippet int
+	interface ${1:} {
+		function ${2}() external view returns (${3});
+	}
+
+snippet inf
+	function ${1:}() external view returns (${2});
+
+snippet if
+	if ($1) { $2; }
+	
+snippet ife
+	if ($1) {
+		$2;
+	} else {
+		$3;
+	}
+
+snippet for
+	for (uint i = 0; i < $1; i++) {
+		$2;
 	}
