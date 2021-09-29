@@ -36,7 +36,7 @@ font:
   #   family: Cantarell Bold
   # italic:
   #   family: Sans Regular
-  size: 14
+  size: 15
 
 window:
   padding:

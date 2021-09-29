@@ -4,8 +4,8 @@ APPS = %w[
   alacritty
   binutils brave-bin
   chruby chrome-gnome-shell clang
-  direnv docker docker-compose droidcam
-  exa expac
+  direnv docker docker-compose droidcam discord
+  exa expac element-desktop
   ffmpeg fzf fakeroot
   google-chrome gstreamer gstreamer-vaapi git gcc gvim google-cloud-sdk
   gst-libav gst-plugins-bad gst-plugins-base gst-plugins-good gst-plugins-ugly git-delta
@@ -15,16 +15,16 @@ APPS = %w[
   lib32-icu
   mlocate mtr make
   nmap nodejs npm
-  postman-bin phantomjs-bin pgadmin4 postgresql-libs pkg-config
+  opera
+  postman-bin phantomjs-bin pgadmin4 postgresql-libs pkgconfig
   redis-desktop-manager ripgrep ruby-install ruby-build
-  rxvt-unicode
   smplayer spotify sshfs
   teamviewer telegram-desktop tmux ttf-ms-fonts
   unetbootin
   v4l2loopback-dc-dkms
   wine
   xclip
-  yajl
+  yajl yay
   zoom zstd
 ]
 
@@ -40,7 +40,7 @@ def splitted_apps
   if no_official.size > 0
     puts 'Checking packages against AUR repo'
     aur_pkgs = no_official.map do |pkg|
-      pkg if `pacaur -sq #{pkg} 2>/dev/null`.strip != ''
+      pkg if `yay -Ss #{pkg} 2>/dev/null`.strip != ''
     end.compact.uniq.sort
   end
 
@@ -66,16 +66,16 @@ end
 desc "Link files into user's home directory"
 task :link_files do
   puts 'Linking folders...'
-  ['vim', 'oh-my-zsh'].each do |folder|
+  ['vim', 'oh-my-zsh', 'autoenv'].each do |folder|
     puts "Linking #{folder}"
     sym_link_dir "$PWD/#{folder}", "$HOME/.#{folder}"
   end
 
   puts 'Linking zsh customs...'
   sym_link_dir '$PWD/zsh-themes/Shelvak.zsh-theme',  '$PWD/oh-my-zsh/custom/themes/Shelvak.zsh-theme'
-  `ls $PWD/zsh-plugins`.split("\n").each do |dir|
-    sym_link_dir "$PWD/zsh-plugins/#{dir}", "$PWD/oh-my-zsh/custom/plugins/#{dir}"
-  end
+  # `ls $PWD/zsh-plugins`.split("\n").each do |dir|
+  #   sym_link_dir "$PWD/zsh-plugins/#{dir}", "$PWD/oh-my-zsh/custom/plugins/#{dir}"
+  # end
 
   puts 'Linking files...'
   %w(
@@ -103,12 +103,6 @@ task :link_files do
   ).each do |file|
     sym_link "$PWD/#{file}", "$HOME/.#{file}"
   end
-
-  # if system("which urxvt >> /dev/null 2>&1")
-  #   # Urxvt
-  #   sym_link "$PWD/Xresources", "$HOME/.Xresources"
-  #   sym_link "$PWD/Xresources", "$HOME/.Xdefaults"
-  # end
 
   puts 'linking custom-dir files'
   %x{mkdir -p $HOME/.bundle}
@@ -158,7 +152,8 @@ task :update_SO do
   unless aur_pkgs.empty?
     `mkdir -p ~/tmp/cache`
     puts "Installing from AUR: #{aur_pkgs.join(', ')}\n"
-    system("pacaur -S --noedit --noconfirm --needed #{aur_pkgs.join(' ')}")
+    system("yay -Sa --requestsplitn 30 --noanswerclean --noanswerdiff --noansweredit --noanswerupgrade --cleanafter --norebuild --noredownload --useask --needed #{aur_pkgs.join(' ')}")
+    brave-bin chruby direnv droidcam git-delta-git google-chrome heroku-cli kubectl-bin phantomjs-bin postman-bin redis-desktop-manager ruby-build ruby-install spotify teamviewer ttf-ms-fonts unetbootin v4l2loopback-dc-dkms zoom
   end
 
   puts "\n"
