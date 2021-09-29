@@ -119,3 +119,9 @@ let g:strip_trailing_lines = 1
 " SnipMate
 " ========================================
 let g:snipMate = { 'snippet_version' : 1 }
+
+" ========================================
+" Sideways
+" ========================================
+nnoremap <Leader><Left> :SidewaysLeft<cr>
+nnoremap <Leader><Right> :SidewaysRight<cr>

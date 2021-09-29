@@ -35,6 +35,8 @@ Plug 'tpope/vim-repeat' " Smarter . repeat
 Plug 'AndrewRadev/splitjoin.vim' " Split elements in multilines or join
 Plug 'vim-ruby/vim-ruby'
 
+Plug 'AndrewRadev/sideways.vim'  " Move args backward/forward
+
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 

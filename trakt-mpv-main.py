@@ -12,7 +12,7 @@ import json
 from time import sleep
 
 import requests
-from datetime import date
+from datetime import date, timedelta
 
 """
 HELPERS
@@ -172,11 +172,16 @@ def __query_search_ep(name, season, ep, configs):
             sys.exit(14)
 
     # Found it!
+    LOG.info("1")
     show_title = res.json()[0]['show']['title']
+    LOG.info(show_title)
     show_slug = res.json()[0]['show']['ids']['slug']
+    LOG.info(show_slug)
     show_trakt_id = res.json()[0]['show']['ids']['trakt']
+    LOG.info(show_trakt_id)
 
-    print(show_title + ' S' + season + 'E' + ep, end='')
+    LOG.info(show_title + ' S' + season + 'E' + ep)
+    # print(show_title + ' S' + season + 'E' + ep, end='')
 
     # Get the episode
     res = requests.get(
@@ -184,9 +189,14 @@ def __query_search_ep(name, season, ep, configs):
         headers={'trakt-api-key': configs['client_id'], 'trakt-api-version': '2'}
     )
 
+    LOG.info("FINAL:")
+    LOG.info(res.status_code)
+    LOG.info(res.json())
+
     if res.status_code != 200:
         sys.exit(-1)
 
+    LOG.info("al checkin:")
     checkin(configs, {
         'show': {'ids': {'trakt': show_trakt_id}},
         'episode': {'season': season, 'number': ep},
@@ -264,16 +274,63 @@ def checkin(configs, body):
         },
         json=body
     )
+    LOG.info(res.status_code)
+    LOG.info(res.reason)
+    LOG.info(res.text)
 
     if res.status_code == 409:
         cancel_previous_scrobble(configs, body)
+    # elif res.status_code == 429:
+    #     cancel_previous_scrobble(configs, body)
+    elif res.status_code == 401:
+        refresh_token_and_recheck(configs, body)
     elif res.status_code != 201:
         sys.exit(-1)
     sys.exit(0)
 
+def refresh_token_and_recheck(configs, body):
+    LOG.info("Checking for new token...")
+    refreshed = date.fromisoformat(configs['today'])
+
+    # Exit if token is stil valid (3 months)
+    if (refreshed + timedelta(days=90) > date.today()):
+        LOG.info("Token still valid...")
+        sys.exit(-1)
+
+    res = requests.post('https://api.trakt.tv/oauth/token', json={
+        'client_id': configs['client_id'],
+        'client_secret': configs['client_secret'],
+        'refresh_token': configs['refresh_token'],
+        'grant_type': 'refresh_token'
+    })
+
+    res_json = res.json()
+
+    if res.status_code != 200:
+        LOG.info("Refresh token didn't work:")
+        LOG.info(res.status_code)
+        LOG.info(res.json())
+        sys.exit(-1)
+
+    if 'access_token' in res_json:
+        # Success
+        configs['access_token'] = res_json['access_token']
+        configs['refresh_token'] = res_json['refresh_token']
+        del configs['device_code']
+        configs['today'] = str(date.today())
+
+        write_json(configs)
+
+        # Re-send the checking with the new config
+        sleep(10)
+        checkin(configs, body)
+
 
 def cancel_previous_scrobble(configs, body):
     """ Cancels the previous scrobble, saves it and starts a new one """
+
+    # Wait a few seconds to check again
+    sleep(10)
     # Get the current scrobble
     res = requests.get(
         'https://api.trakt.tv/users/' + configs['user_slug'] + '/watching',
@@ -285,6 +342,8 @@ def cancel_previous_scrobble(configs, body):
     )
 
     if res.status_code == 204:
+        # Wait a few seconds to check again
+        sleep(10)
         # Scrobble ended
         checkin(configs, body)
         return

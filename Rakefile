@@ -7,8 +7,8 @@ APPS = %w[
   direnv docker docker-compose droidcam
   exa expac
   ffmpeg fzf fakeroot
-  google-chrome gstreamer gstreamer-vaapi git gcc gvim
-  gst-libav gst-plugins-bad gst-plugins-base gst-plugins-good gst-plugins-ugly git-delta-git
+  google-chrome gstreamer gstreamer-vaapi git gcc gvim google-cloud-sdk
+  gst-libav gst-plugins-bad gst-plugins-base gst-plugins-good gst-plugins-ugly git-delta
   heroku-cli htop
   icu iotop
   kubectl-bin
@@ -82,6 +82,7 @@ task :link_files do
     ackrc
     agignore
     alacritty.yml
+    axelrc
     eslintrc
     gemrc
     gitattributes
@@ -103,11 +104,11 @@ task :link_files do
     sym_link "$PWD/#{file}", "$HOME/.#{file}"
   end
 
-  if system("which urxvt >> /dev/null 2>&1")
-    # Urxvt
-    sym_link "$PWD/Xresources", "$HOME/.Xresources"
-    sym_link "$PWD/Xresources", "$HOME/.Xdefaults"
-  end
+  # if system("which urxvt >> /dev/null 2>&1")
+  #   # Urxvt
+  #   sym_link "$PWD/Xresources", "$HOME/.Xresources"
+  #   sym_link "$PWD/Xresources", "$HOME/.Xdefaults"
+  # end
 
   puts 'linking custom-dir files'
   %x{mkdir -p $HOME/.bundle}
