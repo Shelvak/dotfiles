@@ -40,7 +40,7 @@ Plug 'AndrewRadev/sideways.vim'  " Move args backward/forward
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-" Plug 'elixir-editors/vim-elixir'
+Plug 'elixir-editors/vim-elixir'
 
 
 filetype on

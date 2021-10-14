@@ -73,6 +73,7 @@ if has("autocmd")
   autocmd! BufRead,BufNewFile *.cap setfiletype ruby
   autocmd! BufRead,BufNewFile *.pdf.erb setfiletype html.eruby
   autocmd! BufRead,BufNewFile *.jsx setfiletype javascript.jsx
+
   autocmd BufWritePre * if index(['gitcommit', 'snippets'], &ft) < 0 | %s/\t/  /ge  " Replace tabs except in gitcommit msg
 
   " Restore cursor last position
