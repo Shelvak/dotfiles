@@ -99,7 +99,8 @@ syn match rubyTestMacro 'assert_\w\+'
 " Vim Rails - shortcuts
 " ========================================
 nnoremap <Leader>m :Emodel
-nnoremap <Leader>c :Econtroller
+
+autocmd! BufRead,BufNewFile *.erb,*.rb nnoremap <Leader>c :Econtroller
 nnoremap <Leader>v :Eview
 nnoremap <Leader>u :Eunittest
 nnoremap <Leader>f :Efunctionaltest

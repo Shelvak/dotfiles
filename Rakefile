@@ -16,7 +16,7 @@ APPS = %w[
   mlocate mtr make
   nmap nodejs npm
   opera
-  postman-bin phantomjs-bin pgadmin4 postgresql-libs pkgconfig
+  postman-bin phantomjs-bin pgadmin4 postgresql-libs pkg-config
   redis-desktop-manager ripgrep ruby-install ruby-build
   smplayer spotify sshfs
   teamviewer telegram-desktop tmux ttf-ms-fonts
@@ -152,8 +152,8 @@ task :update_SO do
   unless aur_pkgs.empty?
     `mkdir -p ~/tmp/cache`
     puts "Installing from AUR: #{aur_pkgs.join(', ')}\n"
-    system("yay -Sa --requestsplitn 30 --noanswerclean --noanswerdiff --noansweredit --noanswerupgrade --cleanafter --norebuild --noredownload --useask --needed #{aur_pkgs.join(' ')}")
-    brave-bin chruby direnv droidcam git-delta-git google-chrome heroku-cli kubectl-bin phantomjs-bin postman-bin redis-desktop-manager ruby-build ruby-install spotify teamviewer ttf-ms-fonts unetbootin v4l2loopback-dc-dkms zoom
+
+    system("yay -Sa --requestsplitn 30 --nocleanmenu  --nodiffmenu --noeditmenu --nocleanmenu --norebuild --noredownload --useask --batchinstall --needed #{aur_pkgs.join(' ')}")
   end
 
   puts "\n"

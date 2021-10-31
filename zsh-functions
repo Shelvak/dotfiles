@@ -52,3 +52,4 @@ _t() { _files -W $PWD/test -/; }
 compdef _t t
 
 vr() { vim ~/tmp/$(date -u '+%Y'.'%m'.'%d'_'%H'.'%M'.'%S').rb }
+vj() { vim ~/tmp/$(date -u '+%Y'.'%m'.'%d'_'%H'.'%M'.'%S').js }

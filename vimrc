@@ -68,11 +68,16 @@ if has("autocmd")
   autocmd Filetype elixir setlocal formatprg=mix\ format\ -
   autocmd Filetype python setlocal tabstop=4 shiftwidth=4 expandtab
   autocmd Filetype solidity setlocal tabstop=4 shiftwidth=4 expandtab
-  autocmd! BufRead,BufNewFile Gemfile setfiletype ruby
-  autocmd! BufRead,BufNewFile Vagrantfile setfiletype ruby
-  autocmd! BufRead,BufNewFile *.cap setfiletype ruby
+  autocmd! BufRead,BufNewFile Gemfile, Vagrantfile, *.cap setfiletype ruby
   autocmd! BufRead,BufNewFile *.pdf.erb setfiletype html.eruby
   autocmd! BufRead,BufNewFile *.jsx setfiletype javascript.jsx
+
+  " console.log to debug contracts/tests
+  autocmd BufRead,BufNewFile *.js,*.sol nnoremap <Leader>c :call <SID>InsertConsoleForRow()<CR>
+
+  function! s:InsertConsoleForRow()
+    execute "normal! i" . "console.log('" . expand('%:t') . ":" .line(".") . "');\r" . "\<Esc>"
+  endfunction
 
   autocmd BufWritePre * if index(['gitcommit', 'snippets'], &ft) < 0 | %s/\t/  /ge  " Replace tabs except in gitcommit msg
 
