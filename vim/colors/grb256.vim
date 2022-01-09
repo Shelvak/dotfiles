@@ -23,9 +23,13 @@ hi SpellBad         guifg=white       guibg=#FF6C60     gui=BOLD      ctermfg=16
 " ir_black doesn't highlight operators for some reason
 hi Operator         guifg=#6699CC     guibg=NONE        gui=NONE      ctermfg=lightblue  ctermbg=NONE   cterm=NONE
 
-highlight DiffAdd term=reverse cterm=bold ctermbg=lightgreen ctermfg=16
-highlight DiffChange term=reverse cterm=bold ctermbg=lightblue ctermfg=16
+highlight DiffAdd term=reverse cterm=bold ctermbg=darkgreen ctermfg=16
+highlight DiffChange term=reverse cterm=bold ctermbg=darkblue ctermfg=16
 highlight DiffText term=reverse cterm=bold ctermbg=lightgray ctermfg=16
-highlight DiffDelete term=reverse cterm=bold ctermbg=lightred ctermfg=16
+highlight DiffDelete term=reverse cterm=bold ctermbg=darkred ctermfg=16
+
+if &diff
+ hi CursorLine guifg=NONE guibg=NONE gui=NONE ctermfg=NONE ctermbg=NONE cterm=NONE
+endif
 
 highlight PmenuSel ctermfg=16 ctermbg=156

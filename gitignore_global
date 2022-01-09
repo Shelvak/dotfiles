@@ -85,6 +85,7 @@ mysqlbinlog/
 #####
 _build/
 *.beam
+.elixir_ls
 
 # Credentials #
 config/credentials.json

@@ -71,6 +71,7 @@ if has("autocmd")
   autocmd! BufRead,BufNewFile Gemfile, Vagrantfile, *.cap setfiletype ruby
   autocmd! BufRead,BufNewFile *.pdf.erb setfiletype html.eruby
   autocmd! BufRead,BufNewFile *.jsx setfiletype javascript.jsx
+  autocmd! BufRead,BufNewFile *.abi setfiletype json
 
   " console.log to debug contracts/tests
   autocmd BufRead,BufNewFile *.js,*.sol nnoremap <Leader>c :call <SID>InsertConsoleForRow()<CR>
@@ -115,6 +116,8 @@ map <F2> :cprev<CR>
 map <F1> :cnext<CR>
 map <ESC>[1;5D <C-Left>
 map <ESC>[1;5C <C-Right>
+map! <ESC>[1;5D <C-Left>
+map! <ESC>[1;5C <C-Right>
 
 " ========================================
 " Clipboard / Copy selected|entire file to systemclipboard
@@ -160,3 +163,7 @@ function! s:ExecuteInShell(command)
   echo 'Shell command ' . command . ' executed.'
 endfunction
 command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
+
+" function  gs
+"   s/\(\w\+\)/\= Abolish.snakecase(submatch(1))/g
+" endfunction
