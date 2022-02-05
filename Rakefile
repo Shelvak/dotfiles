@@ -9,7 +9,7 @@ APPS = %w[
   ffmpeg fzf fakeroot
   google-chrome gstreamer gstreamer-vaapi git gcc gvim google-cloud-sdk
   gst-libav gst-plugins-bad gst-plugins-base gst-plugins-good gst-plugins-ugly git-delta
-  heroku-cli htop
+  htop
   icu iotop
   kubectl-bin
   lib32-icu
