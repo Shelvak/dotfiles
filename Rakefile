@@ -4,7 +4,7 @@ APPS = %w[
   alacritty
   binutils brave-bin
   chruby chrome-gnome-shell clang
-  direnv docker docker-compose droidcam discord
+  direnv docker docker-compose discord
   exa expac element-desktop
   ffmpeg fzf fakeroot
   google-chrome gstreamer gstreamer-vaapi git gcc gvim google-cloud-sdk
@@ -14,7 +14,7 @@ APPS = %w[
   kubectl-bin
   lib32-icu
   mlocate mtr make
-  nmap nodejs npm
+  nmap nodejs npm nvm
   opera
   postman-bin phantomjs-bin pgadmin4 postgresql-libs pkgconf pkgfile
   redis-desktop-manager ripgrep ruby-install ruby-build
