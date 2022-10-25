@@ -3,7 +3,7 @@ require 'rake'
 APPS = %w[
   alacritty
   binutils brave-bin
-  chruby chrome-gnome-shell clang
+  chruby clang
   direnv docker docker-compose discord
   exa expac element-desktop
   ffmpeg fzf fakeroot
@@ -17,11 +17,10 @@ APPS = %w[
   nmap nodejs npm nvm
   opera
   postman-bin phantomjs-bin pgadmin4 postgresql-libs pkgconf pkgfile
-  redis-desktop-manager ripgrep ruby-install ruby-build
+  resp-app ripgrep ruby-install ruby-build
   smplayer spotify sshfs
   teamviewer telegram-desktop tmux ttf-ms-fonts
   unetbootin
-  v4l2loopback-dc-dkms
   wine
   xclip
   yajl yay

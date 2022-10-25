@@ -5,7 +5,7 @@ snippet f
 
 snippet c
 	// SPDX-License-Identifier: MIT
-	pragma solidity ^0.8.9;
+	pragma solidity ^0.8.17;
 
 	contract $1 {
 		constructor($2) {$3}
@@ -51,4 +51,10 @@ snippet ife
 snippet for
 	for (uint i = 0; i < $1; i++) {
 		$2;
+	}
+
+snippet mod
+	modifier $1() {
+		require($2, "$3");
+		_;
 	}

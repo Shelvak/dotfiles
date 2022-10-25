@@ -6,9 +6,10 @@ let g:ale_linters={
 \  'eruby': ['erb'],
 \  'javascript': ['eslint'],
 \  'jsx': ['eslint'],
-\  'elixir': ['elixir-ls']
+\  'elixir': ['elixir-ls'],
+\  'solidity': ['solc']
 \ }
-let g:ale_fixers={ 'elixir': ['mix_format'], 'solidity': ['solc']}
+let g:ale_fixers={ 'elixir': ['mix_format']}
 let g:ale_elixir_elixir_ls_release='/home/rotsen/tmp/elixir-ls'
 let g:ale_elixir_elixir_ls_config = { 'elixirLS': { 'dialyzerEnabled': v:false } }
 let g:ale_solidity_solc_executable=$SOLC_BIN

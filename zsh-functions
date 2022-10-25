@@ -33,7 +33,7 @@ clean_vim_temps() {
 # Fetch and checkout to remote branch
 gfco() {
   git fetch origin $1
-  git checkout $1
+  git checkout -b $1
 }
 
 # Search in git dir and go
