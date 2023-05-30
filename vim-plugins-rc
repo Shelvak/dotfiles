@@ -127,3 +127,13 @@ let g:snipMate = { 'snippet_version' : 1 }
 " ========================================
 nnoremap <Leader><Left> :SidewaysLeft<cr>
 nnoremap <Leader><Right> :SidewaysRight<cr>
+
+" ========================================
+" Gh Copilot
+" ========================================
+" imap <Right> <Plug>(copilot-next)
+" imap <Left> <Plug>(copilot-previous)
+imap <Leader>n <Plug>(copilot-suggest)
+
+
+""""""""""""""" TESTING FN "

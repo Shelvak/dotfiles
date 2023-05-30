@@ -95,6 +95,7 @@ alias pacaur_apps="pac -Qm"
 # Elixir alias
 alias dt="iex -S mix test --trace"
 
+
 # Ruby logic
 safe_source /usr/share/chruby/chruby.sh
 chruby 2.6  #>> /dev/null 2>&1
@@ -122,6 +123,10 @@ export GOPATH=/opt/go
 
 # Yarn NPM bins
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# Rust / Cargo bins
+export PATH="$HOME/.cargo/bin:$PATH"
+export CARGO_HOME="$HOME/.cargo"
 
 # added by travis gem
 # [ -f /home/rotsen/.travis/travis.sh ] && source /home/rotsen/.travis/travis.sh

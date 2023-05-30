@@ -68,10 +68,12 @@ if has("autocmd")
   autocmd Filetype elixir setlocal formatprg=mix\ format\ -
   autocmd Filetype python setlocal tabstop=4 shiftwidth=4 expandtab
   autocmd Filetype solidity setlocal tabstop=4 shiftwidth=4 expandtab
+  autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2 expandtab
   autocmd! BufRead,BufNewFile Gemfile, Vagrantfile, *.cap setfiletype ruby
   autocmd! BufRead,BufNewFile *.pdf.erb setfiletype html.eruby
   autocmd! BufRead,BufNewFile *.jsx setfiletype javascript.jsx
   autocmd! BufRead,BufNewFile *.abi setfiletype json
+  autocmd! BufRead,BufNewFile *.move setfiletype rust " temp
 
   " console.log to debug contracts/tests
   autocmd BufRead,BufNewFile *.js,*.sol nnoremap <Leader>c :call <SID>InsertConsoleForRow()<CR>
@@ -163,6 +165,38 @@ function! s:ExecuteInShell(command)
   echo 'Shell command ' . command . ' executed.'
 endfunction
 command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
+
+" Taken and changed from TPope :Move function
+function! s:CopyAndReplace(bang, arg) abort
+  let dst = a:arg
+  let src_module = expand('%:t:r')
+  let dst_module = fnamemodify(dst, ':t:r')
+
+  " exe s:AbortOnError('call call("call", s:MkdirCallable(' . string(fnamemodify(dst, ':h')) . '))')
+  " let dst = s:fcall('simplify', dst)
+  if !a:bang && filereadable(dst)
+    let confirm = &confirm
+    try
+      if confirm | set noconfirm | endif
+      exe 'keepalt saveas ' . fnameescape(dst)
+    finally
+      if confirm | set confirm | endif
+    endtry
+  endif
+
+  let last_bufnr = bufnr('$')
+  exe 'silent keepalt file ' . fnameescape(dst)
+  if bufnr('$') != last_bufnr
+    exe bufnr('$') . 'bwipe'
+  endif
+  setlocal modified
+
+  exec '%S/' . src_module . '/' . dst_module . '/g'
+
+  return 'write!|filetype detect'
+endfunction
+command! -bar -nargs=1 -bang -complete=file CopyAndReplace exe s:CopyAndReplace(<bang>0, <q-args>)
+
 
 " function  gs
 "   s/\(\w\+\)/\= Abolish.snakecase(submatch(1))/g
