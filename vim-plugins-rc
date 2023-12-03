@@ -7,7 +7,8 @@ let g:ale_linters={
 \  'javascript': ['eslint'],
 \  'jsx': ['eslint'],
 \  'elixir': ['elixir-ls'],
-\  'solidity': ['solc']
+\  'solidity': ['solc'],
+\  'rust': ['analyzer']
 \ }
 let g:ale_fixers={ 'elixir': ['mix_format']}
 let g:ale_elixir_elixir_ls_release='/home/rotsen/tmp/elixir-ls'
@@ -135,5 +136,9 @@ nnoremap <Leader><Right> :SidewaysRight<cr>
 " imap <Left> <Plug>(copilot-previous)
 imap <Leader>n <Plug>(copilot-suggest)
 
+" ========================================
+" vim-commentary
+" ========================================
+autocmd! BufRead,BufNewFile *.hit setlocal commentstring=//\ %s
 
 """"""""""""""" TESTING FN "

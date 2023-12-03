@@ -25,6 +25,8 @@ DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 
 plugins=(git bundler rails autoenv tmux docker docker-compose kubectl mix)
+# Skip directories aliaces
+zstyle ':omz:lib:directories' aliases no
 safe_source $ZSH/oh-my-zsh.sh
 
 # Completion
@@ -144,3 +146,24 @@ export LD_LIBRARY_PATH=/nix/store/hs1zphws1iyddrvfyqs7qj9qw6qqs0mc-icu4c-68.2/li
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm ] " ])"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Foundry / Forge
+export PATH="$PATH:/home/rotsen/.foundry/bin"
+
+# Solana cli
+export PATH="$PATH:/home/rotsen/.local/share/solana/install/active_release/bin"
+
+# Clone the current function
+_cnfh="$(declare -f command_not_found_handler)"
+eval "function original_command_not_found_handler ${_cnfh#*"()"}"
+unset _cnfh
+
+command_not_found_handler() {
+  ruby -e "require 'active_support/all'; require 'amazing_print'; ap eval(ARGV.join(' '))" $@ 2>/dev/null
+
+  result=$?
+
+  if [ $result != 0 ]; then
+    original_command_not_found_handler "$@"
+  fi
+}

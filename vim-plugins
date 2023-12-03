@@ -34,7 +34,7 @@ Plug 'tpope/vim-surround' " Smart surround with tags
 Plug 'tpope/vim-repeat' " Smarter . repeat
 Plug 'AndrewRadev/splitjoin.vim' " Split elements in multilines or join
 Plug 'vim-ruby/vim-ruby'
-Plug 'github/copilot.vim' " Github copilot IA
+" Plug 'github/copilot.vim' " Github copilot IA
 
 Plug 'AndrewRadev/sideways.vim'  " Move args backward/forward
 
@@ -43,5 +43,6 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'elixir-editors/vim-elixir'
 
+Plug 'rhysd/vim-wasm' " WIT|HIT syntax
 
 filetype on
