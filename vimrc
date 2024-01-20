@@ -74,15 +74,16 @@ if has("autocmd")
   autocmd! BufRead,BufNewFile *.jsx setfiletype javascript.jsx
   autocmd! BufRead,BufNewFile *.abi setfiletype json
   autocmd! BufRead,BufNewFile *.move setfiletype rust " temp
+  autocmd! BufRead,BufNewFile *.txt Copilot disable " no copilot for txt files
 
   " console.log to debug contracts/tests
-  autocmd BufRead,BufNewFile *.js,*.sol nnoremap <Leader>c :call <SID>InsertConsoleForRow()<CR>
-
+  autocmd BufRead,BufNewFile *.tsx,*.ts,*.js,*.sol nnoremap <Leader>c :call <SID>InsertConsoleForRow()<CR>
   function! s:InsertConsoleForRow()
     execute "normal! o" . "console.log('" . expand('%:t') . ":" .line(".") . "');" . "\<Esc>=="
   endfunction
 
-  autocmd BufWritePre * if index(['gitcommit', 'snippets'], &ft) < 0 | %s/\t/  /ge  " Replace tabs except in gitcommit msg
+  " Replace tabs except in gitcommit msg
+  autocmd BufWritePre * if index(['gitcommit', 'snippets'], &ft) < 0 | %s/\t/  /ge
 
   " Restore cursor last position
   augroup lastCursorPosition

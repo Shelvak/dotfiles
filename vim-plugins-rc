@@ -51,7 +51,7 @@ command! -bang -nargs=* Rgi
 
 function! SearchDefWithRg()
   " Ultra searcher viejaaa
-  execute 'Rg' 'def[p]? [self\.]?'.expand('<cword>').'|module '.expand('<cword>').'|class '.expand('<cword>').'|^'.expand('<cword>')'\s?='
+  execute 'Rg' 'def[p]? [self\.]?'.expand('<cword>').'|module '.expand('<cword>').'|class '.expand('<cword>').'|^'.expand('<cword>').'|function '.expand('<cword>').'\s?='
 endfunction
 
 function! SearchVisualSelectionWithRg() range
