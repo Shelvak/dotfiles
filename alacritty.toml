@@ -1,0 +1,45 @@
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.bright]
+black = "0x555753"
+blue = "0x729FCF"
+cyan = "0x34E2E2"
+green = "0x8AE234"
+magenta = "0xAD7FA8"
+red = "0xEF2929"
+white = "0xEEEEEC"
+yellow = "0xFCE94F"
+
+[colors.normal]
+black = "0x000000"
+blue = "0x3465A4"
+cyan = "0x06989A"
+green = "0x4E9A06"
+magenta = "0x75507B"
+red = "0xCC0000"
+white = "0xD3D7CF"
+yellow = "0xC4A000"
+
+[colors.primary]
+background = "0x232729"
+foreground = "0xEEEEEC"
+
+[font]
+size = 15
+
+[scrolling]
+history = 0
+
+[window]
+decorations = "none"
+dynamic_padding = true
+startup_mode = "Maximized"
+
+[window.dimensions]
+columns = 250
+lines = 100
+
+[window.padding]
+x = 0
+y = 0
