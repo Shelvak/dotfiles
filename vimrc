@@ -81,6 +81,11 @@ if has("autocmd")
   function! s:InsertConsoleForRow()
     execute "normal! o" . "console.log('" . expand('%:t') . ":" .line(".") . "');" . "\<Esc>=="
   endfunction
+  autocmd BufRead,BufNewFile *.rs nnoremap <Leader>c :call <SID>InsertConsoleForRowRs()<CR>
+  function! s:InsertConsoleForRowRs()
+    execute "normal! o" . 'msg!("' . expand('%:t') . ":" .line(".") . '");' . "\<Esc>=="
+  endfunction
+
 
   " Replace tabs except in gitcommit msg
   autocmd BufWritePre * if index(['gitcommit', 'snippets'], &ft) < 0 | %s/\t/  /ge

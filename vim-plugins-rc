@@ -1,3 +1,4 @@
+" vim: set filetype=vim:
 " Plugins settings
 " ========================================
 " ALE linter
@@ -5,12 +6,13 @@
 let g:ale_linters={
 \  'eruby': ['erb'],
 \  'javascript': ['eslint'],
+\  'typescript': ['eslint', 'tsserver', 'prettier'],
 \  'jsx': ['eslint'],
 \  'elixir': ['elixir-ls'],
 \  'solidity': ['solc'],
-\  'rust': ['analyzer']
+\  'rust': ['cargo'],
 \ }
-let g:ale_fixers={ 'elixir': ['mix_format']}
+let g:ale_fixers={ 'elixir': ['mix_format'], 'typescript': ['eslint', 'prettier'], 'rust': ['rustfmt'] }
 let g:ale_elixir_elixir_ls_release='/home/rotsen/tmp/elixir-ls'
 let g:ale_elixir_elixir_ls_config = { 'elixirLS': { 'dialyzerEnabled': v:false } }
 let g:ale_solidity_solc_executable=$SOLC_BIN
@@ -24,6 +26,10 @@ let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed='never'
 let g:ale_linters_explicit = 0
 let g:ale_set_highlights = 0
+let g:ale_rust_rustfmt_options = '--edition 2021'
+let g:ale_rust_cargo_use_clippy = 0
+let g:ale_rust_cargo_check_tests = 1
+let g:ale_rust_cargo_check_examples = 1
 nnoremap <F8> :ALEFix<CR>
 
 " ========================================
@@ -50,8 +56,23 @@ command! -bang -nargs=* Rgi
   \   <bang>0)
 
 function! SearchDefWithRg()
-  " Ultra searcher viejaaa
-  execute 'Rg' 'def[p]? [self\.]?'.expand('<cword>').'|module '.expand('<cword>').'|class '.expand('<cword>').'|^'.expand('<cword>').'|function '.expand('<cword>').'\s?='
+  " Original:
+  " execute 'Rg' 'def[p]? [self\.]?'.expand('<cword>').'|module '.expand('<cword>').'|class '.expand('<cword>').'|^'.expand('<cword>').'|function '.expand('<cword>').'\s?='
+
+   let filetype = &filetype
+     let rg_args = ''
+
+     if filetype == 'ruby'
+       let rg_args .= 'def [self\.]?'.expand('<cword>').'|module '.expand('<cword>').'|class '.expand('<cword>')
+     elseif (filetype == 'javascript' || filetype == 'typescript')
+       let rg_args .= ' function '.expand('<cword>').'|const '.expand('<cword>')
+     elseif filetype == 'rust'
+       let rg_args .= 'fn '.expand('<cword>').'|enum '.expand('<cword>').'|type '.expand('<cword>')
+     else
+       let rg_args .= 'def[p]? [self\.]?'.expand('<cword>').'|module '.expand('<cword>').'|class '.expand('<cword>').'|^'.expand('<cword>').'|function '.expand('<cword>').'\s?='
+     endif
+
+     execute 'Rg' rg_args
 endfunction
 
 function! SearchVisualSelectionWithRg() range
