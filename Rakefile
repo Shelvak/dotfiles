@@ -72,6 +72,12 @@ task :link_files do
     sym_link_dir "$PWD/#{folder}", "$HOME/.#{folder}"
   end
 
+  # Not dot-files
+  %w(bins scripts).each do |folder|
+    puts "Linking #{folder}"
+    sym_link_dir "$PWD/#{folder}", "$HOME/#{folder}"
+  end
+
   puts 'Linking zsh customs...'
   sym_link_dir '$PWD/zsh-themes/Shelvak.zsh-theme',  '$PWD/oh-my-zsh/custom/themes/Shelvak.zsh-theme'
   # `ls $PWD/zsh-plugins`.split("\n").each do |dir|
@@ -112,6 +118,9 @@ task :link_files do
   puts 'Installing vim plugins'
   puts %x{vim +PlugUpgrade! +PlugInstall! +qall}
 
+  puts 'Linking custon files'
+  # custom link opening config
+  sym_link '$PWD/custom-open-link/custom-open-link.desktop', '$HOME/.local/share/applications/custom-open-link.desktop'
 end
 
 desc "install the dot files into user's home directory"

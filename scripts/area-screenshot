@@ -1,0 +1,4 @@
+#!/bin/zsh
+export DISPLAY=${DISPLAY:-:0}
+
+gnome-screenshot -acf /tmp/cap-img && cat /tmp/cap-img | xclip -i -selection clipboard -target image/png

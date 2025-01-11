@@ -1,0 +1,22 @@
+#!/bin/env zsh
+# Connect to the phone and start scrcpy
+
+
+adb kill-server
+
+sleep 1
+
+# DISPLAY=:1
+serial=$(adb devices | head -n2 | tail -n 1 | awk '{ print $1 }')
+echo $serial
+# 1+
+scrcpy -s $serial --stay-awake --turn-screen-off --window-x 4300 --window-y 2200 --window-width 820 --window-height 1440 --power-off-on-close --window-borderless --prefer-text --always-on-top --disable-screensaver $* &
+scPid=$!
+
+# gnirehtet start $serial
+# gnirehtet relay &
+# gnPid=$!
+
+wait $scPid
+# kill $gnPid
+# exit 0

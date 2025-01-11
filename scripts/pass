@@ -1,0 +1,16 @@
+#!/bin/env ruby
+require 'securerandom'
+
+# create random passwords
+
+SYMBOLS = "!@#$%&/()+?*"
+final = []
+5.times do
+  pass = ''
+  20.times do
+    pass << (SecureRandom.base64(20) + SYMBOLS).bytes.shuffle.shuffle[rand(12)].chr
+  end
+  final << "'#{pass}'"
+end
+
+puts final.join('    |    ')

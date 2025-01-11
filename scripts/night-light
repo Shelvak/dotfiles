@@ -1,0 +1,18 @@
+#!/home/rotsen/.rubies/ruby-2.6.8/bin/ruby
+
+# Check the hour of the day and set the night light temperature accordingly
+
+
+# gsettings set org.gnome.settings-daemon.plugins.color night-light-temperature 2200
+# gsettings set org.gnome.settings-daemon.plugins.color night-light-temperature 2800
+
+temperature =
+  case Time.now.hour
+    when *((21..23).to_a + (0..6).to_a) then 2000
+    when 21 then 2200
+    when 20 then 2500
+    else
+     3000
+  end
+
+`DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus gsettings set org.gnome.settings-daemon.plugins.color night-light-temperature #{temperature}`

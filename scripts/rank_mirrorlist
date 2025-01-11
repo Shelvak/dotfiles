@@ -1,0 +1,34 @@
+#!/bin/env ruby
+
+# Rank mirrors based on ping time
+
+require 'open-uri'
+require 'json'
+@urls = []
+JSON.parse(open("https://repo.manjaro.org/mirrors.json").read).map do |data|
+  if data['protocols'].include? 'https'
+    data['url']
+  end
+end.compact.uniq.map do |url|
+  Thread.new {
+    begin
+    Timeout::timeout(10) {
+    # regex that match only domains
+    # domain = url.match(/https?:\/\/()\/$/)[1]
+    domain = url.match(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n]+)/im)[1]
+    ms = `ping #{domain} -c 5 -W 300 | tail -1| awk -F '/' '{print $5}'`.to_f rescue nil
+    # puts "#{domain} #{ms}"
+    if ms > 0 && ms < 100
+      @urls << [url, ms]
+    end
+    }
+    rescue  Timeout::Error
+      nil
+    end
+  }
+end.each(&:join);nil
+nil
+@urls.sort_by{|x| x[1]}.map{|x| x[0]}[0..4].each do |url|
+  puts "Server = #{url}/stable/$repo/$arch"
+  puts "Server = #{url}/stable/$repo/$arch"
+end;nil

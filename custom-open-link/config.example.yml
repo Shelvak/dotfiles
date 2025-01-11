@@ -1,0 +1,12 @@
+default: 'firefox'
+private: 'firefox -private-window'
+trusted_domains:
+  - !ruby/regexp /^https:\/\/github\.com\//
+  - !ruby/regexp /^https:\/\/docs\.google\.com\//
+drop_params:
+  - !ruby/regexp /^https:\/\/twitter\.com\//
+custom_domains:
+  google-chrome-stable:
+    - !ruby/regexp /^https:\/\/mygoogle\.app\.\//
+  'brave --incognito --tor':
+    - !ruby/regexp /^https:\/\/super\.insecure\.app\.\//

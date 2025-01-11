@@ -1,0 +1,46 @@
+#!/home/rotsen/.rubies/ruby-2.6.8/bin/ruby
+#### Change background in gnome3 && plasma
+#  bin/env ruby
+
+
+def change(delete = false)
+  dbus_env = 'DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus'
+  # skip change if screen is locked
+  return if `#{dbus_env} /usr/bin/qdbus org.gnome.ScreenSaver /org/gnome/ScreenSaver org.gnome.ScreenSaver.GetActive`.strip == 'true'
+
+  backgrounds = '/home/rotsen/backgrounds'
+
+  random_dir = `find #{backgrounds}/* -type d | shuf -n1`.strip
+  random_pic = `find #{random_dir}/* | shuf -n1`.strip
+  old_pic = `gsettings get org.gnome.desktop.background picture-uri-dark`.strip.gsub('file://', '')
+
+  # session = `pgrep -U $(whoami) /usr/bin/gnome-shell`.strip
+  # session = `pidof /usr/bin/gnome-shell`.strip
+  #session = `pgrep -U $(whoami) plasmashell`.strip
+  # dbus_address = `sudo grep -z DBUS_SESSION_BUS_ADDRESS /proc/#{session}/environ|cut -d= -f2-`.strip
+
+  puts "Changing #{old_pic} => #{random_pic}..."
+  puts `#{dbus_env} gsettings set org.gnome.desktop.background picture-options scaled`
+  puts `#{dbus_env} gsettings set org.gnome.desktop.background picture-uri-dark file://#{random_pic}`
+  # `gsettings set org.gnome.desktop.background picture-uri file://#{random_pic}`
+
+  if delete
+    puts "Deleting #{old_pic}"
+    `rm #{old_pic}`
+  end
+end
+
+arg = ARGV && ARGV[0]
+ARGV&.clear
+
+if arg == 'loop'
+  loop do
+    if gets.chomp == ''
+      change
+    else
+      change(true)
+    end
+  end
+else
+  change(!!arg)
+end

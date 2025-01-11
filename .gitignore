@@ -4,3 +4,5 @@ vim/undodir/*
 vim/plugs/*
 
 oh-my-zsh/custom/plugins/cd_rails
+custom-open-link/config.yml
+secrets.json
