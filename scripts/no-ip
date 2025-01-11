@@ -1,3 +1,5 @@
 #!/bin/bash
 
-curl -s "http://ACC:PASS@dynupdate.no-ip.com/nic/update?hostname=DOMAIN" > /dev/null
+read -r user password domain < <(jq -r '[.noip.user, .noip.password, .noip.domain] | join(" ")' "$HOME/.dotfiles/secrets.json")
+
+curl -s "http://$user:$password@dynupdate.no-ip.com/nic/update?hostname=$domain"  > /dev/null
