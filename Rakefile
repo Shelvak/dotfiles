@@ -1,26 +1,28 @@
 require 'rake'
 
+# unused apps
+# element-desktop discord  google-cloud-sdk kubectl-bin
+# phantomjs-bin pgadmin4 postgresql-libs
+# teamviewer unetbootin
 APPS = %w[
   alacritty
   binutils brave-bin
   chruby clang
-  direnv docker docker-compose discord
-  exa expac element-desktop
+  direnv docker docker-compose
+  exa expac
   ffmpeg fzf fakeroot
-  google-chrome gstreamer gstreamer-vaapi git gcc gvim google-cloud-sdk
+  google-chrome gstreamer gstreamer-vaapi git gcc gvim gromit-mpx
   gst-libav gst-plugins-bad gst-plugins-base gst-plugins-good gst-plugins-ugly git-delta
   htop
   icu iotop
-  kubectl-bin
   lib32-icu
   mlocate mtr make
   nmap nodejs npm nvm
   opera
-  postman-bin phantomjs-bin pgadmin4 postgresql-libs pkgconf pkgfile
+  postman-bin pkgconf pkgfile
   resp-app ripgrep ruby-install ruby-build
   smplayer spotify sshfs
-  teamviewer telegram-desktop tmux ttf-ms-fonts
-  unetbootin
+  telegram-desktop tmux ttf-ms-fonts
   wine
   xclip
   yajl yay
@@ -160,7 +162,7 @@ task :update_SO do
   puts 'Adding user to docker group'
   system('sudo gpasswd -a $USER docker')
 
-  puts 'Installing extra plugins:'
-  puts_and_install 'gem install bundler rubocop'
-  puts_and_install 'sudo npm install -g eslint npm'
+  # puts 'Installing extra plugins:'
+  # puts_and_install 'gem install bundler rubocop'
+  # puts_and_install 'sudo npm install -g eslint npm'
 end

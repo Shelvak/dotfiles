@@ -1,5 +1,5 @@
 # require 'rubygems'
-require 'irb/ext/save-history'
+# require 'irb/ext/save-history'
 require 'irb/completion'
 
 IRB.conf[:AUTO_INDENT]   = true

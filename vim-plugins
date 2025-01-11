@@ -45,4 +45,8 @@ Plug 'elixir-editors/vim-elixir'
 
 Plug 'rhysd/vim-wasm' " WIT|HIT syntax
 
+Plug 'mg979/vim-visual-multi', { 'branch': 'master' } " testing multi cursor
+Plug 'jbmorgado/vim-pine-script' " TradingView script
+
+
 filetype on

@@ -24,7 +24,7 @@ DISABLE_CORRECTION="true"
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(git bundler rails autoenv tmux docker docker-compose kubectl mix)
+plugins=(git autoenv tmux docker docker-compose autoswitch_virtualenv) # bundler rails kubectl mix)
 # Skip directories aliaces
 zstyle ':omz:lib:directories' aliases no
 safe_source $ZSH/oh-my-zsh.sh
@@ -66,24 +66,23 @@ alias zc="v ~/.zshrc"
 alias vc="v ~/.vimrc"
 alias sv="sudo vim"
 alias ctl="sudo systemctl"
-alias pq="psql -U docker -h localhost -p 5432"
-alias rcp="rails c production"
-alias rgm='rails g migration'
+# alias pq="psql -U docker -h localhost -p 5432"
+# alias rcp="rails c production"
+# alias rgm='rails g migration'
 alias fuck='sudo $(fc -ln |tail -1)'
 alias gpr="git pull --rebase origin master"
 alias gpl="git pull --no-rebase origin master"
 alias ..='cd ..'
 alias ..2='cd ../..'
 alias ..3='cd ../../..'
-alias minar="cd /Secundario/rotsen/crypto/xmrig-nvidia-2.8.3/build; sudo ./xmrig-nvidia"
-alias refresh="gpr; bi --jobs 8; rdm"
-alias full_test="RAILS_ENV=test rails db:drop db:create db:migrate; rails test"
-alias ll="exa -lah"
-alias gcas="mix format; gca -m '[ci skip] Tmp'; ggpush"
+# alias refresh="gpr; bi --jobs 8; rdm"
+# alias full_test="RAILS_ENV=test rails db:drop db:create db:migrate; rails test"
+# alias ll="exa -lah"
+# alias gcas="mix format; gca -m '[ci skip] Tmp'; ggpush"
 
 # Clusters
-alias ktanga="k exec -it tanga -- bash"
-alias kteiqui="k --kubeconfig=/home/rotsen/.kube/teiqui --namespace production"
+# alias ktanga="k exec -it tanga -- bash"
+# alias kteiqui="k --kubeconfig=/home/rotsen/.kube/teiqui --namespace production"
 
 # Arch specific logic
 export PATH="/home/rotsen/bins/:$PATH"
@@ -95,15 +94,14 @@ alias clear_arch="pac -Rsn $(pacman -Qdtq)"
 alias pacaur_apps="pac -Qm"
 
 # Elixir alias
-alias dt="iex -S mix test --trace"
-
+# alias dt="iex -S mix test --trace"
 
 # Ruby logic
 safe_source /usr/share/chruby/chruby.sh
-chruby 2.6  #>> /dev/null 2>&1
+chruby 3.3  #>> /dev/null 2>&1
 safe_source /usr/share/chruby/auto.sh
 
-# No se para que puta es esto pero estaba bueno
+# Unknown terminal improvements
 safe_source /etc/profile.d/vte.sh
 
 # Pkgfile bin hook to find unknown commands
@@ -134,12 +132,10 @@ export CARGO_HOME="$HOME/.cargo"
 # [ -f /home/rotsen/.travis/travis.sh ] && source /home/rotsen/.travis/travis.sh
 
 # Elixir
-export ERL_AFLAGS="-kernel shell_history enabled  -kernel shell_history_file_bytes 2097152"
+# export ERL_AFLAGS="-kernel shell_history enabled  -kernel shell_history_file_bytes 2097152"
 
-# Dafac is that...
+# NodeJS shit
 if [ -e /home/rotsen/.nix-profile/etc/profile.d/nix.sh ]; then . /home/rotsen/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-
-# puta verga de node
 export LD_LIBRARY_PATH=/nix/store/hs1zphws1iyddrvfyqs7qj9qw6qqs0mc-icu4c-68.2/lib
 
 # Node manager NVM
@@ -148,22 +144,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Foundry / Forge
-export PATH="$PATH:/home/rotsen/.foundry/bin"
+# export PATH="$PATH:/home/rotsen/.foundry/bin"
 
 # Solana cli
-export PATH="$PATH:/home/rotsen/.local/share/solana/install/active_release/bin"
-
-# Clone the current function
-_cnfh="$(declare -f command_not_found_handler)"
-eval "function original_command_not_found_handler ${_cnfh#*"()"}"
-unset _cnfh
-
-command_not_found_handler() {
-  ruby -e "require 'active_support/all'; require 'amazing_print'; ap eval(ARGV.join(' '))" $@ 2>/dev/null
-
-  result=$?
-
-  if [ $result != 0 ]; then
-    original_command_not_found_handler "$@"
-  fi
-}
+# export PATH="$PATH:/home/rotsen/.local/share/solana/install/active_release/bin"

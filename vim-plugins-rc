@@ -28,8 +28,9 @@ let g:ale_linters_explicit = 0
 let g:ale_set_highlights = 0
 let g:ale_rust_rustfmt_options = '--edition 2021'
 let g:ale_rust_cargo_use_clippy = 0
+" let g:ale_rust_cargo_check_all_targets = 1
 let g:ale_rust_cargo_check_tests = 1
-let g:ale_rust_cargo_check_examples = 1
+let g:ale_rust_cargo_check_examples = 0
 nnoremap <F8> :ALEFix<CR>
 
 " ========================================
@@ -160,6 +161,6 @@ imap <Leader>n <Plug>(copilot-suggest)
 " ========================================
 " vim-commentary
 " ========================================
-autocmd! BufRead,BufNewFile *.hit setlocal commentstring=//\ %s
+autocmd! BufRead,BufNewFile *.psl setlocal commentstring=//\ %s " Pinescript TV
 
 """"""""""""""" TESTING FN "

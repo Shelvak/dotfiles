@@ -89,3 +89,6 @@ _build/
 
 # Credentials #
 config/credentials.json
+
+# Python
+__pycache__

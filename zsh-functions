@@ -48,9 +48,29 @@ _cs() { _files -W ~/git -/; }
 compdef _cs cs
 
 # Rails test from path
-t() { RAILS_ENV=test rails test test/$1; }
-_t() { _files -W $PWD/test -/; }
-compdef _t t
+# t() { RAILS_ENV=test rails test test/$1; }
+# _t() { _files -W $PWD/test -/; }
+# compdef _t t
 
-vr() { vim ~/tmp/$(date -u '+%Y'.'%m'.'%d'_'%H'.'%M'.'%S').rb }
-vj() { vim ~/tmp/$(date -u '+%Y'.'%m'.'%d'_'%H'.'%M'.'%S').js }
+vrb() { vim ~/tmp/$(date -u '+%Y'.'%m'.'%d'_'%H'.'%M'.'%S').rb }
+vjs() { vim ~/tmp/$(date -u '+%Y'.'%m'.'%d'_'%H'.'%M'.'%S').js }
+
+# Clone the current function && try to eval first with ruby
+_cnfh="$(declare -f command_not_found_handler)"
+eval "function original_command_not_found_handler ${_cnfh#*"()"}"
+unset _cnfh
+
+command_not_found_handler() {
+  ruby -e "require 'active_support/all'; require 'amazing_print'; ap eval(ARGV.join(' '))" $@ 2>/dev/null
+
+  result=$?
+
+  if [ $result != 0 ]; then
+    original_command_not_found_handler "$@"
+  fi
+}
+
+# Use scripts dir as bin
+script() { ~/scripts/$1; }
+_script() { _files -W ~/scripts -/; }
+compdef _script script
