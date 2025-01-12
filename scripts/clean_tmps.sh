@@ -1,4 +1,4 @@
-#|/bin/zsh
+#!/bin/zsh
 
 rm -Rf ~/.cache/spotify/Data/* \
   ~/.cache/yarn/* \

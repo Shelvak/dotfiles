@@ -1,10 +1,13 @@
-#!/home/rotsen/.rubies/ruby-2.6.8/bin/ruby
+#!/home/rotsen/.rubies/ruby-3.3.5/bin/ruby
+
+puts "lala"
 
 require 'yaml'
 
 CONFIG = YAML.load(
-  File.read(ENV['HOME'] + '/.custom_links.yml')
-) rescue {}
+  File.read(ENV['HOME'] + '/.dotfiles/custom-open-link/config.yml'),
+  permitted_classes: [Regexp]
+)
 
 # Log to journal
 def log(string)
