@@ -71,6 +71,6 @@ command_not_found_handler() {
 }
 
 # Use scripts dir as bin
-script() { ~/scripts/$1; }
+script() { ~/scripts/$1 ${@:2}; }
 _script() { _files -W ~/scripts -/; }
 compdef _script script

@@ -92,3 +92,6 @@ config/credentials.json
 
 # Python
 __pycache__
+.venv
+pnpm-lock.yaml
+.cursorignore

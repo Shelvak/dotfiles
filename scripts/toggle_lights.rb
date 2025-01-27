@@ -1,4 +1,4 @@
-#!/home/rotsen/.rubies/ruby-2.6.8/bin/ruby
+#!/home/rotsen/.rubies/ruby-3.3.5/bin/ruby
 require 'uri'
 require 'net/http'
 require 'json'
@@ -70,7 +70,7 @@ end
 @retries = 0
 
 begin
-  if ARGV.size > 0 && ARGV[0]&.downcase == 'off'
+  if ARGV.size > 0 && ARGV.last&.downcase == 'off'
     # puts "Apagando"
     change_switch(false) # turn off
   else

@@ -8,15 +8,15 @@ Plug 'MarcWeber/vim-addon-mw-utils' " Needed for snippets
 Plug 'garbas/vim-snipmate' " Needed for snippets
 Plug 'mattn/webapi-vim' " Needed for gist
 
-Plug 'Shelvak/vim-yaml-flattener', { 'for': 'yaml' }
+" Plug 'Shelvak/vim-yaml-flattener', { 'for': 'yaml' }
 Plug 'Townk/vim-autoclose'  " Auto close ()[]{} etc and let you 'inside'
 Plug 'airblade/vim-gitgutter' " Show +- depending on git
-Plug 'Shelvak/SmartColumnColors', { 'branch': 'alternative_column' }
+" Plug 'Shelvak/SmartColumnColors', { 'branch': 'alternative_column' }
 Plug 'gagoar/StripWhiteSpaces'
 Plug 'honza/vim-snippets'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/vim-easy-align' " Align with smart spaces between dictionary key-value
-Plug 'kchmck/vim-coffee-script'
+" Plug 'kchmck/vim-coffee-script'
 Plug 'mattn/gist-vim'  " Create Gist
 Plug 'dense-analysis/ale' " Lints
 Plug 'sheerun/vim-polyglot' " Syntax
@@ -41,9 +41,8 @@ Plug 'AndrewRadev/sideways.vim'  " Move args backward/forward
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-Plug 'elixir-editors/vim-elixir'
-
-Plug 'rhysd/vim-wasm' " WIT|HIT syntax
+" Plug 'elixir-editors/vim-elixir'
+" Plug 'rhysd/vim-wasm' " WIT|HIT syntax
 
 Plug 'mg979/vim-visual-multi', { 'branch': 'master' } " testing multi cursor
 Plug 'jbmorgado/vim-pine-script' " TradingView script
