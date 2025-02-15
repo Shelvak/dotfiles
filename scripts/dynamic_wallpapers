@@ -8,7 +8,7 @@ def change(delete = false)
   # skip change if screen is locked
   return if `#{dbus_env} /usr/bin/qdbus org.gnome.ScreenSaver /org/gnome/ScreenSaver org.gnome.ScreenSaver.GetActive`.strip == 'true'
 
-  backgrounds = '/home/rotsen/backgrounds'
+  backgrounds = '/mugre/backgrounds'
 
   random_dir = `find #{backgrounds}/* -type d | shuf -n1`.strip
   random_pic = `find #{random_dir}/* | shuf -n1`.strip

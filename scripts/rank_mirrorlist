@@ -5,7 +5,7 @@
 require 'open-uri'
 require 'json'
 @urls = []
-JSON.parse(open("https://repo.manjaro.org/mirrors.json").read).map do |data|
+JSON.parse(URI.open("https://repo.manjaro.org/mirrors.json").read).map do |data|
   if data['protocols'].include? 'https'
     data['url']
   end
@@ -29,6 +29,5 @@ end.compact.uniq.map do |url|
 end.each(&:join);nil
 nil
 @urls.sort_by{|x| x[1]}.map{|x| x[0]}[0..4].each do |url|
-  puts "Server = #{url}/stable/$repo/$arch"
-  puts "Server = #{url}/stable/$repo/$arch"
+  puts "Server = #{url}/stable/$repo/$arch".gsub('//', '/')
 end;nil

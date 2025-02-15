@@ -68,6 +68,7 @@ config/i18n-tasks.yml
 # JS #
 ######
 node_modules/
+pnpm-lock.yaml
 
 # Helpers and others #
 ######
@@ -93,5 +94,9 @@ config/credentials.json
 # Python
 __pycache__
 .venv
-pnpm-lock.yaml
-.cursorignore
+
+# Hidden files #
+.*
+
+# Shelvak files #
+*shelvak*

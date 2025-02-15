@@ -6,13 +6,18 @@ TMUX_ENABLED=$(which tmux 2>&1)
 if [[ "$TMUX_ENABLED" != "" ]]; then
   export ZSH_TMUX_TERM=screen-256color
   ZSH_TMUX_AUTOSTART="true"
-  ZSH_TMUX_AUTOCONNECT="true" # this shit should be the default but doesn't work
+  ZSH_TMUX_AUTOCONNECT="true"
 
   # Ctrol-S stop freezing
   stty stop undef
   setopt no_flowcontrol
 
   alias tmux_reload="tmux source-file ~/.tmux.conf"
+
+  if [ -z "$TMUX" ]
+  then
+    tmux attach -t $TMUX || tmux new -s $TMUX
+  fi
 fi
 
 # ZSH Configs

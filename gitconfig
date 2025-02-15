@@ -51,3 +51,5 @@
   gpgsign = true
 [delta]
   side-by-side = true
+[url "git@github.com:"]
+  insteadOf = https://github.com/
