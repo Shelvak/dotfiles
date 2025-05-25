@@ -88,7 +88,7 @@ task :link_files do
   %w(
     ackrc
     agignore
-    alacritty.yml
+    alacritty.toml
     axelrc
     eslintrc
     gemrc

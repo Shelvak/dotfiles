@@ -103,7 +103,7 @@ alias pacaur_apps="pac -Qm"
 
 # Ruby logic
 safe_source /usr/share/chruby/chruby.sh
-chruby 3.3  #>> /dev/null 2>&1
+chruby 3  #>> /dev/null 2>&1
 safe_source /usr/share/chruby/auto.sh
 
 # Unknown terminal improvements
@@ -145,7 +145,7 @@ export LD_LIBRARY_PATH=/nix/store/hs1zphws1iyddrvfyqs7qj9qw6qqs0mc-icu4c-68.2/li
 
 # Node manager NVM
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm ] " ])"
+([ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" || /usr/share/nvm/init-nvm.sh) # This loads nvm ] " ])"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Foundry / Forge
