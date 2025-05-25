@@ -32,9 +32,10 @@ size = 15
 history = 0
 
 [window]
-decorations = "none"
+decorations = "None"
 dynamic_padding = true
 startup_mode = "Maximized"
+opacity = 0.97
 
 [window.dimensions]
 columns = 250

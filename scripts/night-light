@@ -9,8 +9,9 @@
 temperature =
   case Time.now.hour
     when *((21..23).to_a + (0..6).to_a) then 2000
-    when 21 then 2200
-    when 20 then 2500
+    when 20 then 2200
+    when 19 then 2500
+    when 18 then 2800
     else
      3000
   end

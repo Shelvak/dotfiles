@@ -44,6 +44,10 @@ set laststatus=2
 " set re=1
 set lazyredraw
 set et   "spaces instead of tabs
+" Prevent to wrap long lines in screen
+" set nowrap
+" Highlight extreme long lines
+set synmaxcol=900000
 
 " Encoding
 scriptencoding utf-8
@@ -79,11 +83,11 @@ if has("autocmd")
   " console.log to debug contracts/tests
   autocmd BufRead,BufNewFile *.tsx,*.ts,*.js,*.sol nnoremap <Leader>c :call <SID>InsertConsoleForRow()<CR>
   function! s:InsertConsoleForRow()
-    execute "normal! o" . "console.log('" . expand('%:t') . ":" .line(".") . "');" . "\<Esc>=="
+    execute "normal! o" . "console.log('DD " . expand('%:t') . ":" .line(".") . "');" . "\<Esc>=="
   endfunction
   autocmd BufRead,BufNewFile *.rs nnoremap <Leader>c :call <SID>InsertConsoleForRowRs()<CR>
   function! s:InsertConsoleForRowRs()
-    execute "normal! o" . 'msg!("' . expand('%:t') . ":" .line(".") . '");' . "\<Esc>=="
+    execute "normal! o" . 'msg!("DD ' . expand('%:t') . ":" .line(".") . '");' . "\<Esc>=="
   endfunction
 
 

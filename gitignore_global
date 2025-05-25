@@ -100,3 +100,4 @@ __pycache__
 
 # Shelvak files #
 *shelvak*
+*.code-workspace

@@ -14,6 +14,7 @@ if [[ "$TMUX_ENABLED" != "" ]]; then
 
   alias tmux_reload="tmux source-file ~/.tmux.conf"
 
+  # tmux attach -t 0 # || tmux new -s 0
   if [ -z "$TMUX" ]
   then
     tmux attach -t $TMUX || tmux new -s $TMUX
@@ -61,8 +62,6 @@ export VISUAL=$EDITOR
 # GNU Screen sets -o vi if EDITOR=vi, so we have to force it back.
 # set -o vi
 
-# Load custom functions
-safe_source ~/.zsh-functions
 
 # Aliases
 alias v=$EDITOR
@@ -153,4 +152,10 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 # export PATH="$PATH:/home/rotsen/.foundry/bin"
 
 # Solana cli
-# export PATH="$PATH:/home/rotsen/.local/share/solana/install/active_release/bin"
+export PATH="$PATH:/home/rotsen/.local/share/solana/install/active_release/bin"
+
+alias dev='pnpm dev --character="characters/shelvak.character.json"'
+
+# SHOULD BE AT THE END TO OVERRIDE ANY OTHER Fn
+# Load custom functions
+safe_source ~/.zsh-functions

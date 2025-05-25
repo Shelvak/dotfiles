@@ -8,7 +8,7 @@ APPS = %w[
   alacritty
   binutils brave-bin
   chruby clang
-  direnv docker docker-compose
+  docker docker-compose
   exa expac
   ffmpeg fzf fakeroot
   google-chrome gstreamer gstreamer-vaapi git gcc gvim gromit-mpx

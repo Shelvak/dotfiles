@@ -68,7 +68,7 @@ function! SearchDefWithRg()
      elseif (filetype == 'javascript' || filetype == 'typescript')
        let rg_args .= ' function '.expand('<cword>').'|const '.expand('<cword>')
      elseif filetype == 'rust'
-       let rg_args .= 'fn '.expand('<cword>').'|enum '.expand('<cword>').'|type '.expand('<cword>')
+       let rg_args .= 'fn '.expand('<cword>').'|enum '.expand('<cword>').'|type '.expand('<cword>').'|const '.expand('<cword>').'|struct '.expand('<cword>')
      else
        let rg_args .= 'def[p]? [self\.]?'.expand('<cword>').'|module '.expand('<cword>').'|class '.expand('<cword>').'|^'.expand('<cword>').'|function '.expand('<cword>').'\s?='
      endif
