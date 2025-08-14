@@ -1,0 +1,5 @@
+#!/bin/zsh
+container=$(docker ps|grep $1 | awk '{ print $1 }')
+echo "Attaching..."
+
+docker exec -it $container ${2:-/bin/bash}
