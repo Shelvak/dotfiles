@@ -211,3 +211,6 @@ command! -bar -nargs=1 -bang -complete=file CopyAndReplace exe s:CopyAndReplace(
 " function  gs
 "   s/\(\w\+\)/\= Abolish.snakecase(submatch(1))/g
 " endfunction
+"
+
+set shell=$SHELL\ -l

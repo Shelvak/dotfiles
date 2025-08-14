@@ -137,22 +137,21 @@ export CARGO_HOME="$HOME/.cargo"
 # [ -f /home/rotsen/.travis/travis.sh ] && source /home/rotsen/.travis/travis.sh
 
 # Elixir
-# export ERL_AFLAGS="-kernel shell_history enabled  -kernel shell_history_file_bytes 2097152"
+export ERL_AFLAGS="-kernel shell_history enabled  -kernel shell_history_file_bytes 2097152"
 
 # NodeJS shit
 if [ -e /home/rotsen/.nix-profile/etc/profile.d/nix.sh ]; then . /home/rotsen/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 export LD_LIBRARY_PATH=/nix/store/hs1zphws1iyddrvfyqs7qj9qw6qqs0mc-icu4c-68.2/lib
 
 # Node manager NVM
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-([ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" || /usr/share/nvm/init-nvm.sh) # This loads nvm ] " ])"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+safe_source ~/.nvm/nvm.sh
+safe_source ~/.nvm/bash_completion
 
 # Foundry / Forge
 # export PATH="$PATH:/home/rotsen/.foundry/bin"
 
 # Solana cli
-export PATH="$PATH:/home/rotsen/.local/share/solana/install/active_release/bin"
+# export PATH="$PATH:/home/rotsen/.local/share/solana/install/active_release/bin"
 
 alias dev='pnpm dev --character="characters/shelvak.character.json"'
 

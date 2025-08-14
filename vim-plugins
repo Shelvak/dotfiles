@@ -8,7 +8,7 @@ Plug 'MarcWeber/vim-addon-mw-utils' " Needed for snippets
 Plug 'garbas/vim-snipmate' " Needed for snippets
 Plug 'mattn/webapi-vim' " Needed for gist
 
-" Plug 'Shelvak/vim-yaml-flattener', { 'for': 'yaml' }
+Plug 'Shelvak/vim-yaml-flattener', { 'for': 'yaml' }
 Plug 'Townk/vim-autoclose'  " Auto close ()[]{} etc and let you 'inside'
 Plug 'airblade/vim-gitgutter' " Show +- depending on git
 " Plug 'Shelvak/SmartColumnColors', { 'branch': 'alternative_column' }

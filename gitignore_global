@@ -79,8 +79,6 @@ mysqlbinlog/
 .envrc
 .env
 .viminfo
-.gitignore
-.eslint*
 
 # Elixir #
 #####

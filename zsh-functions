@@ -74,3 +74,19 @@ command_not_found_handler() {
 script() { ~/scripts/$1 ${@:2}; }
 _script() { _files -W ~/scripts -/; }
 compdef _script script
+
+run_cursor() {
+  # let's create a variable with the current dir name
+  local dir_name="/$(basename "$PWD")"
+  local d_home="$HOME/git/dockeraso/volumes"
+  docker run --rm --name "cursor-$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 16)" \
+    -v "$d_home/cursor:/home/cursor/.cursor" \
+    -v "$d_home/cursor-config:/home/cursor/.config" \
+    -v "$d_home/common/docker_rsa:/home/cursor/.ssh/id_rsa:ro" \
+    -v "$d_home/common/docker_rsa.pub:/home/cursor/.ssh/id_rsa.pub:ro" \
+    -v "/tmp/.X11-unix:/tmp/.X11-unix" \
+    -v "$PWD:$dir_name" \
+    -w "$dir_name" \
+    -e DISPLAY=$DISPLAY \
+    dockeraso-cursor:latest $dir_name # init in the current dir
+}
