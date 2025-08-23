@@ -75,11 +75,12 @@ script() { ~/scripts/$1 ${@:2}; }
 _script() { _files -W ~/scripts -/; }
 compdef _script script
 
-run_cursor() {
-  # let's create a variable with the current dir name
+_run_cursor() {
   local dir_name="/$(basename "$PWD")"
   local d_home="$HOME/git/dockeraso/volumes"
-  docker run --rm --name "cursor-$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 16)" \
+  # Shared home prevents to run multiple cursors at the same time
+  # local name="cursor-$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 16)"
+  docker run --rm --name cursor \
     -v "$d_home/cursor:/home/cursor/.cursor" \
     -v "$d_home/cursor-config:/home/cursor/.config" \
     -v "$d_home/common/docker_rsa:/home/cursor/.ssh/id_rsa:ro" \
@@ -88,5 +89,15 @@ run_cursor() {
     -v "$PWD:$dir_name" \
     -w "$dir_name" \
     -e DISPLAY=$DISPLAY \
-    dockeraso-cursor:latest $dir_name # init in the current dir
+    --detach dockeraso-cursor:latest $dir_name # init in the current dir
+}
+
+run_cursor() {
+  _run_cursor
+  sleep 3 # wait for the container to start
+  running=$(docker ps -q --filter "name=cursor")
+  # Let's check if the cursor is running, in other way let's run other command
+  if [ -z "$running" ]; then
+    DISPLAY=:1 _run_cursor
+  fi
 }

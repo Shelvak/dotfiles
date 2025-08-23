@@ -31,7 +31,7 @@ DISABLE_CORRECTION="true"
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(git autoenv tmux docker docker-compose autoswitch_virtualenv) # bundler rails kubectl mix)
+plugins=(git autoenv tmux docker docker-compose autoswitch_virtualenv bundler rails) # kubectl mix)
 # Skip directories aliaces
 zstyle ':omz:lib:directories' aliases no
 safe_source $ZSH/oh-my-zsh.sh
@@ -100,6 +100,9 @@ alias pacaur_apps="pac -Qm"
 
 # Elixir alias
 # alias dt="iex -S mix test --trace"
+
+# Git override alias
+gcl="git clone --depth=1"
 
 # Ruby logic
 safe_source /usr/share/chruby/chruby.sh
