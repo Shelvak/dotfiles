@@ -80,12 +80,14 @@ alias gpl="git pull --no-rebase origin master"
 alias ..='cd ..'
 alias ..2='cd ../..'
 alias ..3='cd ../../..'
+alias dsp='docker system prune -f'
 # alias refresh="gpr; bi --jobs 8; rdm"
 # alias full_test="RAILS_ENV=test rails db:drop db:create db:migrate; rails test"
 # alias ll="exa -lah"
 # alias gcas="mix format; gca -m '[ci skip] Tmp'; ggpush"
 
 # Clusters
+alias k="AWS_ACCESS_KEY_ID='' kubectl" # prevent env to fuck with kubernets
 # alias ktanga="k exec -it tanga -- bash"
 # alias kteiqui="k --kubeconfig=/home/rotsen/.kube/teiqui --namespace production"
 
@@ -156,7 +158,7 @@ safe_source ~/.nvm/bash_completion
 # Solana cli
 # export PATH="$PATH:/home/rotsen/.local/share/solana/install/active_release/bin"
 
-alias dev='pnpm dev --character="characters/shelvak.character.json"'
+# alias dev='pnpm dev --character="characters/shelvak.character.json"'
 
 # SHOULD BE AT THE END TO OVERRIDE ANY OTHER Fn
 # Load custom functions
