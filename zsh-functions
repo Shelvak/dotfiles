@@ -1,5 +1,3 @@
-DOCKER_COMPOSE_FILE="$HOME/git/dockeraso/docker-compose.yml"
-
 # run server on current dir
 localserver() {
   port=8888
@@ -77,21 +75,14 @@ script() { ~/scripts/$1 ${@:2}; }
 _script() { _files -W ~/scripts -/; }
 compdef _script script
 
+run_docker_compose() {
+  docker-compose -f "$HOME/git/dockeraso/docker-compose.yml" run --service-ports --rm $@
+}
+
 _run_cursor() {
   local dir_name="/$(basename "$PWD")"
-  local d_home="$HOME/git/dockeraso/volumes"
-  # Shared home prevents to run multiple cursors at the same time
-  # local name="cursor-$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 16)"
-  docker run --rm --name cursor \
-    -v "$d_home/cursor:/home/cursor/.cursor" \
-    -v "$d_home/cursor-config:/home/cursor/.config" \
-    -v "$d_home/common/docker_rsa:/home/cursor/.ssh/id_rsa:ro" \
-    -v "$d_home/common/docker_rsa.pub:/home/cursor/.ssh/id_rsa.pub:ro" \
-    -v "/tmp/.X11-unix:/tmp/.X11-unix" \
-    -v "$PWD:$dir_name" \
-    -w "$dir_name" \
-    -e DISPLAY=$DISPLAY \
-    --detach dockeraso-cursor:latest $dir_name # init in the current dir
+
+  run_docker_compose -v "$PWD":"$dir_name" -w "$dir_name" cursor "$dir_name"
 }
 
 run_cursor() {
@@ -112,5 +103,5 @@ power_pod() {
 # Prevent to install and run everything locally
 wrapped_cargo() {
   # docker run --rm -it -v "$PWD":/app -v /mugre/containers-cache/cargo:/usr/local/cargo/registry -w /app -e CARGO_HOME=/usr/local/cargo rust:1.91.1-slim-trixie cargo "$@"
-  docker-compose -f $DOCKER_COMPOSE_FILE run --service-ports --rm -v "$PWD":/app -w /app cargo cargo "$@"
+  run_docker_compose -v "$PWD":/app -w /app cargo cargo "$@"
 }
