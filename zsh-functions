@@ -75,6 +75,17 @@ script() { ~/scripts/$1 ${@:2}; }
 _script() { _files -W ~/scripts -/; }
 compdef _script script
 
+
+# Global docker-compose wrapper
+dc() {
+  if [ -f ./docker-compose.yml ]; then
+    docker-compose $@
+  else
+    docker-compose -f "$HOME/git/dockeraso/docker-compose.yml" $@
+  fi
+}
+
+
 run_docker_compose() {
   docker-compose -f "$HOME/git/dockeraso/docker-compose.yml" run --service-ports --rm $@
 }
