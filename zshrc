@@ -81,15 +81,10 @@ alias ..='cd ..'
 alias ..2='cd ../..'
 alias ..3='cd ../../..'
 alias dsp='docker system prune -f'
-# alias refresh="gpr; bi --jobs 8; rdm"
 # alias full_test="RAILS_ENV=test rails db:drop db:create db:migrate; rails test"
-# alias ll="exa -lah"
-# alias gcas="mix format; gca -m '[ci skip] Tmp'; ggpush"
 
 # Clusters
-alias k="AWS_ACCESS_KEY_ID='' kubectl" # prevent env to fuck with kubernets
-# alias ktanga="k exec -it tanga -- bash"
-# alias kteiqui="k --kubeconfig=/home/rotsen/.kube/teiqui --namespace production"
+# alias k="AWS_ACCESS_KEY_ID='' kubectl" # prevent env to fuck with kubernets
 
 # Arch specific logic
 export PATH="/home/rotsen/bins/:$PATH"
@@ -126,31 +121,31 @@ export FZF_DEFAULT_COMMAND='rg --files --follow --glob "!.git/*"'
 # safe_source /home/rotsen/.opam/opam-init/init.zsh
 
 # GO logic
-export GOPATH=/opt/go
+# export GOPATH=/opt/go
 
 # RXVT
 # [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
 # Yarn NPM bins
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+# export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # Rust / Cargo bins
-export PATH="$HOME/.cargo/bin:$PATH"
-export CARGO_HOME="$HOME/.cargo"
+# export PATH="$HOME/.cargo/bin:$PATH"
+# export CARGO_HOME="$HOME/.cargo"
 
 # added by travis gem
 # [ -f /home/rotsen/.travis/travis.sh ] && source /home/rotsen/.travis/travis.sh
 
 # Elixir
-export ERL_AFLAGS="-kernel shell_history enabled  -kernel shell_history_file_bytes 2097152"
+# export ERL_AFLAGS="-kernel shell_history enabled  -kernel shell_history_file_bytes 2097152"
 
 # NodeJS shit
-if [ -e /home/rotsen/.nix-profile/etc/profile.d/nix.sh ]; then . /home/rotsen/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-export LD_LIBRARY_PATH=/nix/store/hs1zphws1iyddrvfyqs7qj9qw6qqs0mc-icu4c-68.2/lib
+# if [ -e /home/rotsen/.nix-profile/etc/profile.d/nix.sh ]; then . /home/rotsen/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+# export LD_LIBRARY_PATH=/nix/store/hs1zphws1iyddrvfyqs7qj9qw6qqs0mc-icu4c-68.2/lib
 
 # Node manager NVM
-safe_source ~/.nvm/nvm.sh
-safe_source ~/.nvm/bash_completion
+# safe_source ~/.nvm/nvm.sh
+# safe_source ~/.nvm/bash_completion
 
 # Foundry / Forge
 # export PATH="$PATH:/home/rotsen/.foundry/bin"

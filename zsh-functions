@@ -112,7 +112,7 @@ power_pod() {
 }
 
 # Prevent to install and run everything locally
-wrapped_cargo() {
+cargo() {
   # docker run --rm -it -v "$PWD":/app -v /mugre/containers-cache/cargo:/usr/local/cargo/registry -w /app -e CARGO_HOME=/usr/local/cargo rust:1.91.1-slim-trixie cargo "$@"
   run_docker_compose -v "$PWD":/app -w /app cargo cargo "$@"
 }
